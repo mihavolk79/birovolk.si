@@ -16,6 +16,8 @@ const DIST = 'dist';
 const readJson = async (f) => JSON.parse(await fs.readFile(f, 'utf8'));
 const txt = (p) => (p?.rich_text || p?.title || []).map(t => t.plain_text).join('').trim();
 // Leto iz številke projekta (LLLL-NNN ali STARI-LLLL-…)
+// kraj + oznaka države (ISO): »Murska Sobota, SI«; »Austria« -> »AT«
+const plc = (pl) => !pl || pl === '—' ? '' : pl === 'Austria' ? 'AT' : `${pl}, ${({ Liezen: 'AT', Wolfsberg: 'AT' })[pl] || 'SI'}`;
 const yearOf = (num) => (String(num).match(/(?:19|20)\d{2}/) || [''])[0];
 
 async function notionQuery(db, filter) {
@@ -120,8 +122,8 @@ async function main() {
     .map(p => ({ // naziv, investitor, leto iz Notiona; kraj in sklop iz projects-overrides.json
       num: p.num, sl: p.sl, en: p.en, inv: p.inv,
       type_sl: site.cats.sl[p.cat] || '', type_en: site.cats.en[p.cat] || '',
-      place_sl: [p.place, p.done ? '' : 'v teku'].filter(Boolean).join(' · '),
-      place_en: [p.place, p.done ? '' : 'in progress'].filter(Boolean).join(' · ')
+      place_sl: [plc(p.place), p.done ? '' : 'v teku'].filter(Boolean).join(' · '),
+      place_en: [plc(p.place), p.done ? '' : 'in progress'].filter(Boolean).join(' · ')
     }));
   const data = { site, projects, old, quotes, featured: featuredOut, updated: new Date().toISOString().slice(0, 10) };
 
