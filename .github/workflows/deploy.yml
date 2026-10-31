@@ -23,10 +23,15 @@ jobs:
         with:
           node-version: 20
       - run: npm install --no-audit --no-fund
+      # Google Drive brez ključa: GitHub OIDC -> Workload Identity Federation (projekt birovolk-splet)
+      # -> service account splet-foto (samo Viewer na mapi »Splet – fotografije«).
+      - uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: projects/18377101261/locations/global/workloadIdentityPools/github/providers/birovolk-si
+          service_account: splet-foto@birovolk-splet.iam.gserviceaccount.com
       - run: npm run build
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
-          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
