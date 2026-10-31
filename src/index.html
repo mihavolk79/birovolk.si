@@ -59,12 +59,12 @@ h1.big{margin:0;font-family:'Barlow Condensed',Arial,sans-serif;font-weight:300;
 .post .img{aspect-ratio:1/1;background:var(--tile);display:flex;align-items:center;justify-content:center;font-size:13px;letter-spacing:.06em;color:var(--sub)}
 .post .d{font-size:14px;color:var(--sub)}
 .sel{list-style:none;margin:0;padding:0}
-.sel li{display:grid;grid-template-columns:40px minmax(0,1fr) minmax(0,1fr) 118px 124px;gap:4px 32px;align-items:baseline;padding:14px 0;border-top:1px solid var(--rule)}
+.sel li{display:grid;grid-template-columns:40px minmax(0,1fr) minmax(0,1fr) var(--wp,118px) var(--wc,124px);gap:4px 32px;align-items:baseline;padding:14px 0;border-top:1px solid var(--rule)}
 .sel .no{font-size:15px;color:var(--sub)}
 .sel .nm{font-family:'Barlow Condensed',Arial,sans-serif;font-size:28px;font-weight:300;line-height:1.1}
-.sel .pl{color:var(--soft)}
-.sel .ty{color:var(--sub);font-size:15px;text-align:right}
-@media (max-width:1100px){.sel li{grid-template-columns:40px minmax(0,1fr) minmax(0,1fr) 124px;grid-template-rows:auto 1fr;gap:4px 24px}.sel .no,.sel .iv,.sel .nm{grid-row:span 2}.sel .ty{grid-column:4;text-align:left;align-self:start}}
+.sel .pl{color:var(--soft);white-space:nowrap}
+.sel .ty{color:var(--sub);font-size:15px;text-align:right;white-space:nowrap}
+@media (max-width:1100px){.sel li{grid-template-columns:40px minmax(0,1fr) minmax(0,1fr) max(var(--wp,118px),var(--wc,124px));grid-template-rows:auto 1fr;gap:4px 24px}.sel .no,.sel .iv,.sel .nm{grid-row:span 2}.sel .ty{grid-column:4;text-align:left;align-self:start}}
 .more{align-self:flex-start;font-size:18px;text-underline-offset:6px;min-height:44px;display:inline-flex;align-items:center}
 /* services */
 .grp{display:grid;grid-template-columns:minmax(200px,1fr) 3fr;gap:16px 48px;padding-top:20px;border-top:1px solid var(--rule)}
@@ -85,7 +85,7 @@ h1.big{margin:0;font-family:'Barlow Condensed',Arial,sans-serif;font-weight:300;
 .ptab td.p{color:var(--soft)}
 .ptab .r{text-align:right;padding-right:0}
 .ptab col.cy{width:76px}.ptab col.cp{width:158px}.ptab col.cc{width:124px}
-.ptab td.p,.ptab td.ct{white-space:normal;overflow:visible;text-overflow:clip}.ptab col.cs{width:90px}
+.ptab td.p,.ptab td.ct{overflow:visible;text-overflow:clip}.ptab col.cs{width:90px}
 .ptab caption{text-align:left;padding:48px 0 16px}
 .ptab caption small{font-size:15px;font-weight:400;letter-spacing:0;text-transform:none;color:var(--sub)}
 @media (max-width:760px){
@@ -100,7 +100,7 @@ h1.big{margin:0;font-family:'Barlow Condensed',Arial,sans-serif;font-weight:300;
   .ptab td.n{order:0}.ptab td.i{order:1}.ptab td.p{order:2}.ptab td.ct{order:3}.ptab td.y{order:4}.ptab td.st{order:5}
   .sel li{grid-template-columns:32px 1fr;grid-template-rows:none}
   .sel .no,.sel .iv,.sel .nm{grid-row:auto}
-  .sel .iv,.sel .nm,.sel .pl,.sel .ty{grid-column:2;text-align:left}
+  .sel .iv,.sel .nm,.sel .pl,.sel .ty{grid-column:2;text-align:left;white-space:normal}
   .grp{grid-template-columns:1fr}
 }
 /* biro & contact */
@@ -119,7 +119,10 @@ dl.kv dt{color:var(--sub);min-width:150px}dl.kv dd{margin:0}
 .ptools{display:flex;flex-wrap:wrap;gap:8px}
 .ptools button{min-height:40px;padding:6px 14px;border-radius:999px;cursor:pointer;font:inherit;font-size:15px;background:transparent;color:var(--fg);border:1px solid var(--sub)}
 .ptools button[aria-expanded="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
-.ptab tr.ph td.n::after{content:' ▣';color:var(--sub);font-size:13px}
+/* projekti s fotografijami: rdeča pika med letom in nazivom (telefon: pred nazivom) */
+.ptab tr.ph td.y{position:relative}
+.ptab tr.ph td.y::after{content:'';position:absolute;right:9px;top:50%;width:9px;height:9px;margin-top:-4px;border-radius:50%;background:var(--dot)}
+@media (max-width:760px){.ptab tr.ph td.y::after{display:none}.ptab tr.ph td.n::before{content:'● ';color:var(--dot)}}
 .ptab tr.ph{cursor:pointer}
 .ptab td.i{text-transform:uppercase;letter-spacing:.04em;font-size:15px}
 .sel .iv{font-size:15px;letter-spacing:.04em;text-transform:uppercase;color:var(--soft);line-height:1.3}
@@ -247,7 +250,7 @@ function projects() {
   const row = (a) => `<tr${a.photos ? ` class="ph" tabindex="0" role="button" aria-label="${esc(a[lang])} – ${sl ? 'fotografije' : 'photos'}" data-i="${all.indexOf(a)}"` : ''}><td class="y">${esc(a.y)}</td><td class="n" title="${esc(a[lang])}">${esc(a[lang])}</td><td class="i">${esc(a.inv)}</td><td class="p">${maplink(a.inv, a[lang], a.place, false, a.addr)}</td><td class="ct r">${esc(C[a.cat] || '')}</td></tr>`;
   return `<div class="intro"><h1 class="big" style="font-size:clamp(52px,7vw,108px)">${esc(ui.tH1)}<span class="dot">.</span></h1><p class="lead">${esc(ui.tLead)}</p></div>
   <div class="sec">${tools}${showMap ? mapSvg(catL.map(a => [a.place, a.en])) : ''}${placeSel ? `<button type="button" class="placechip">${esc(placeSel)} ×</button>` : ''}${showFilters ? `<div class="chips" role="group" aria-label="${esc(ui.tAllCats)}">${chips}</div>` : ''}
-  ${list.length ? `<table class="ptab"><caption class="lbl">${list.length} <small>· ${esc(ui.tUpdated)} ${u.upd}</small></caption>${head}<tbody>${list.map(row).join('')}</tbody></table>` : `<p class="lead">${sl ? 'Ni projektov za izbrani filter.' : 'No projects match this filter.'}</p>`}</div>`;
+  ${list.length ? `<table class="ptab"><caption class="lbl">${list.length} <small>· ${esc(ui.tUpdated)} ${u.upd}${list.some(a => a.photos) ? ` · <span class="dot">●</span> ${sl ? 's fotografijami – klik odpre galerijo' : 'with photos – click to open'}` : ''}</small></caption>${head}<tbody>${list.map(row).join('')}</tbody></table>` : `<p class="lead">${sl ? 'Ni projektov za izbrani filter.' : 'No projects match this filter.'}</p>`}</div>`;
 }
 
 // Pregledovalnik fotografij: na sredini izbrana fotografija, levo in desno manjše prosojne ostale
@@ -333,8 +336,19 @@ function render(focus) {
   main.querySelectorAll('.pmap .pin').forEach(g => { const go = () => { placeSel = placeSel === g.dataset.k ? null : g.dataset.k; render(false); const n = document.querySelector(`.pmap .pin[data-k="${placeSel || g.dataset.k}"]`); if (n) n.focus(); }; g.onclick = go; g.onkeydown = (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } }; });
   const pc = main.querySelector('.placechip'); if (pc) pc.onclick = () => { placeSel = null; render(false); };
   main.querySelectorAll('.chips [data-c]').forEach(b => b.onclick = () => { cat = b.dataset.c; render(false); const btn = document.querySelector(`.chips [data-c="${cat}"]`); if (btn) btn.focus(); });
+  fitCols(main);
   if (focus) { window.scrollTo(0, 0); main.focus({ preventScroll: true }); }
 }
+// stolpca Kraj in Sklop: širina po najdaljšem vpisu (prva stran in Projekti)
+function fitCols(root) {
+  const w = (els) => Math.ceil(Math.max(0, ...[...els].map(e => { const r = document.createRange(); r.selectNodeContents(e); return r.getBoundingClientRect().width; })));
+  const sel = root.querySelector('.sel');
+  if (sel) { sel.style.setProperty('--wp', w(sel.querySelectorAll('.pl')) + 'px'); sel.style.setProperty('--wc', w(sel.querySelectorAll('.ty')) + 'px'); }
+  const t = root.querySelector('.ptab'), cp = t && t.querySelector('col.cp'), cc = t && t.querySelector('col.cc');
+  if (cp) cp.style.width = (w(t.querySelectorAll('td.p, th:nth-child(4)')) + 24) + 'px';
+  if (cc) cc.style.width = w(t.querySelectorAll('td.ct, th.r')) + 'px';
+}
+if (document.fonts) document.fonts.ready.then(() => fitCols(document.getElementById('main')));
 window.addEventListener('hashchange', () => { cat = 'all'; placeSel = null; closeViewer(); render(true); });
 render(false);
 </script>
