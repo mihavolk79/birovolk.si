@@ -95,7 +95,9 @@ async function main() {
       const inv = invWeb === '-' ? '' : (invWeb || txt(p['Investitor']) || o.inv || '');
       // Leto: »Leto zaključka« iz Notiona, sicer leto iz številke projekta.
       const yz = p['Leto zaključka']?.number;
-      projects.push({ num, y: yz ? String(Math.round(yz)) : yearOf(num), sl, en: txt(p['Javni naziv EN']) || o.en || sl, inv, place: o.place || '', cat: o.cat || 'other', done: !!p['Zaključeno']?.checkbox });
+      // naslov gradnje za povezavo na zemljevid: del pred »;« (brez parcel); samo pri projektih z investitorjem (zasebnost)
+      const adr = (txt(p['Naslov gradnje']).split(';')[0] || '').trim();
+      projects.push({ num, y: yz ? String(Math.round(yz)) : yearOf(num), sl, en: txt(p['Javni naziv EN']) || o.en || sl, inv, place: o.place || '', addr: inv && adr && !/parc|k\.o\./i.test(adr) ? adr : '', cat: o.cat || 'other', done: !!p['Zaključeno']?.checkbox });
     }
     const q = await notionQuery(QUOTES_DB, { property: 'Aktiven', checkbox: { equals: true } });
     const qs = q.map(r => [txt(r.properties['Citat']), [txt(r.properties['Avtor']), txt(r.properties['Vir']), txt(r.properties['Leto'])].filter(Boolean).join(', ')]).filter(x => x[0]);
