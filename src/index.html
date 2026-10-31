@@ -118,6 +118,8 @@ dl.kv dt{color:var(--sub);min-width:150px}dl.kv dd{margin:0}
 .ptools button[aria-expanded="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
 .ptab tr.ph td.n::after{content:' ▣';color:var(--sub);font-size:13px}
 .ptab tr.ph{cursor:pointer}
+.ptab td.i{text-transform:uppercase;letter-spacing:.04em;font-size:15px}
+.sel .iv{display:block;font-family:'Barlow Semi Condensed',Arial,sans-serif;font-size:13px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--sub);line-height:1.3;margin-bottom:4px}
 .ptab tr.ph:hover td.n,.ptab tr.ph:focus-visible td.n{text-decoration:underline;text-underline-offset:4px}
 #cf{position:fixed;inset:0;z-index:50;background:#0a0a0a;display:none;flex-direction:column;color:#f2f2f2;padding-top:env(safe-area-inset-top,0px)}
 #cf.on{display:flex}
@@ -192,7 +194,7 @@ function home() {
   ${posts.length ? `<section class="sec" aria-labelledby="h-news"><div class="news-head"><h2 class="lbl" id="h-news">${esc(f.tNews)}</h2><a href="https://www.instagram.com/birovolk/" target="_blank" rel="noopener">@birovolk ↗</a></div>
   <div class="posts">${posts.map(p => `<a class="post" href="${esc(p.url || 'https://www.instagram.com/birovolk/')}" target="_blank" rel="noopener"><img class="img" src="${esc(p.img)}" alt="${esc(p.text)}" loading="lazy" style="object-fit:cover;width:100%"><span class="d">${esc(p.date)}</span><span>${esc(p.text)}</span></a>`).join('')}</div></section>` : ''}
   ${DATA.featured.length ? '' : '<!-- ni izbranih projektov -->'}<section class="sec" aria-labelledby="h-sel"${DATA.featured.length ? '' : ' hidden'}><h2 class="lbl" id="h-sel">${esc(f.tWorks)}</h2>
-  <ol class="sel">${DATA.featured.map((p, i) => `<li><span class="no">${String(i + 1).padStart(2, '0')}</span><span class="nm">${esc(p[lang])}</span><span class="pl">${esc(p['place_' + lang] || p.place || '')}</span><span class="ty">${esc(p['type_' + lang])}</span></li>`).join('')}</ol>
+  <ol class="sel">${DATA.featured.map((p, i) => `<li><span class="no">${String(i + 1).padStart(2, '0')}</span><span class="nm">${p.inv ? `<span class="iv">${esc(p.inv)}</span>` : ''}${esc(p[lang])}</span><span class="pl">${esc(p['place_' + lang] || p.place || '')}</span><span class="ty">${esc(p['type_' + lang])}</span></li>`).join('')}</ol>
   <a class="more" href="#projekti">${esc(f.tAllProj)} →</a></section>
   <section class="sec" aria-labelledby="h-abr"><h2 class="lbl" id="h-abr">${esc(B.tAbroad)}</h2><p class="cond" style="margin:0;font-size:clamp(36px,4.6vw,68px);font-weight:300;line-height:1.02">${esc(B.tAbroadDone)}<span class="dot">.</span></p><p class="lead">${esc(B.tAbroadShort)}</p><a class="more" href="#biro">${esc(B.tAbroadMore)} →</a></section>`;
 }
