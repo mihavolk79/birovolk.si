@@ -99,13 +99,10 @@ async function main() {
     // Brez Notiona ne vemo, kaj je obkljukano za objavo – zato se ne objavi noben projekt 2019–2026.
     console.log('NOTION_TOKEN ni nastavljen – projekti 2019–2026 niso objavljeni (ni podatka o »Objava na spletu«).');
   }
-  projects.sort((a, b) => b.num.localeCompare(a.num));
-  // Projekti pred letom 2019 (tudi STARI-…) gredo v tabelo 2007–2018 – prav tako SAMO, če so obkljukani v Notionu.
-  const isOld = (p) => p.y && Number(p.y) < 2019;
-  const oldRows = projects.filter(isOld).sort((a, b) => b.y.localeCompare(a.y) || a.sl.localeCompare(b.sl, 'sl'));
-  const old = oldRows.map(p => ({ sl: p.sl, en: p.en, place: p.place, cat: p.cat }));
-  const allPublished = [...projects];
-  projects = projects.filter(p => !isOld(p));
+  // En kronološki seznam vseh objavljenih projektov (tudi STARI-…), najnovejši najprej.
+  projects.sort((a, b) => b.y.localeCompare(a.y) || b.num.localeCompare(a.num));
+  const old = []; // starejši projekti so v istem seznamu (polje ostaja zaradi združljivosti strani)
+  const allPublished = projects;
   const photos = await drivePhotos();
   for (const p of projects) if (photos[p.num]) Object.assign(p, photos[p.num]);
   // Izbrani projekti na prvi strani = objavljeni + obkljukano »Izbrano na naslovnici« v Notionu; brez omejitve števila.
@@ -129,6 +126,6 @@ async function main() {
     await fs.copyFile(`node_modules/@fontsource/${pkg}/files/${f}`, path.join(DIST, 'fonts', f));
   }
   try { await fs.copyFile('CNAME', path.join(DIST, 'CNAME')); } catch {}
-  console.log(`Zgrajeno: ${projects.length} objavljenih projektov 2019–2026, ${old.length} starejših, ${data.featured.length} izbranih, ${Object.keys(photos).length} z fotografijami, ${quotes.length} citatov.`);
+  console.log(`Zgrajeno: ${projects.length} objavljenih projektov, ${data.featured.length} izbranih, ${Object.keys(photos).length} z fotografijami, ${quotes.length} citatov.`);
 }
 main().catch(e => { console.error(e); process.exit(1); });
