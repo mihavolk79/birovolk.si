@@ -7,7 +7,7 @@ Statična stran, ki se zgradi iz Notiona (projekti, citati) in Google Drive (fot
   Javni naziv, investitor, kraj in sklop so za obstoječe projekte v `content/projects-overrides.json` (repozitorij je javen – vanj ne vpisuj zasebnih naročnikov).
   Za nove projekte se uporabi *Naziv gradnje* iz Notiona, zato naj bo ta primeren za objavo (brez imen fizičnih oseb in naslovov).
 - **Projekti 2007–2018:** `content/projects-2007-2018.json`.
-- **Izbrani projekti na prvi strani:** `content/featured.json` (prikažejo se le, če je projekt obkljukan za objavo).
+- **Izbrani projekti na prvi strani:** v Notionu obkljukaj *Izbrano na naslovnici* (in *Objava na spletu*). Lepše besedilo (kratek naziv, opis) in vrstni red lahko določiš v `content/featured.json`; projekti brez vnosa tam dobijo besedilo samodejno.
 - **Citati:** Notion baza »Citati – spletna stran BIRO VOLK«, samo *Aktiven*.
 - **Fotografije:** Google Drive → Claude_Cowork → *Splet – fotografije* → podmapa s številko projekta (glej BERI_ME.txt).
   Ob gradnji se zmanjšajo, pretvorijo v WebP in odstranijo se metapodatki (tudi GPS).
