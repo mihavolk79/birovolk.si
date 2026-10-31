@@ -59,12 +59,12 @@ h1.big{margin:0;font-family:'Barlow Condensed',Arial,sans-serif;font-weight:300;
 .post .img{aspect-ratio:1/1;background:var(--tile);display:flex;align-items:center;justify-content:center;font-size:13px;letter-spacing:.06em;color:var(--sub)}
 .post .d{font-size:14px;color:var(--sub)}
 .sel{list-style:none;margin:0;padding:0}
-.sel li{display:grid;grid-template-columns:40px minmax(0,1fr) minmax(0,1fr) 130px 170px;gap:4px 32px;align-items:baseline;padding:14px 0;border-top:1px solid var(--rule)}
+.sel li{display:grid;grid-template-columns:40px minmax(0,1fr) minmax(0,1fr) 65px 85px;gap:4px 32px;align-items:baseline;padding:14px 0;border-top:1px solid var(--rule)}
 .sel .no{font-size:15px;color:var(--sub)}
 .sel .nm{font-family:'Barlow Condensed',Arial,sans-serif;font-size:28px;font-weight:300;line-height:1.1}
 .sel .pl{color:var(--soft)}
 .sel .ty{color:var(--sub);font-size:15px;text-align:right}
-@media (max-width:1100px){.sel li{grid-template-columns:40px minmax(0,1fr) minmax(0,1fr) 120px;grid-template-rows:auto 1fr;gap:4px 24px}.sel .no,.sel .iv,.sel .nm{grid-row:span 2}.sel .ty{grid-column:4;text-align:left;align-self:start}}
+@media (max-width:1100px){.sel li{grid-template-columns:40px minmax(0,1fr) minmax(0,1fr) 85px;grid-template-rows:auto 1fr;gap:4px 24px}.sel .no,.sel .iv,.sel .nm{grid-row:span 2}.sel .ty{grid-column:4;text-align:left;align-self:start}}
 .more{align-self:flex-start;font-size:18px;text-underline-offset:6px;min-height:44px;display:inline-flex;align-items:center}
 /* services */
 .grp{display:grid;grid-template-columns:minmax(200px,1fr) 3fr;gap:16px 48px;padding-top:20px;border-top:1px solid var(--rule)}
@@ -240,8 +240,8 @@ function projects() {
   const catL = all.filter(a => cat === 'all' || a.cat === cat);
   const list = catL.filter(a => !placeSel || pkey(a.place, a.en) === placeSel);
   const tools = `<div class="ptools"><button type="button" data-t="map" aria-expanded="${showMap}">${sl ? 'Zemljevid' : 'Map'}</button><button type="button" data-t="fil" aria-expanded="${showFilters}">${sl ? 'Filtri' : 'Filters'}${cat !== 'all' ? ' · ' + esc(C[cat] || cat) : ''}</button></div>`;
-  const head = `<colgroup><col class="cy"><col><col><col class="cp"><col class="cc"><col class="cs"></colgroup><thead><tr>${ui.h.map((h, i) => `<th scope="col"${i === 4 ? ' class="r"' : ''}>${esc(h)}</th>`).join('')}<th></th></tr></thead>`;
-  const row = (a) => `<tr${a.photos ? ` class="ph" tabindex="0" role="button" aria-label="${esc(a[lang])} – ${sl ? 'fotografije' : 'photos'}" data-i="${all.indexOf(a)}"` : ''}><td class="y">${esc(a.y)}</td><td class="i">${esc(a.inv)}</td><td class="n" title="${esc(a[lang])}">${esc(a[lang])}</td><td class="p">${maplink(a.inv, a[lang], a.place, false, a.addr)}</td><td class="ct r">${esc(C[a.cat] || '')}</td><td class="st r">${a.done === false ? prog : ''}</td></tr>`;
+  const head = `<colgroup><col class="cy"><col><col><col class="cp"><col class="cs"><col class="cc"></colgroup><thead><tr>${ui.h.slice(0, 4).map(h => `<th scope="col">${esc(h)}</th>`).join('')}<th></th><th scope="col" class="r">${esc(ui.h[4])}</th></tr></thead>`;
+  const row = (a) => `<tr${a.photos ? ` class="ph" tabindex="0" role="button" aria-label="${esc(a[lang])} – ${sl ? 'fotografije' : 'photos'}" data-i="${all.indexOf(a)}"` : ''}><td class="y">${esc(a.y)}</td><td class="i">${esc(a.inv)}</td><td class="n" title="${esc(a[lang])}">${esc(a[lang])}</td><td class="p">${maplink(a.inv, a[lang], a.place, false, a.addr)}</td><td class="st">${a.done === false ? prog : ''}</td><td class="ct r">${esc(C[a.cat] || '')}</td></tr>`;
   return `<div class="intro"><h1 class="big" style="font-size:clamp(52px,7vw,108px)">${esc(ui.tH1)}<span class="dot">.</span></h1><p class="lead">${esc(ui.tLead)}</p></div>
   <div class="sec">${tools}${showMap ? mapSvg(catL.map(a => [a.place, a.en])) : ''}${placeSel ? `<button type="button" class="placechip">${esc(placeSel)} ×</button>` : ''}${showFilters ? `<div class="chips" role="group" aria-label="${esc(ui.tAllCats)}">${chips}</div>` : ''}
   ${list.length ? `<table class="ptab"><caption class="lbl">${list.length} <small>· ${esc(ui.tUpdated)} ${u.upd}</small></caption>${head}<tbody>${list.map(row).join('')}</tbody></table>` : `<p class="lead">${sl ? 'Ni projektov za izbrani filter.' : 'No projects match this filter.'}</p>`}</div>`;
