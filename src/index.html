@@ -58,7 +58,7 @@ h1.big{margin:0;font-family:'Barlow Condensed',Arial,sans-serif;font-weight:300;
 .post{text-decoration:none;display:flex;flex-direction:column;gap:8px}
 .post .img{aspect-ratio:1/1;background:var(--tile);display:flex;align-items:center;justify-content:center;font-size:13px;letter-spacing:.06em;color:var(--sub)}
 .post .d{font-size:14px;color:var(--sub)}
-.sel{list-style:none;margin:0;padding:0}
+.sel{list-style:none;margin:0;padding:0;display:grid;grid-auto-rows:1fr} /* vse vrste enako visoke kot najvišja */
 .sel li{display:grid;grid-template-columns:40px minmax(0,1fr) minmax(0,1fr) var(--wp,118px) var(--wc,124px);gap:4px 32px;align-items:baseline;padding:14px 0;border-top:1px solid var(--rule)}
 .sel .no{font-size:15px;color:var(--sub)}
 .sel .nm{font-family:'Barlow Condensed',Arial,sans-serif;font-size:28px;font-weight:300;line-height:1.1}
@@ -98,6 +98,7 @@ h1.big{margin:0;font-family:'Barlow Condensed',Arial,sans-serif;font-weight:300;
   .ptab td.y,.ptab td.p,.ptab td.ct,.ptab td.st{font-size:14px;color:var(--sub)}
   .ptab td:empty{display:none}
   .ptab td.n{order:0}.ptab td.i{order:1}.ptab td.p{order:2}.ptab td.ct{order:3}.ptab td.y{order:4}.ptab td.st{order:5}
+  .sel{grid-auto-rows:auto}
   .sel li{grid-template-columns:32px 1fr;grid-template-rows:none}
   .sel .no,.sel .iv,.sel .nm{grid-row:auto}
   .sel .iv,.sel .nm,.sel .pl,.sel .ty{grid-column:2;text-align:left;white-space:normal}
