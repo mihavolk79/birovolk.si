@@ -195,8 +195,7 @@ function home() {
   <div class="posts">${posts.map(p => `<a class="post" href="${esc(p.url || 'https://www.instagram.com/birovolk/')}" target="_blank" rel="noopener"><img class="img" src="${esc(p.img)}" alt="${esc(p.text)}" loading="lazy" style="object-fit:cover;width:100%"><span class="d">${esc(p.date)}</span><span>${esc(p.text)}</span></a>`).join('')}</div></section>` : ''}
   ${DATA.featured.length ? '' : '<!-- ni izbranih projektov -->'}<section class="sec" aria-labelledby="h-sel"${DATA.featured.length ? '' : ' hidden'}><h2 class="lbl" id="h-sel">${esc(f.tWorks)}</h2>
   <ol class="sel">${DATA.featured.map((p, i) => `<li><span class="no">${String(i + 1).padStart(2, '0')}</span><span class="nm">${p.inv ? `<span class="iv">${esc(p.inv)}</span>` : ''}${esc(p[lang])}</span><span class="pl">${esc(p['place_' + lang] || p.place || '')}</span><span class="ty">${esc(p['type_' + lang])}</span></li>`).join('')}</ol>
-  <a class="more" href="#projekti">${esc(f.tAllProj)} →</a></section>
-  <section class="sec" aria-labelledby="h-abr"><h2 class="lbl" id="h-abr">${esc(B.tAbroad)}</h2><p class="cond" style="margin:0;font-size:clamp(36px,4.6vw,68px);font-weight:300;line-height:1.02">${esc(B.tAbroadDone)}<span class="dot">.</span></p><p class="lead">${esc(B.tAbroadShort)}</p><a class="more" href="#biro">${esc(B.tAbroadMore)} →</a></section>`;
+  <a class="more" href="#projekti">${esc(f.tAllProj)} →</a></section>`;
 }
 
 function services() {
