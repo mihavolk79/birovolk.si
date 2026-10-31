@@ -31,10 +31,10 @@ async function notionQuery(db, filter) {
 }
 
 async function drivePhotos() {
-  if (!GOOGLE_SA) { console.log('Google Drive: ni poverilnic, fotografije preskočene.'); return {}; }
+  if (!GOOGLE_SA && !process.env.GOOGLE_APPLICATION_CREDENTIALS) { console.log('Google Drive: ni poverilnic, fotografije preskočene.'); return {}; }
   const { google } = await import('googleapis');
   const sharp = (await import('sharp')).default;
-  const auth = new google.auth.GoogleAuth({ credentials: JSON.parse(GOOGLE_SA), scopes: ['https://www.googleapis.com/auth/drive.readonly'] });
+  const auth = new google.auth.GoogleAuth({ ...(GOOGLE_SA ? { credentials: JSON.parse(GOOGLE_SA) } : {}), scopes: ['https://www.googleapis.com/auth/drive.readonly'] });
   const drive = google.drive({ version: 'v3', auth });
   const list = async (q) => (await drive.files.list({ q, fields: 'files(id,name,mimeType)', supportsAllDrives: true, includeItemsFromAllDrives: true, pageSize: 1000 })).data.files;
   const result = {};
