@@ -486,7 +486,7 @@
  "ui": {
   "sl": {
    "tNews": "Novice",
-   "tWorks": "Projekti",
+   "tWorks": "Izpostavljeni projekti",
    "tAllProj": "Vsi projekti",
    "tLead": "Vsi projekti biroja od leta 2007. Izberite kraj na zemljevidu ali sklop za filtriranje.",
    "h": [
@@ -502,7 +502,7 @@
   },
   "en": {
    "tNews": "News",
-   "tWorks": "Projects",
+   "tWorks": "Featured projects",
    "tAllProj": "All projects",
    "tLead": "All projects of the studio since 2007. Choose a location on the map or a category to filter.",
    "h": [
