@@ -15,6 +15,8 @@ const DIST = 'dist';
 
 const readJson = async (f) => JSON.parse(await fs.readFile(f, 'utf8'));
 const txt = (p) => (p?.rich_text || p?.title || []).map(t => t.plain_text).join('').trim();
+// Leto iz številke projekta (LLLL-NNN ali STARI-LLLL-…)
+const yearOf = (num) => (String(num).match(/(?:19|20)\d{2}/) || [''])[0];
 
 async function notionQuery(db, filter) {
   const out = []; let cursor;
@@ -64,14 +66,13 @@ async function drivePhotos() {
 async function main() {
   const site = await readJson('content/site.json');
   const overrides = await readJson('content/projects-overrides.json');
-  const old = await readJson('content/projects-2007-2018.json');
   const featured = await readJson('content/featured.json');
   await fs.rm(DIST, { recursive: true, force: true });
   await fs.mkdir(DIST, { recursive: true });
 
   const status = await readJson('content/projects-status.json').catch(() => ({}));
   let projects = [], quotes = site.quotes_fallback;
-  const featuredNums = new Set(); // projekti z obkljukanim »Izbrano na naslovnici« v Notionu
+  const featuredPos = new Map(); // projekti z obkljukanim »Izbrano na naslovnici« -> »Mesto na naslovnici«
   // Javni seznam = SAMO projekti z obkljukano »Objava na spletu« v Notionu.
   // projects-overrides.json le dopolni javni naziv, investitorja, kraj in sklop za obkljukane projekte.
   if (NOTION_TOKEN) {
@@ -84,12 +85,12 @@ async function main() {
       // da preimenovanje v Notionu ne izgubi kraja, sklopa in angleškega naziva.
       const sameNum = Object.keys(overrides).filter(k => k.split('|')[0] === num);
       const ov = overrides[key] || (sameNum.length === 1 ? overrides[sameNum[0]] : undefined);
-      if (p['Izbrano na naslovnici']?.checkbox) featuredNums.add(num);
+      if (p['Izbrano na naslovnici']?.checkbox) featuredPos.set(num, p['Mesto na naslovnici']?.number ?? Infinity);
       if (!p['Objava na spletu']?.checkbox) continue;
       const o = ov || {};
       // Ob povezavi samo po številki (naziv v Notionu je bil spremenjen) velja novi naziv iz Notiona.
       const sl = txt(p['Javni naziv']) || (overrides[key] ? o.sl : naziv) || naziv;
-      projects.push({ num, y: num.slice(0, 4), sl, en: txt(p['Javni naziv EN']) || o.en || sl, inv: o.inv || '', place: o.place || '', cat: o.cat || 'other', done: !!p['Zaključeno']?.checkbox });
+      projects.push({ num, y: yearOf(num), sl, en: txt(p['Javni naziv EN']) || o.en || sl, inv: o.inv || '', place: o.place || '', cat: o.cat || 'other', done: !!p['Zaključeno']?.checkbox });
     }
     const q = await notionQuery(QUOTES_DB, { property: 'Aktiven', checkbox: { equals: true } });
     const qs = q.map(r => [txt(r.properties['Citat']), [txt(r.properties['Avtor']), txt(r.properties['Vir']), txt(r.properties['Leto'])].filter(Boolean).join(', ')]).filter(x => x[0]);
@@ -99,21 +100,26 @@ async function main() {
     console.log('NOTION_TOKEN ni nastavljen – projekti 2019–2026 niso objavljeni (ni podatka o »Objava na spletu«).');
   }
   projects.sort((a, b) => b.num.localeCompare(a.num));
+  // Projekti pred letom 2019 (tudi STARI-…) gredo v tabelo 2007–2018 – prav tako SAMO, če so obkljukani v Notionu.
+  const isOld = (p) => p.y && Number(p.y) < 2019;
+  const oldRows = projects.filter(isOld).sort((a, b) => b.y.localeCompare(a.y) || a.sl.localeCompare(b.sl, 'sl'));
+  const old = oldRows.map(p => ({ sl: p.sl, en: p.en, place: p.place, cat: p.cat }));
+  const allPublished = [...projects];
+  projects = projects.filter(p => !isOld(p));
   const photos = await drivePhotos();
   for (const p of projects) if (photos[p.num]) Object.assign(p, photos[p.num]);
-  const published = new Set(projects.map(p => p.num));
-  // Izbrani projekti na prvi strani = objavljeni + obkljukano »Izbrano na naslovnici« v Notionu.
-  // Besedilo iz content/featured.json, če ima projekt tam vnos (vrstni red po featured.json), sicer samodejno iz podatkov projekta.
-  const featuredOut = [
-    ...featured.filter(f => featuredNums.has(f.num)),
-    ...projects.filter(p => featuredNums.has(p.num) && !featured.some(f => f.num === p.num)).map(p => ({
+  // Izbrani projekti na prvi strani = objavljeni + obkljukano »Izbrano na naslovnici« v Notionu; brez omejitve števila.
+  // Vrstni red: »Mesto na naslovnici« (1, 2, 3 …), neoštevilčeni za njimi (novejši prej).
+  // Besedilo iz content/featured.json, če ima projekt tam vnos, sicer samodejno iz podatkov projekta.
+  const featuredOut = allPublished.filter(p => featuredPos.has(p.num))
+    .sort((a, b) => (featuredPos.get(a.num) - featuredPos.get(b.num)) || b.num.localeCompare(a.num))
+    .map(p => featured.find(f => f.num === p.num) || ({
       num: p.num, sl: p.sl, en: p.en,
       type_sl: site.cats.sl[p.cat] || '', type_en: site.cats.en[p.cat] || '',
       place_sl: [p.place, p.done ? '' : 'v teku'].filter(Boolean).join(' · '),
       place_en: [p.place, p.done ? '' : 'in progress'].filter(Boolean).join(' · ')
-    }))
-  ];
-  const data = { site, projects, old, quotes, featured: featuredOut.filter(f => published.has(f.num)), updated: new Date().toISOString().slice(0, 10) };
+    }));
+  const data = { site, projects, old, quotes, featured: featuredOut, updated: new Date().toISOString().slice(0, 10) };
 
   const tpl = await fs.readFile('src/index.html', 'utf8');
   await fs.writeFile(path.join(DIST, 'index.html'), tpl.replace('__DATA__', JSON.stringify(data)));
@@ -123,6 +129,6 @@ async function main() {
     await fs.copyFile(`node_modules/@fontsource/${pkg}/files/${f}`, path.join(DIST, 'fonts', f));
   }
   try { await fs.copyFile('CNAME', path.join(DIST, 'CNAME')); } catch {}
-  console.log(`Zgrajeno: ${projects.length} objavljenih projektov, ${Object.keys(photos).length} z fotografijami, ${quotes.length} citatov.`);
+  console.log(`Zgrajeno: ${projects.length} objavljenih projektov 2019–2026, ${old.length} starejših, ${data.featured.length} izbranih, ${Object.keys(photos).length} z fotografijami, ${quotes.length} citatov.`);
 }
 main().catch(e => { console.error(e); process.exit(1); });
