@@ -90,7 +90,12 @@ async function main() {
       const o = ov || {};
       // Ob povezavi samo po številki (naziv v Notionu je bil spremenjen) velja novi naziv iz Notiona.
       const sl = txt(p['Javni naziv']) || (overrides[key] ? o.sl : naziv) || naziv;
-      projects.push({ num, y: yearOf(num), sl, en: txt(p['Javni naziv EN']) || o.en || sl, inv: o.inv || '', place: o.place || '', cat: o.cat || 'other', done: !!p['Zaključeno']?.checkbox });
+      // Investitor: »Investitor na spletu« (»-« = ne prikaži), sicer »Investitor« iz Notiona, sicer projects-overrides.json.
+      const invWeb = txt(p['Investitor na spletu']);
+      const inv = invWeb === '-' ? '' : (invWeb || txt(p['Investitor']) || o.inv || '');
+      // Leto: »Leto zaključka« iz Notiona, sicer leto iz številke projekta.
+      const yz = p['Leto zaključka']?.number;
+      projects.push({ num, y: yz ? String(Math.round(yz)) : yearOf(num), sl, en: txt(p['Javni naziv EN']) || o.en || sl, inv, place: o.place || '', cat: o.cat || 'other', done: !!p['Zaključeno']?.checkbox });
     }
     const q = await notionQuery(QUOTES_DB, { property: 'Aktiven', checkbox: { equals: true } });
     const qs = q.map(r => [txt(r.properties['Citat']), [txt(r.properties['Avtor']), txt(r.properties['Vir']), txt(r.properties['Leto'])].filter(Boolean).join(', ')]).filter(x => x[0]);
