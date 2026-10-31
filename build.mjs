@@ -115,8 +115,8 @@ async function main() {
   // Besedilo iz content/featured.json, če ima projekt tam vnos, sicer samodejno iz podatkov projekta.
   const featuredOut = allPublished.filter(p => featuredPos.has(p.num))
     .sort((a, b) => (featuredPos.get(a.num) - featuredPos.get(b.num)) || b.num.localeCompare(a.num))
-    .map(p => featured.find(f => f.num === p.num) || ({
-      num: p.num, sl: p.sl, en: p.en,
+    .map(p => ({ // naziv, investitor, leto iz Notiona; kraj in sklop iz projects-overrides.json
+      num: p.num, sl: p.sl, en: p.en, inv: p.inv,
       type_sl: site.cats.sl[p.cat] || '', type_en: site.cats.en[p.cat] || '',
       place_sl: [p.place, p.done ? '' : 'v teku'].filter(Boolean).join(' · '),
       place_en: [p.place, p.done ? '' : 'in progress'].filter(Boolean).join(' · ')
