@@ -113,13 +113,27 @@ dl.kv{margin:0;display:flex;flex-direction:column;gap:6px}
 dl.kv div{display:flex;flex-wrap:wrap;gap:4px 12px}
 dl.kv dt{color:var(--sub);min-width:150px}dl.kv dd{margin:0}
 .note{margin:72px 0 0;max-width:62ch;font-size:14px;color:var(--sub);border-left:2px solid var(--rule);padding-left:14px}
-#gal{position:fixed;right:clamp(16px,3vw,40px);bottom:calc(24px + env(safe-area-inset-bottom,0px));width:min(440px,calc(100vw - 32px));aspect-ratio:4/3;background:var(--tile);z-index:20;opacity:0;visibility:hidden;transition:opacity .2s,visibility .2s;box-shadow:0 12px 32px rgba(0,0,0,.35)}
-#gal.on{opacity:1;visibility:visible}
-#gal img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s}
-#gal img.v{opacity:1}
-#gal figcaption{position:absolute;left:0;right:0;bottom:0;padding:8px 12px;font-size:13px;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.6))}
+.ptools{display:flex;flex-wrap:wrap;gap:8px}
+.ptools button{min-height:40px;padding:6px 14px;border-radius:999px;cursor:pointer;font:inherit;font-size:15px;background:transparent;color:var(--fg);border:1px solid var(--sub)}
+.ptools button[aria-expanded="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
 .ptab tr.ph td.n::after{content:' ▣';color:var(--sub);font-size:13px}
-.ptab tr.ph{cursor:default}
+.ptab tr.ph{cursor:pointer}
+.ptab tr.ph:hover td.n,.ptab tr.ph:focus-visible td.n{text-decoration:underline;text-underline-offset:4px}
+#cf{position:fixed;inset:0;z-index:50;background:#0a0a0a;display:none;flex-direction:column;color:#f2f2f2;padding-top:env(safe-area-inset-top,0px)}
+#cf.on{display:flex}
+#cf .stage{position:relative;flex:1;overflow:hidden;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+#cf .it{position:absolute;left:50%;top:50%;width:min(64vw,1100px);height:min(74vh,780px);transform:translate(-50%,-50%);transition:transform .45s cubic-bezier(.2,.7,.2,1),opacity .45s;cursor:pointer}
+#cf .it img{width:100%;height:100%;object-fit:contain;display:block;pointer-events:none}
+#cf .bar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 24px;padding:16px clamp(16px,3vw,40px) calc(20px + env(safe-area-inset-bottom,0px))}
+#cf .t{font-family:'Barlow Condensed',Arial,sans-serif;font-size:clamp(22px,2.4vw,32px);font-weight:300;line-height:1.15}
+#cf .m{color:#9a9a9a;font-size:15px}
+#cf .x,#cf .nav{position:absolute;z-index:20;background:transparent;border:0;color:#f2f2f2;cursor:pointer;font:inherit;min-width:44px;min-height:44px;line-height:1}
+#cf .x{top:12px;right:clamp(8px,2vw,24px);font-size:34px}
+#cf .nav{top:50%;transform:translateY(-50%);font-size:48px;padding:0 12px}
+#cf .prev{left:clamp(4px,1.5vw,20px)}#cf .next{right:clamp(4px,1.5vw,20px)}
+#cf .nav[disabled]{opacity:.15;cursor:default}
+#cf :focus-visible{outline:2px solid #f2f2f2;outline-offset:3px}
+@media (max-width:760px){#cf .it{width:84vw;height:62vh}#cf .nav{font-size:36px}}
 .pmap{width:100%;height:auto;max-height:72vh;display:block;margin:8px 0 8px}
 .pmap .nb{fill:none;stroke:var(--rule);stroke-width:1.5}
 .pmap .si{fill:var(--tile);stroke:var(--sub);stroke-width:1.5}
@@ -140,7 +154,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 40px;p
 </header>
 <main id="main" class="wrap" tabindex="-1"></main>
 <footer class="wrap" id="foot"></footer>
-<figure id="gal" aria-hidden="true"></figure>
+<div id="cf" role="dialog" aria-modal="true" aria-hidden="true"></div>
 <script>
 const DATA = __DATA__;
 const S = DATA.site;
@@ -210,36 +224,77 @@ function mapSvg(items) {
   const labels = keys.filter(k => cnt[k] >= 5 || placeSel === k).map(k => { const [x, y] = MAP.pts[k]; return `<text x="${x + 8 + Math.sqrt(cnt[k]) * 3.2}" y="${y + 5}">${esc(k)}</text>`; }).join('');
   return `<svg class="pmap" viewBox="0 0 ${MAP.W} ${MAP.H}" role="group" aria-label="${sl ? 'Zemljevid projektov – izberite kraj' : 'Project map – choose a location'}"><defs><clipPath id="mc"><rect width="${MAP.W}" height="${MAP.H}"/></clipPath></defs><g clip-path="url(#mc)">${nb}<path class="si" d="${MAP.paths.SI}"/>${pins}${labels}</g></svg>`;
 }
+let showMap = false, showFilters = false;
 function projects() {
-  const ui = S.ui[lang], u = UI[lang], C = S.cats[lang], prog = lang === 'sl' ? 'V teku' : 'In progress';
-  const all = DATA.projects, old = DATA.old;
+  const ui = S.ui[lang], u = UI[lang], C = S.cats[lang], prog = lang === 'sl' ? 'V teku' : 'In progress', sl = lang === 'sl';
+  // Vsi objavljeni projekti (Notion »Objava na spletu«), kronološko – najnovejši najprej
+  const all = [...DATA.projects, ...(DATA.old || [])].sort((a, b) => String(b.y || '').localeCompare(String(a.y || '')) || String(b.num || '').localeCompare(String(a.num || '')));
+  window._plist = all;
   const codes = ['hosp', 'retail', 'res', 'ind', 'infra', 'edu', 'health', 'off', 'public', 'other'];
-  const count = (c) => all.filter(a => a.cat === c).length + old.filter(o => o.cat === c).length;
-  const chips = [['all', ui.tAllCats, all.length + old.length], ...codes.map(c => [c, C[c] || c, count(c)])].filter(x => x[2] > 0)
+  const count = (c) => all.filter(a => a.cat === c).length;
+  const chips = [['all', ui.tAllCats, all.length], ...codes.map(c => [c, C[c] || c, count(c)])].filter(x => x[2] > 0)
     .map(([c, l, n]) => `<button type="button" data-c="${c}" aria-pressed="${cat === c}">${esc(l)} ${n}</button>`).join('');
-  const regC = all.filter(a => cat === 'all' || a.cat === cat), oldC = old.filter(o => cat === 'all' || o.cat === cat);
-  const map = mapSvg([...regC.map(a => [a.place, a.en]), ...oldC.map(o => [o.place, o.en])]);
-  const reg = regC.filter(a => !placeSel || pkey(a.place, a.en) === placeSel), o2 = oldC.filter(o => !placeSel || pkey(o.place, o.en) === placeSel);
+  const catL = all.filter(a => cat === 'all' || a.cat === cat);
+  const list = catL.filter(a => !placeSel || pkey(a.place, a.en) === placeSel);
+  const tools = `<div class="ptools"><button type="button" data-t="map" aria-expanded="${showMap}">${sl ? 'Zemljevid' : 'Map'}</button><button type="button" data-t="fil" aria-expanded="${showFilters}">${sl ? 'Filtri' : 'Filters'}${cat !== 'all' ? ' · ' + esc(C[cat] || cat) : ''}</button></div>`;
   const head = `<colgroup><col class="cy"><col><col><col class="cp"><col class="cc"><col class="cs"></colgroup><thead><tr>${ui.h.map((h, i) => `<th scope="col"${i === 4 ? ' class="r"' : ''}>${esc(h)}</th>`).join('')}<th></th></tr></thead>`;
-  const row = (y, inv, n, pl, ct, st, ph, old) => `<tr${ph !== undefined ? ` class="ph" tabindex="0" data-ph="${ph}"` : ''}><td class="y">${esc(y)}</td><td class="i">${esc(inv)}</td><td class="n" title="${esc(n)}">${esc(n)}</td><td class="p">${maplink(inv, n, pl, old)}</td><td class="ct r">${esc(ct)}</td><td class="st r">${esc(st)}</td></tr>`;
+  const row = (a) => `<tr${a.photos ? ` class="ph" tabindex="0" role="button" aria-label="${esc(a[lang])} – ${sl ? 'fotografije' : 'photos'}" data-i="${all.indexOf(a)}"` : ''}><td class="y">${esc(a.y)}</td><td class="i">${esc(a.inv)}</td><td class="n" title="${esc(a[lang])}">${esc(a[lang])}</td><td class="p">${maplink(a.inv, a[lang], a.place, false)}</td><td class="ct r">${esc(C[a.cat] || '')}</td><td class="st r">${a.done === false ? prog : ''}</td></tr>`;
   return `<div class="intro"><h1 class="big" style="font-size:clamp(52px,7vw,108px)">${esc(ui.tH1)}<span class="dot">.</span></h1><p class="lead">${esc(ui.tLead)}</p></div>
-  <div class="sec">${map}${placeSel ? `<button type="button" class="placechip">${esc(placeSel)} ×</button>` : ''}<div class="chips" role="group" aria-label="${esc(ui.tAllCats)}">${chips}</div>
-  ${reg.length ? `<table class="ptab"><caption class="lbl">2019–2026 · ${reg.length} <small>· ${esc(ui.tUpdated)} ${u.upd}</small></caption>${head}<tbody>${reg.map(a => row(a.y, a.inv, a[lang], a.place, C[a.cat] || '', a.done ? '' : prog, a.photos ? all.indexOf(a) : undefined)).join('')}</tbody></table>` : ''}
-  ${o2.length ? `<table class="ptab"><caption class="lbl">2007–2018 · ${o2.length}</caption>${head}<tbody>${o2.map(o => row('', '', o[lang], o.place, C[o.cat] || '', '', undefined, true)).join('')}</tbody></table>` : ''}</div>`;
+  <div class="sec">${tools}${showMap ? mapSvg(catL.map(a => [a.place, a.en])) : ''}${placeSel ? `<button type="button" class="placechip">${esc(placeSel)} ×</button>` : ''}${showFilters ? `<div class="chips" role="group" aria-label="${esc(ui.tAllCats)}">${chips}</div>` : ''}
+  ${list.length ? `<table class="ptab"><caption class="lbl">${list.length} <small>· ${esc(ui.tUpdated)} ${u.upd}</small></caption>${head}<tbody>${list.map(row).join('')}</tbody></table>` : `<p class="lead">${sl ? 'Ni projektov za izbrani filter.' : 'No projects match this filter.'}</p>`}</div>`;
 }
 
-let galTimer;
-function showGal(i) {
-  const p = DATA.projects[i], g = document.getElementById('gal');
-  if (!p || !p.photos) return;
-  g.innerHTML = p.photos.map((src, k) => `<img src="${src}" alt=""${k === 0 ? ' class="v"' : ''}>`).join('') + `<figcaption>${esc(p.author || 'Foto: BIRO VOLK')}</figcaption>`;
-  g.classList.add('on');
-  clearInterval(galTimer);
-  if (p.photos.length > 1 && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    let k = 0; galTimer = setInterval(() => { const imgs = g.querySelectorAll('img'); imgs[k].classList.remove('v'); k = (k + 1) % imgs.length; imgs[k].classList.add('v'); }, 1800);
-  }
+// Pregledovalnik fotografij: na sredini izbrana fotografija, levo in desno manjše prosojne ostale
+let cfP = null, cfI = 0, cfBack = null;
+function openViewer(p, back) {
+  if (!p || !p.photos || !p.photos.length) return;
+  const sl = lang === 'sl', C = S.cats[lang], el = document.getElementById('cf');
+  cfP = p; cfI = 0; cfBack = back || null;
+  el.innerHTML = `<div class="stage">${p.photos.map((src, k) => `<div class="it" data-k="${k}"><img src="${src}" alt="${esc(p[lang])} – ${k + 1}"${k > 2 ? ' loading="lazy"' : ''} draggable="false"></div>`).join('')}
+    <button type="button" class="nav prev" aria-label="${sl ? 'Prejšnja fotografija' : 'Previous photo'}">‹</button><button type="button" class="nav next" aria-label="${sl ? 'Naslednja fotografija' : 'Next photo'}">›</button><button type="button" class="x" aria-label="${sl ? 'Zapri' : 'Close'}">×</button></div>
+    <div class="bar"><div><div class="t">${esc(p[lang])}</div><div class="m">${[p.y, p.place, C[p.cat]].filter(Boolean).map(esc).join(' · ')}</div></div><div class="m"><span class="c" aria-live="polite"></span> · ${esc(p.author || 'Foto: BIRO VOLK')}</div></div>`;
+  el.classList.add('on'); el.setAttribute('aria-hidden', 'false'); el.setAttribute('aria-label', p[lang]);
+  document.body.style.overflow = 'hidden';
+  el.querySelector('.prev').onclick = () => cfGo(cfI - 1);
+  el.querySelector('.next').onclick = () => cfGo(cfI + 1);
+  el.querySelector('.x').onclick = closeViewer;
+  el.querySelectorAll('.it').forEach(it => it.onclick = () => { const k = +it.dataset.k; if (k !== cfI) cfGo(k); });
+  const st = el.querySelector('.stage'); let x0 = null;
+  st.onpointerdown = (e) => { x0 = e.clientX; };
+  st.onpointerup = (e) => { if (x0 === null) return; const dx = e.clientX - x0; x0 = null; if (Math.abs(dx) > 40) cfGo(cfI + (dx < 0 ? 1 : -1)); };
+  cfShow();
+  el.querySelector('.x').focus();
 }
-function hideGal() { clearInterval(galTimer); document.getElementById('gal').classList.remove('on'); }
+function cfGo(k) { if (!cfP) return; cfI = Math.max(0, Math.min(cfP.photos.length - 1, k)); cfShow(); }
+function cfShow() {
+  const el = document.getElementById('cf'), n = cfP.photos.length;
+  el.querySelectorAll('.it').forEach(it => {
+    const d = +it.dataset.k - cfI, a = Math.abs(d), sg = Math.sign(d);
+    const x = a === 0 ? 0 : sg * (a === 1 ? 70 : a === 2 ? 118 : 160);
+    it.style.transform = `translate(calc(-50% + ${x}%), -50%) scale(${a === 0 ? 1 : a === 1 ? 0.55 : 0.4})`;
+    it.style.opacity = a === 0 ? 1 : a === 1 ? 0.35 : a === 2 ? 0.12 : 0;
+    it.style.zIndex = 10 - Math.min(a, 9);
+    it.style.pointerEvents = a > 2 ? 'none' : 'auto';
+    it.setAttribute('aria-hidden', a !== 0);
+  });
+  el.querySelector('.prev').disabled = cfI === 0;
+  el.querySelector('.next').disabled = cfI === n - 1;
+  el.querySelector('.c').textContent = `${cfI + 1} / ${n}`;
+}
+function closeViewer() {
+  const el = document.getElementById('cf');
+  if (!el.classList.contains('on')) return;
+  el.classList.remove('on'); el.setAttribute('aria-hidden', 'true'); el.innerHTML = '';
+  document.body.style.overflow = ''; cfP = null;
+  if (cfBack && document.body.contains(cfBack)) cfBack.focus();
+}
+document.addEventListener('keydown', (e) => {
+  if (!cfP) return;
+  if (e.key === 'ArrowRight') { e.preventDefault(); cfGo(cfI + 1); }
+  else if (e.key === 'ArrowLeft') { e.preventDefault(); cfGo(cfI - 1); }
+  else if (e.key === 'Escape') { e.preventDefault(); closeViewer(); }
+  else if (e.key === 'Tab') { const f = [...document.querySelectorAll('#cf button:not([disabled])')]; const i = f.indexOf(document.activeElement); if (e.shiftKey && i <= 0) { e.preventDefault(); f[f.length - 1].focus(); } else if (!e.shiftKey && i === f.length - 1) { e.preventDefault(); f[0].focus(); } }
+});
 
 function biro() {
   const b = S['biro_' + lang];
@@ -266,14 +321,15 @@ function render(focus) {
   renderNav();
   const main = document.getElementById('main');
   main.innerHTML = v === 'storitve' ? services() : v === 'projekti' ? projects() : v === 'biro' ? biro() : v === 'kontakt' ? contact() : home();
-  main.querySelectorAll('tr.ph').forEach(r => { r.onmouseenter = r.onfocus = () => showGal(+r.dataset.ph); r.onmouseleave = r.onblur = hideGal; });
-  hideGal();
+  main.querySelectorAll('tr.ph').forEach(r => { const go = () => openViewer((window._plist || [])[+r.dataset.i], r); r.onclick = go; r.onkeydown = (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } }; });
+  main.querySelectorAll('.ptools [data-t]').forEach(b => b.onclick = () => { if (b.dataset.t === 'map') showMap = !showMap; else showFilters = !showFilters; render(false); const nb = document.querySelector(`.ptools [data-t="${b.dataset.t}"]`); if (nb) nb.focus(); });
+  closeViewer();
   main.querySelectorAll('.pmap .pin').forEach(g => { const go = () => { placeSel = placeSel === g.dataset.k ? null : g.dataset.k; render(false); const n = document.querySelector(`.pmap .pin[data-k="${placeSel || g.dataset.k}"]`); if (n) n.focus(); }; g.onclick = go; g.onkeydown = (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } }; });
   const pc = main.querySelector('.placechip'); if (pc) pc.onclick = () => { placeSel = null; render(false); };
   main.querySelectorAll('.chips [data-c]').forEach(b => b.onclick = () => { cat = b.dataset.c; render(false); const btn = document.querySelector(`.chips [data-c="${cat}"]`); if (btn) btn.focus(); });
   if (focus) { window.scrollTo(0, 0); main.focus({ preventScroll: true }); }
 }
-window.addEventListener('hashchange', () => { cat = 'all'; placeSel = null; render(true); });
+window.addEventListener('hashchange', () => { cat = 'all'; placeSel = null; closeViewer(); render(true); });
 render(false);
 </script>
 </body>
