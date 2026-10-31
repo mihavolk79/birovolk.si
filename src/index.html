@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="sl" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BIRO VOLK – arhitektura, projektiranje in inženiring</title>
+<meta name="description" content="BIRO VOLK, arhitekturni biro iz Ljubljane: projektiranje, dovoljenja, investicijska dokumentacija in nadzor za javne in zasebne naročnike.">
+<style>
+@font-face{font-family:'Barlow Condensed';font-style:normal;font-weight:300;font-display:swap;src:url(fonts/barlow-condensed-latin-300-normal.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Barlow Condensed';font-style:normal;font-weight:300;font-display:swap;src:url(fonts/barlow-condensed-latin-ext-300-normal.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Barlow Condensed';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/barlow-condensed-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Barlow Condensed';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/barlow-condensed-latin-ext-400-normal.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Barlow Condensed';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/barlow-condensed-latin-600-normal.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Barlow Condensed';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/barlow-condensed-latin-ext-600-normal.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Barlow Semi Condensed';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/barlow-semi-condensed-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Barlow Semi Condensed';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/barlow-semi-condensed-latin-ext-400-normal.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Barlow Semi Condensed';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/barlow-semi-condensed-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Barlow Semi Condensed';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/barlow-semi-condensed-latin-ext-500-normal.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+:root{--bg:#ffffff;--fg:#111111;--sub:#6b6b6b;--soft:#444444;--rule:#dddddd;--tile:#f1f1f1;--dot:#d40000;color-scheme:light;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a0a0a;--fg:#f2f2f2;--sub:#9a9a9a;--soft:#c8c8c8;--rule:#2a2a2a;--tile:#1c1c1c;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0a0a0a;--fg:#f2f2f2;--sub:#9a9a9a;--soft:#c8c8c8;--rule:#2a2a2a;--tile:#1c1c1c;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);background:var(--bg)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:'Barlow Semi Condensed',Arial,sans-serif;font-size:17px;line-height:1.45;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
+.wrap{padding-left:clamp(16px,3vw,40px);padding-right:clamp(16px,3vw,40px)}
+.cond{font-family:'Barlow Condensed',Arial,sans-serif}
+.dot{color:var(--dot)}
+header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px 24px;padding-top:24px;padding-bottom:24px}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none;min-height:44px}
+.logo span:first-child{font-family:'Barlow Condensed',Arial,sans-serif;font-size:22px;font-weight:600;letter-spacing:.3em}
+.logo i{width:7px;height:7px;border-radius:50%;background:var(--dot);display:block}
+nav{display:flex;flex-wrap:wrap;align-items:center;gap:8px 28px;font-size:16px}
+nav a{text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
+nav a[aria-current="page"],.lang button[aria-pressed="true"]{text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:2px}
+.lang{display:flex;gap:14px}
+.lang button,.sw{background:transparent;border:0;color:var(--sub);font:inherit;font-size:15px;cursor:pointer;min-height:44px;padding:0}
+.lang button[aria-pressed="true"]{color:var(--fg)}
+.sw{display:inline-flex;align-items:center}
+.sw .track{position:relative;width:44px;height:24px;border-radius:12px;border:1px solid var(--fg);background:transparent;display:inline-block}
+.sw .knob{position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;background:var(--fg);transition:transform .2s}
+.sw[aria-checked="true"] .track{background:var(--fg)}
+.sw[aria-checked="true"] .knob{background:var(--bg);transform:translateX(20px)}
+main{padding-bottom:96px}
+h1.big{margin:0;font-family:'Barlow Condensed',Arial,sans-serif;font-weight:300;line-height:.95}
+.lbl{margin:0;font-size:15px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--sub)}
+.sec{display:flex;flex-direction:column;gap:16px;margin-top:72px}
+.lead{margin:0;font-size:20px;line-height:1.55;color:var(--soft);max-width:62ch}
+.intro{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:32px 48px;align-items:end;padding-top:32px}
+/* home */
+.quote{padding-top:48px;display:flex;flex-direction:column;gap:16px}
+.quote figcaption{font-size:16px;letter-spacing:.04em;color:var(--sub)}
+.news-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px}
+.news-head a{color:var(--sub);font-size:15px}
+.posts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:24px}
+.post{text-decoration:none;display:flex;flex-direction:column;gap:8px}
+.post .img{aspect-ratio:1/1;background:var(--tile);display:flex;align-items:center;justify-content:center;font-size:13px;letter-spacing:.06em;color:var(--sub)}
+.post .d{font-size:14px;color:var(--sub)}
+.sel{list-style:none;margin:0;padding:0}
+.sel li{display:grid;grid-template-columns:40px minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr);gap:4px 32px;align-items:baseline;padding:14px 0;border-top:1px solid var(--rule)}
+.sel .no{font-size:15px;color:var(--sub)}
+.sel .nm{font-family:'Barlow Condensed',Arial,sans-serif;font-size:28px;font-weight:300;line-height:1.1}
+.sel .pl{color:var(--soft)}
+.sel .ty{color:var(--sub);font-size:15px;text-align:right}
+.more{align-self:flex-start;font-size:18px;text-underline-offset:6px;min-height:44px;display:inline-flex;align-items:center}
+/* services */
+.grp{display:grid;grid-template-columns:minmax(200px,1fr) 3fr;gap:16px 48px;padding-top:20px;border-top:1px solid var(--rule)}
+.grp h2{margin:0;font-family:'Barlow Condensed',Arial,sans-serif;font-size:36px;font-weight:300;line-height:1.05}
+.grp ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:4px 40px}
+.grp li{display:flex;flex-direction:column;gap:2px;padding:10px 0}
+.grp li b{font-weight:400;font-size:20px;line-height:1.3}
+.grp li span{font-size:15px;color:var(--sub)}
+/* projects */
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{min-height:40px;padding:6px 14px;border-radius:999px;cursor:pointer;font:inherit;font-size:15px;background:transparent;color:var(--sub);border:1px solid var(--sub)}
+.chips button[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.ptab{width:100%;border-collapse:collapse;table-layout:fixed}
+.ptab th{font-size:13px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--sub);text-align:left;padding:0 24px 8px 0}
+.ptab td{padding:12px 24px 12px 0;border-top:1px solid var(--rule);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;vertical-align:baseline}
+.ptab td.y,.ptab td.st,.ptab td.ct{color:var(--sub);font-size:15px}
+.ptab td.i,.ptab td.n{font-size:18px}
+.ptab td.p{color:var(--soft)}
+.ptab .r{text-align:right;padding-right:0}
+.ptab col.cy{width:76px}.ptab col.cp{width:160px}.ptab col.cc{width:180px}.ptab col.cs{width:90px}
+.ptab caption{text-align:left;padding:48px 0 16px}
+.ptab caption small{font-size:15px;font-weight:400;letter-spacing:0;text-transform:none;color:var(--sub)}
+@media (max-width:760px){
+  .ptab,.ptab tbody,.ptab tr,.ptab td,.ptab caption{display:block;width:100%}
+  .ptab thead,.ptab colgroup{display:none}
+  .ptab tr{display:flex;flex-wrap:wrap;gap:2px 12px;padding:12px 0;border-top:1px solid var(--rule)}
+  .ptab td,.ptab td.r{border:0;padding:0;white-space:normal;text-align:left;width:auto}
+  .ptab td.i,.ptab td.n{flex:0 0 100%}
+  .ptab td.i{color:var(--soft);font-size:16px}
+  .ptab td.y,.ptab td.p,.ptab td.ct,.ptab td.st{font-size:14px;color:var(--sub)}
+  .ptab td:empty{display:none}
+  .ptab td.i{order:0}.ptab td.n{order:1}.ptab td.p{order:2}.ptab td.ct{order:3}.ptab td.y{order:4}.ptab td.st{order:5}
+  .sel li{grid-template-columns:32px 1fr;}
+  .sel .pl,.sel .ty{grid-column:2;text-align:left}
+  .grp{grid-template-columns:1fr}
+}
+/* biro & contact */
+.ppl{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:40px}
+.photo{aspect-ratio:4/5;background:var(--tile);display:flex;align-items:flex-end;padding:16px;font-size:14px;color:var(--sub);max-width:420px}
+.pname{font-family:'Barlow Condensed',Arial,sans-serif;font-size:32px;line-height:1.1;margin-top:14px}
+.big-link{font-family:'Barlow Condensed',Arial,sans-serif;font-size:clamp(34px,4vw,60px);font-weight:300;line-height:1.1;text-decoration:none;display:block}
+.big-link.u{text-decoration:underline;text-underline-offset:8px;text-decoration-thickness:2px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:40px;margin-top:72px}
+.cols h2{margin:0 0 12px}
+address{font-style:normal;font-size:22px;line-height:1.45}
+dl.kv{margin:0;display:flex;flex-direction:column;gap:6px}
+dl.kv div{display:flex;flex-wrap:wrap;gap:4px 12px}
+dl.kv dt{color:var(--sub);min-width:150px}dl.kv dd{margin:0}
+.note{margin:72px 0 0;max-width:62ch;font-size:14px;color:var(--sub);border-left:2px solid var(--rule);padding-left:14px}
+#gal{position:fixed;right:clamp(16px,3vw,40px);bottom:calc(24px + env(safe-area-inset-bottom,0px));width:min(440px,calc(100vw - 32px));aspect-ratio:4/3;background:var(--tile);z-index:20;opacity:0;visibility:hidden;transition:opacity .2s,visibility .2s;box-shadow:0 12px 32px rgba(0,0,0,.35)}
+#gal.on{opacity:1;visibility:visible}
+#gal img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s}
+#gal img.v{opacity:1}
+#gal figcaption{position:absolute;left:0;right:0;bottom:0;padding:8px 12px;font-size:13px;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.6))}
+.ptab tr.ph td.n::after{content:' ▣';color:var(--sub);font-size:13px}
+.ptab tr.ph{cursor:default}
+.pmap{width:100%;height:auto;max-height:72vh;display:block;margin:8px 0 8px}
+.pmap .nb{fill:none;stroke:var(--rule);stroke-width:1.5}
+.pmap .si{fill:var(--tile);stroke:var(--sub);stroke-width:1.5}
+.pmap .pin{cursor:pointer;outline:none}
+.pmap .pin circle{fill:var(--sub);stroke:var(--bg);stroke-width:2;transition:fill .15s}
+.pmap .pin:hover circle,.pmap .pin:focus-visible circle{fill:var(--fg)}
+.pmap .pin.on circle{fill:var(--fg);stroke:var(--fg);stroke-width:3}
+.pmap text{fill:var(--soft);font-size:17px;font-family:'Barlow Semi Condensed',Arial,sans-serif;pointer-events:none}
+.placechip{align-self:flex-start;min-height:40px;padding:6px 14px;border-radius:999px;cursor:pointer;font:inherit;font-size:15px;background:var(--fg);color:var(--bg);border:1px solid var(--fg)}
+footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 40px;padding-top:32px;padding-bottom:40px;font-size:15px;color:var(--sub);border-top:1px solid var(--rule)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<header class="wrap">
+<a class="logo" href="#" aria-label="BIRO VOLK, prva stran"><span>BIRO VOLK</span><i aria-hidden="true"></i></a>
+<nav aria-label="Glavni meni" id="nav"></nav>
+</header>
+<main id="main" class="wrap" tabindex="-1"></main>
+<footer class="wrap" id="foot"></footer>
+<figure id="gal" aria-hidden="true"></figure>
+<script>
+const DATA = __DATA__;
+const S = DATA.site;
+const UI = {
+  sl: { nav: [['storitve','Storitve'],['projekti','Projekti'],['biro','Biro'],['kontakt','Kontakt']], dark: 'Temni način', home: 'prva stran', menu: 'Glavni meni', lang: 'Jezik', photo: 'Fotografija — dodati', newsPh: 'Instagram objava', foot: ['BIRO VOLK d.o.o. · Kersnikova ulica 6, SI-1000 Ljubljana', 'info@birovolk.si · +386 41 842 899', 'Brez sledilnih piškotkov'], titles: { '': 'BIRO VOLK – arhitektura, projektiranje in inženiring', storitve: 'Storitve – BIRO VOLK', projekti: 'Projekti – BIRO VOLK', biro: 'Biro – BIRO VOLK', kontakt: 'Kontakt – BIRO VOLK' }, upd: DATA.updated.split('-').reverse().map(Number).join('. ') },
+  en: { nav: [['storitve','Services'],['projekti','Projects'],['biro','Studio'],['kontakt','Contact']], dark: 'Dark mode', home: 'home', menu: 'Main menu', lang: 'Language', photo: 'Photo — to be added', newsPh: 'Instagram post', foot: ['BIRO VOLK d.o.o. · Kersnikova ulica 6, SI-1000 Ljubljana', 'info@birovolk.si · +386 41 842 899', 'No tracking cookies'], titles: { '': 'BIRO VOLK – architecture, design and engineering', storitve: 'Services – BIRO VOLK', projekti: 'Projects – BIRO VOLK', biro: 'Studio – BIRO VOLK', kontakt: 'Contact – BIRO VOLK' }, upd: DATA.updated }
+};
+const store = { get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} } };
+let lang = store.get('bv-lang') === 'en' ? 'en' : 'sl';
+let theme = store.get('bv-theme') || 'dark';
+let cat = 'all';
+const esc = (s) => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const view = () => { const h = location.hash.replace('#', ''); return ['storitve', 'projekti', 'biro', 'kontakt'].includes(h) ? h : ''; };
+
+function renderNav() {
+  const u = UI[lang], v = view();
+  document.querySelector('.logo').setAttribute('aria-label', 'BIRO VOLK, ' + u.home);
+  const nav = document.getElementById('nav');
+  nav.setAttribute('aria-label', u.menu);
+  nav.innerHTML = u.nav.map(([k, t]) => `<a href="#${k}"${v === k ? ' aria-current="page"' : ''}>${t}</a>`).join('') +
+    `<div class="lang" role="group" aria-label="${u.lang}"><button type="button" data-l="sl" aria-pressed="${lang === 'sl'}">SL</button><button type="button" data-l="en" aria-pressed="${lang === 'en'}">EN</button></div>` +
+    `<button type="button" class="sw" role="switch" aria-checked="${theme === 'dark'}" aria-label="${u.dark}"><span class="track" aria-hidden="true"><span class="knob"></span></span></button>`;
+  nav.querySelectorAll('[data-l]').forEach(b => b.onclick = () => { lang = b.dataset.l; store.set('bv-lang', lang); render(false); });
+  nav.querySelector('.sw').onclick = () => { theme = theme === 'dark' ? 'light' : 'dark'; store.set('bv-theme', theme); document.documentElement.dataset.theme = theme; renderNav(); };
+  document.getElementById('foot').innerHTML = u.foot.map(t => `<span>${esc(t)}</span>`).join('');
+}
+
+function home() {
+  const B = S['biro_' + lang];
+  const f = S.ui[lang], q = DATA.quotes, posts = (S['posts_' + lang] || []).filter(p => p.img);
+  const now = new Date(); const day = Math.floor(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) / 86400000);
+  const [qt, qb] = q[day % q.length];
+  const len = qt.length, size = len <= 20 ? 'clamp(52px,8vw,120px)' : len <= 45 ? 'clamp(44px,6vw,92px)' : len <= 70 ? 'clamp(38px,4.6vw,70px)' : 'clamp(32px,3.6vw,54px)';
+  return `<figure class="quote" style="margin:0"><h1 class="big" style="font-size:${size};max-width:1200px">${esc(qt.replace(/\.$/, ''))}<span class="dot">.</span></h1><figcaption>— ${esc(qb)}</figcaption></figure>
+  ${posts.length ? `<section class="sec" aria-labelledby="h-news"><div class="news-head"><h2 class="lbl" id="h-news">${esc(f.tNews)}</h2><a href="https://www.instagram.com/birovolk/" target="_blank" rel="noopener">@birovolk ↗</a></div>
+  <div class="posts">${posts.map(p => `<a class="post" href="${esc(p.url || 'https://www.instagram.com/birovolk/')}" target="_blank" rel="noopener"><img class="img" src="${esc(p.img)}" alt="${esc(p.text)}" loading="lazy" style="object-fit:cover;width:100%"><span class="d">${esc(p.date)}</span><span>${esc(p.text)}</span></a>`).join('')}</div></section>` : ''}
+  ${DATA.featured.length ? '' : '<!-- ni izbranih projektov -->'}<section class="sec" aria-labelledby="h-sel"${DATA.featured.length ? '' : ' hidden'}><h2 class="lbl" id="h-sel">${esc(f.tWorks)}</h2>
+  <ol class="sel">${DATA.featured.map((p, i) => `<li><span class="no">${String(i + 1).padStart(2, '0')}</span><span class="nm">${esc(p[lang])}</span><span class="pl">${esc(p['place_' + lang] || p.place || '')}</span><span class="ty">${esc(p['type_' + lang])}</span></li>`).join('')}</ol>
+  <a class="more" href="#projekti">${esc(f.tAllProj)} →</a></section>
+  <section class="sec" aria-labelledby="h-abr"><h2 class="lbl" id="h-abr">${esc(B.tAbroad)}</h2><p class="cond" style="margin:0;font-size:clamp(36px,4.6vw,68px);font-weight:300;line-height:1.02">${esc(B.tAbroadDone)}<span class="dot">.</span></p><p class="lead">${esc(B.tAbroadShort)}</p><a class="more" href="#biro">${esc(B.tAbroadMore)} →</a></section>`;
+}
+
+function services() {
+  const s = S['serv_' + lang];
+  return `<div class="intro"><h1 class="big" style="font-size:clamp(52px,7vw,108px)">${esc(s.tH1)}<span class="dot">.</span></h1><p class="lead">${esc(s.tLead)}</p></div>
+  ${s.groups.map(g => `<section class="sec"><div class="grp"><h2>${esc(g.t)}</h2><ul>${g.items.map(i => `<li><b>${esc(i.t)}</b>${i.d ? `<span>${esc(i.d)}</span>` : ''}</li>`).join('')}</ul></div></section>`).join('')}`;
+}
+
+function maplink(inv, n, pl, old) {
+  inv = inv === '—' ? '' : (inv || ''); pl = pl === '—' ? '' : (pl || '');
+  const priv = !inv && (!old || /^(House|Apartment|Villa|Hiša|Stanovanje|Vila)/i.test(n));
+  if (!pl || priv || pl === 'Austria') return esc(pl);
+  const base = inv && !/d\.o\.o\./i.test(inv) ? inv : n.split(' — ')[0].split(' – ')[0];
+  return `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(base + ', ' + pl)}" target="_blank" rel="noopener" style="text-decoration:none">${esc(pl)} ↗</a>`;
+}
+const MAP = {"W": 1000, "H": 711, "paths": {"SI": "M959,228L933,218L900,213L895,218L882,225L875,235L880,277L872,284L835,280L823,285L803,314L782,326L757,334L738,345L714,354L693,359L684,372L680,386L681,400L702,426L705,454L703,489L697,508L690,520L637,536L584,565L583,571L607,597L608,603L588,617L586,632L588,649L599,665L602,681L573,692L534,688L487,667L469,670L454,681L438,676L419,663L394,636L381,618L377,601L369,598L359,603L350,625L326,664L309,675L283,672L246,673L223,677L194,662L188,665L188,675L177,689L161,698L80,677L69,659L87,651L113,628L129,631L150,626L159,617L145,588L113,552L95,539L71,530L67,520L80,464L75,456L48,459L42,453L39,443L42,430L60,408L81,389L86,378L85,370L59,361L43,352L31,349L22,354L15,349L9,333L15,308L38,285L65,266L87,250L99,244L106,219L119,221L146,223L176,229L203,236L227,245L278,254L324,260L338,265L349,264L363,272L372,266L378,256L403,244L427,228L442,209L452,193L467,182L485,178L500,173L565,165L633,171L666,161L692,141L730,135L732,135L790,150L794,142L797,138L796,96L814,77L832,68L889,71L897,84L899,104L905,131L914,138L920,149L919,167L930,181L956,218L959,228Z", "IT": "M-1918,480L-1908,489L-1885,500L-1825,486L-1788,472L-1761,457L-1744,460L-1685,482L-1666,470L-1623,441L-1617,425L-1584,377L-1583,365L-1597,335L-1593,329L-1551,298L-1530,270L-1509,252L-1493,252L-1489,258L-1487,271L-1489,323L-1482,339L-1450,378L-1427,399L-1373,413L-1371,421L-1385,449L-1353,483L-1347,508L-1332,522L-1311,515L-1305,502L-1312,479L-1319,454L-1318,441L-1311,425L-1297,403L-1257,351L-1242,322L-1239,276L-1239,239L-1226,230L-1198,237L-1189,236L-1185,259L-1173,295L-1158,313L-1143,317L-1125,317L-1080,295L-1050,286L-1034,288L-1024,304L-1002,343L-990,347L-976,343L-971,336L-976,321L-982,288L-990,263L-1001,251L-1003,235L-997,208L-989,184L-974,178L-955,175L-933,199L-905,208L-885,206L-881,192L-882,176L-894,156L-892,125L-878,68L-870,72L-840,73L-806,76L-785,100L-765,107L-734,110L-714,106L-705,98L-693,71L-672,36L-638,20L-581,16L-552,10L-522,11L-501,16L-478,15L-419,-8L-358,-28L-349,-24L-348,-18L-359,-4L-370,15L-362,37L-328,81L-310,114L-291,139L-264,152L-228,161L-197,164L-165,173L-55,196L0,202L43,204L106,219L99,244L87,250L65,266L38,285L15,308L9,333L15,349L22,354L31,349L43,352L59,361L85,370L86,378L81,389L60,408L42,430L39,443L42,453L48,459L75,456L80,464L67,520L71,530L95,539L113,552L145,588L159,617L150,626L129,631L113,628L131,611L84,548L63,548L35,575L-43,547L-59,559L-70,580L-97,607L-135,618L-179,647L-223,668L-258,684L-278,681L-246,647L-261,646L-302,670L-326,690L-334,724L-341,780L-323,795L-290,869L-251,900L-258,930L-268,954L-292,975L-313,959L-325,959L-334,1008L-316,1136L-289,1227L-262,1265L-199,1327L-134,1359L-16,1463L48,1495L65,1513L104,1592L138,1684L174,1828L200,1900L252,1980L361,2095L459,2179L551,2231L623,2240L792,2229L822,2233L853,2248L860,2283L849,2308L813,2333L777,2368L773,2416L806,2449L970,2538L1137,2613L1189,2651L1249,2711L1396,2792L1420,2832L1509,2916L1548,2982L1556,3033L1537,3084L1529,3121L1513,3158L1475,3144L1433,3107L1368,2957L1250,2941L1226,2930L1184,2904L1182,2887L1171,2866L1161,2858L1115,2854L1085,2878L1048,2936L1006,3019L964,3141L961,3190L984,3237L1053,3264L1105,3307L1140,3351L1144,3458L1159,3518L1136,3553L1091,3544L1032,3566L990,3605L972,3643L977,3740L968,3777L888,3847L847,3918L836,3948L821,3982L719,3983L696,3941L695,3879L713,3841L750,3823L774,3744L766,3687L781,3662L794,3644L823,3633L863,3624L866,3544L836,3507L825,3457L810,3362L758,3243L731,3136L710,3084L678,3056L619,3056L589,3049L485,2974L478,2963L478,2944L495,2913L485,2874L471,2835L452,2803L429,2786L382,2797L366,2804L336,2801L313,2816L300,2816L336,2759L326,2746L290,2723L241,2719L228,2716L219,2731L211,2723L212,2698L154,2583L116,2537L97,2529L62,2538L3,2518L-31,2513L-50,2519L-79,2533L-94,2524L-99,2509L-151,2461L-218,2434L-347,2284L-386,2228L-468,2166L-519,2076L-562,2043L-623,2016L-637,2019L-655,2029L-670,2031L-681,2019L-670,2007L-657,2002L-661,1967L-731,1878L-772,1849L-783,1831L-792,1807L-801,1792L-820,1782L-837,1784L-859,1778L-858,1734L-854,1702L-857,1674L-879,1600L-918,1538L-940,1389L-959,1348L-1001,1316L-1097,1281L-1230,1185L-1259,1183L-1339,1146L-1390,1140L-1454,1172L-1533,1265L-1597,1360L-1620,1379L-1702,1412L-1775,1427L-1776,1402L-1778,1384L-1766,1364L-1745,1340L-1727,1310L-1719,1288L-1722,1274L-1731,1252L-1743,1251L-1812,1268L-1828,1264L-1879,1236L-1934,1201L-1955,1177L-1962,1153L-1957,1137L-1961,1121L-1972,1101L-1962,1077L-1945,1048L-1936,1028L-1922,1022L-1915,1010L-1926,962L-1933,954L-1943,948L-1958,947L-1984,937L-2004,920L-2008,898L-2018,876L-2035,856L-2037,834L-2018,823L-1991,822L-1972,827L-1930,792L-1914,789L-1900,781L-1889,733L-1879,719L-1877,710L-1886,700L-1920,666L-1936,631L-1960,592L-1983,575L-1987,561L-1989,544L-1983,529L-1943,505L-1918,480Z", "HU": "M2661,-608L2690,-612L2692,-611L2698,-609L2702,-588L2704,-587L2711,-573L2718,-555L2728,-542L2749,-537L2779,-520L2797,-489L2826,-475L2828,-475L2833,-477L2854,-478L2858,-471L2875,-456L2881,-443L2878,-429L2880,-412L2887,-407L2879,-396L2827,-342L2806,-328L2792,-324L2770,-330L2748,-326L2728,-314L2709,-311L2696,-296L2677,-267L2656,-242L2633,-226L2621,-213L2620,-165L2608,-151L2591,-137L2581,-125L2556,-52L2537,-28L2519,-11L2516,6L2516,25L2495,62L2468,101L2462,117L2469,138L2443,164L2428,175L2416,181L2408,196L2395,234L2398,251L2398,266L2376,276L2370,293L2364,314L2356,323L2330,341L2269,333L2245,339L2239,352L2238,362L2230,371L2216,384L2201,389L2169,375L2100,389L2088,400L2078,392L2064,385L1996,377L1968,384L1931,381L1898,373L1873,379L1850,409L1840,419L1831,426L1812,435L1796,446L1775,454L1757,453L1738,440L1733,443L1726,455L1717,465L1690,477L1684,477L1682,477L1662,486L1628,492L1610,488L1580,529L1571,537L1542,550L1518,556L1497,550L1489,550L1398,548L1351,539L1320,523L1300,505L1290,485L1267,473L1230,469L1200,449L1180,414L1151,386L1116,365L1088,336L1067,298L1030,265L976,234L959,228L956,218L930,181L919,167L920,149L914,138L905,131L899,104L897,84L889,71L832,68L880,21L904,7L932,10L941,6L943,-1L947,-17L950,-31L953,-45L949,-53L936,-55L930,-89L936,-102L943,-111L935,-152L937,-166L959,-168L977,-178L992,-187L996,-200L1008,-226L997,-258L934,-279L931,-287L945,-296L961,-309L970,-319L982,-321L1000,-315L1030,-293L1041,-289L1053,-296L1065,-297L1098,-296L1126,-302L1120,-326L1120,-344L1115,-359L1118,-374L1129,-386L1133,-414L1151,-433L1159,-435L1190,-432L1197,-427L1202,-426L1252,-381L1298,-347L1337,-329L1393,-328L1453,-326L1554,-332L1629,-337L1633,-345L1645,-366L1636,-383L1637,-403L1649,-430L1686,-452L1793,-462L1854,-478L1862,-501L1883,-523L1902,-528L1927,-517L1957,-498L1985,-487L2000,-494L2054,-527L2117,-560L2159,-647L2164,-661L2210,-671L2278,-669L2313,-658L2338,-652L2377,-653L2434,-672L2455,-672L2471,-659L2489,-647L2501,-633L2509,-613L2515,-606L2522,-596L2537,-582L2551,-578L2654,-602L2661,-608Z", "HR": "M69,659L80,677L161,698L177,689L188,675L188,665L194,662L223,677L246,673L283,672L309,675L326,664L350,625L359,603L369,598L377,601L381,618L394,636L419,663L438,676L454,681L469,670L487,667L534,688L573,692L602,681L599,665L588,649L586,632L588,617L608,603L607,597L583,571L584,565L637,536L690,520L697,508L703,489L705,454L702,426L681,400L680,386L684,372L693,359L714,354L738,345L757,334L782,326L803,314L823,285L835,280L872,284L880,277L875,235L882,225L895,218L900,213L933,218L959,228L976,234L1030,265L1067,298L1088,336L1116,365L1151,386L1180,414L1200,449L1230,469L1267,473L1290,485L1300,505L1320,523L1351,539L1398,548L1489,550L1497,550L1518,556L1542,550L1571,537L1580,529L1610,488L1628,492L1662,486L1682,477L1684,477L1682,488L1680,506L1664,519L1680,550L1697,598L1687,623L1698,641L1729,655L1732,660L1722,665L1714,681L1714,711L1740,738L1795,764L1812,768L1819,778L1828,785L1833,793L1834,803L1830,810L1804,812L1774,812L1753,800L1752,809L1751,819L1732,826L1742,898L1738,918L1730,925L1724,922L1715,921L1711,928L1714,943L1694,945L1663,937L1648,923L1645,909L1645,896L1636,874L1610,852L1557,848L1537,841L1518,833L1496,827L1475,828L1451,834L1408,824L1393,837L1372,852L1352,852L1315,817L1304,815L1271,832L1258,833L1248,828L1205,814L1185,812L1170,818L1145,811L1081,764L1043,799L964,791L941,815L913,860L892,882L873,874L851,854L812,803L792,793L769,791L750,797L739,808L731,882L724,949L724,989L767,1026L818,1089L835,1096L842,1117L854,1170L868,1230L894,1270L918,1298L946,1323L982,1363L1012,1405L1019,1421L1076,1479L1132,1536L1182,1557L1189,1568L1189,1613L1195,1629L1228,1676L1295,1744L1303,1760L1305,1772L1301,1781L1283,1790L1269,1780L1206,1713L1146,1670L1077,1591L985,1560L922,1525L885,1530L842,1541L817,1542L799,1535L786,1514L788,1497L786,1476L749,1441L698,1407L652,1364L557,1249L537,1212L556,1205L570,1205L586,1198L612,1198L643,1205L616,1181L582,1156L494,1060L468,1015L465,965L471,898L456,850L389,788L363,755L314,736L291,738L278,762L269,816L225,887L210,918L187,958L167,961L155,957L119,890L84,838L80,815L77,784L50,675L69,659ZM442,896L405,905L387,888L383,875L351,870L333,851L330,843L356,821L370,787L387,808L409,847L421,857L442,896ZM449,992L456,1011L428,994L403,987L397,974L401,963L406,952L426,954L429,965L449,992ZM345,1035L343,1052L324,1031L314,992L291,930L288,912L300,895L300,877L284,822L297,814L306,812L309,850L317,872L338,899L334,943L338,1006L343,1020L345,1035Z", "AT": "M-1158,-110L-1133,-163L-1129,-196L-1151,-216L-1159,-221L-1152,-226L-1121,-222L-1102,-233L-1091,-244L-1063,-233L-1024,-213L-1005,-199L-997,-188L-993,-179L-995,-164L-986,-158L-967,-155L-954,-151L-959,-130L-960,-114L-942,-116L-921,-129L-903,-152L-893,-174L-885,-229L-882,-233L-869,-229L-816,-232L-791,-221L-750,-219L-751,-211L-744,-197L-726,-178L-718,-166L-699,-164L-671,-171L-654,-178L-648,-173L-622,-178L-599,-193L-593,-205L-569,-213L-539,-232L-495,-247L-353,-263L-348,-275L-350,-302L-346,-306L-328,-299L-299,-293L-277,-283L-263,-270L-250,-270L-229,-279L-202,-285L-175,-272L-168,-257L-172,-250L-172,-238L-163,-229L-143,-213L-115,-200L-101,-201L-97,-214L-91,-245L-89,-279L-96,-298L-110,-302L-127,-304L-137,-308L-134,-318L-120,-346L-120,-382L-151,-423L-179,-463L-179,-477L-162,-500L-137,-519L-82,-551L-63,-557L-41,-562L-9,-575L8,-589L18,-602L33,-678L37,-681L42,-685L98,-660L104,-663L114,-668L132,-688L135,-702L135,-731L138,-758L141,-766L150,-763L174,-749L193,-733L212,-694L254,-684L308,-682L327,-700L345,-704L365,-699L406,-693L411,-724L435,-758L446,-769L477,-768L485,-793L491,-861L498,-869L521,-867L542,-855L549,-845L561,-846L576,-853L594,-857L622,-850L682,-819L713,-807L732,-810L750,-809L821,-761L870,-754L914,-754L929,-768L948,-781L968,-779L985,-773L1019,-752L1034,-746L1055,-743L1070,-739L1085,-702L1092,-692L1090,-688L1089,-672L1077,-650L1065,-624L1065,-599L1098,-516L1127,-466L1133,-447L1151,-433L1133,-414L1129,-386L1118,-374L1115,-359L1120,-344L1120,-326L1126,-302L1098,-296L1065,-297L1053,-296L1041,-289L1030,-293L1000,-315L982,-321L970,-319L961,-309L945,-296L931,-287L934,-279L997,-258L1008,-226L996,-200L992,-187L977,-178L959,-168L937,-166L935,-152L943,-111L936,-102L930,-89L936,-55L949,-53L953,-45L950,-31L947,-17L943,-1L941,6L932,10L904,7L880,21L832,68L814,77L796,96L797,138L794,142L790,150L732,135L730,135L692,141L666,161L633,171L565,165L500,173L485,178L467,182L452,193L442,209L427,228L403,244L378,256L372,266L363,272L349,264L338,265L324,260L278,254L227,245L203,236L176,229L146,223L119,221L106,219L43,204L0,202L-55,196L-165,173L-197,164L-228,161L-264,152L-291,139L-310,114L-328,81L-362,37L-370,15L-359,-4L-348,-18L-349,-24L-358,-28L-419,-8L-478,15L-501,16L-522,11L-552,10L-581,16L-638,20L-672,36L-693,71L-705,98L-714,106L-734,110L-765,107L-785,100L-806,76L-840,73L-870,72L-878,68L-877,53L-889,24L-910,15L-961,69L-975,74L-1017,59L-1053,36L-1056,20L-1062,5L-1093,-8L-1130,-16L-1142,-16L-1138,-24L-1133,-38L-1137,-49L-1145,-60L-1150,-72L-1151,-85L-1154,-94L-1155,-103L-1158,-110Z"}, "pts": {"Ljubljana": [350, 425], "Koper": [115, 646], "Kranj": [305, 343], "Celje": [579, 346], "Teharje": [594, 347], "Radovljica": [250, 296], "Bled": [232, 286], "Maribor": [696, 204], "Domžale": [377, 387], "Logatec": [267, 484], "Murska Sobota": [853, 157], "Novo mesto": [552, 535], "Ptuj": [764, 263], "Dol pri Ljubljani": [379, 409], "Tržič": [291, 288], "Kisovec": [487, 386], "Kamna Gorica": [254, 299], "Mala Nedelja": [825, 211], "Vikrče": [318, 397], "Hrastnik": [525, 383], "Slovenska Bistrica": [674, 275], "Kranjska Gora": [132, 235], "Lavrica": [366, 445], "Pirniče": [329, 389], "Moste, Komenda": [362, 361], "Prebold": [528, 343], "Trojane": [464, 365], "Planina pri Sevnici": [621, 401], "Grosuplje": [397, 467], "Rimske Toplice": [562, 394], "Sežana": [159, 575], "Vevče, Ljubljana": [375, 425], "Vodice": [347, 364], "Šenčur": [324, 341], "Metlika": [595, 602], "Ptujske Toplice": [752, 265], "Medvode": [322, 385], "Lendava": [940, 200], "Liezen": [268, 14], "Wolfsberg": [452, 78]}};
+let placeSel = null;
+function pkey(pl, n) { pl = pl === '—' ? '' : (pl || ''); if (pl === 'Austria') return /Liezen/.test(n) ? 'Liezen' : /Wolfsberg/.test(n) ? 'Wolfsberg' : ''; return pl; }
+function mapSvg(items) {
+  const cnt = {};
+  items.forEach(([pl, n]) => { const k = pkey(pl, n); if (k && MAP.pts[k]) cnt[k] = (cnt[k] || 0) + 1; });
+  const sl = lang === 'sl';
+  const nb = ['AT', 'IT', 'HU', 'HR'].map(c => `<path class="nb" d="${MAP.paths[c]}"/>`).join('');
+  const keys = Object.keys(cnt).sort((a, b) => cnt[a] - cnt[b]);
+  const pins = keys.map(k => { const [x, y] = MAP.pts[k], r = (4 + Math.sqrt(cnt[k]) * 3.2).toFixed(1); const lbl = `${k}, ${cnt[k]} ${sl ? (cnt[k] === 1 ? 'projekt' : cnt[k] === 2 ? 'projekta' : cnt[k] < 5 ? 'projekti' : 'projektov') : (cnt[k] === 1 ? 'project' : 'projects')}`;
+    return `<g class="pin${placeSel === k ? ' on' : ''}" data-k="${esc(k)}" tabindex="0" role="button" aria-pressed="${placeSel === k}" aria-label="${esc(lbl)}"><title>${esc(lbl)}</title><circle cx="${x}" cy="${y}" r="${r}"/></g>`; }).join('');
+  const labels = keys.filter(k => cnt[k] >= 5 || placeSel === k).map(k => { const [x, y] = MAP.pts[k]; return `<text x="${x + 8 + Math.sqrt(cnt[k]) * 3.2}" y="${y + 5}">${esc(k)}</text>`; }).join('');
+  return `<svg class="pmap" viewBox="0 0 ${MAP.W} ${MAP.H}" role="group" aria-label="${sl ? 'Zemljevid projektov – izberite kraj' : 'Project map – choose a location'}"><defs><clipPath id="mc"><rect width="${MAP.W}" height="${MAP.H}"/></clipPath></defs><g clip-path="url(#mc)">${nb}<path class="si" d="${MAP.paths.SI}"/>${pins}${labels}</g></svg>`;
+}
+function projects() {
+  const ui = S.ui[lang], u = UI[lang], C = S.cats[lang], prog = lang === 'sl' ? 'V teku' : 'In progress';
+  const all = DATA.projects, old = DATA.old;
+  const codes = ['hosp', 'retail', 'res', 'ind', 'infra', 'edu', 'health', 'off', 'public', 'other'];
+  const count = (c) => all.filter(a => a.cat === c).length + old.filter(o => o.cat === c).length;
+  const chips = [['all', ui.tAllCats, all.length + old.length], ...codes.map(c => [c, C[c] || c, count(c)])].filter(x => x[2] > 0)
+    .map(([c, l, n]) => `<button type="button" data-c="${c}" aria-pressed="${cat === c}">${esc(l)} ${n}</button>`).join('');
+  const regC = all.filter(a => cat === 'all' || a.cat === cat), oldC = old.filter(o => cat === 'all' || o.cat === cat);
+  const map = mapSvg([...regC.map(a => [a.place, a.en]), ...oldC.map(o => [o.place, o.en])]);
+  const reg = regC.filter(a => !placeSel || pkey(a.place, a.en) === placeSel), o2 = oldC.filter(o => !placeSel || pkey(o.place, o.en) === placeSel);
+  const head = `<colgroup><col class="cy"><col><col><col class="cp"><col class="cc"><col class="cs"></colgroup><thead><tr>${ui.h.map((h, i) => `<th scope="col"${i === 4 ? ' class="r"' : ''}>${esc(h)}</th>`).join('')}<th></th></tr></thead>`;
+  const row = (y, inv, n, pl, ct, st, ph, old) => `<tr${ph !== undefined ? ` class="ph" tabindex="0" data-ph="${ph}"` : ''}><td class="y">${esc(y)}</td><td class="i">${esc(inv)}</td><td class="n" title="${esc(n)}">${esc(n)}</td><td class="p">${maplink(inv, n, pl, old)}</td><td class="ct r">${esc(ct)}</td><td class="st r">${esc(st)}</td></tr>`;
+  return `<div class="intro"><h1 class="big" style="font-size:clamp(52px,7vw,108px)">${esc(ui.tH1)}<span class="dot">.</span></h1><p class="lead">${esc(ui.tLead)}</p></div>
+  <div class="sec">${map}${placeSel ? `<button type="button" class="placechip">${esc(placeSel)} ×</button>` : ''}<div class="chips" role="group" aria-label="${esc(ui.tAllCats)}">${chips}</div>
+  ${reg.length ? `<table class="ptab"><caption class="lbl">2019–2026 · ${reg.length} <small>· ${esc(ui.tUpdated)} ${u.upd}</small></caption>${head}<tbody>${reg.map(a => row(a.y, a.inv, a[lang], a.place, C[a.cat] || '', a.done ? '' : prog, a.photos ? all.indexOf(a) : undefined)).join('')}</tbody></table>` : ''}
+  ${o2.length ? `<table class="ptab"><caption class="lbl">2007–2018 · ${o2.length}</caption>${head}<tbody>${o2.map(o => row('', '', o[lang], o.place, C[o.cat] || '', '', undefined, true)).join('')}</tbody></table>` : ''}</div>`;
+}
+
+let galTimer;
+function showGal(i) {
+  const p = DATA.projects[i], g = document.getElementById('gal');
+  if (!p || !p.photos) return;
+  g.innerHTML = p.photos.map((src, k) => `<img src="${src}" alt=""${k === 0 ? ' class="v"' : ''}>`).join('') + `<figcaption>${esc(p.author || 'Foto: BIRO VOLK')}</figcaption>`;
+  g.classList.add('on');
+  clearInterval(galTimer);
+  if (p.photos.length > 1 && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let k = 0; galTimer = setInterval(() => { const imgs = g.querySelectorAll('img'); imgs[k].classList.remove('v'); k = (k + 1) % imgs.length; imgs[k].classList.add('v'); }, 1800);
+  }
+}
+function hideGal() { clearInterval(galTimer); document.getElementById('gal').classList.remove('on'); }
+
+function biro() {
+  const b = S['biro_' + lang];
+  return `<div class="intro"><h1 class="big" style="font-size:clamp(52px,7vw,108px)">${esc(b.tH1)}<span class="dot">.</span></h1><div class="lead" style="display:flex;flex-direction:column;gap:16px"><p style="margin:0">${esc(b.tP1)}</p><p style="margin:0">${esc(b.tP2)}</p></div></div>
+  <section class="sec" aria-labelledby="h-abroad"><h2 class="lbl" id="h-abroad">${esc(b.tAbroad)}</h2><p class="cond" style="margin:0;font-size:clamp(40px,5.6vw,84px);font-weight:300;line-height:1">${esc(b.tAbroadDone)}<span class="dot">.</span></p><p class="lead">${esc(b.tAbroadP)}</p></section>
+  <section class="sec"><h2 class="lbl">${esc(b.tPeople)}</h2><div class="ppl"><div><div class="pname" style="margin-top:0">Miha Volk</div><div style="color:var(--soft)">${esc(b.tRole1)}</div><div style="color:var(--sub)">${esc(b.tRole2)}</div></div>${(b.team || []).map(([n, r]) => `<div><div class="pname" style="margin-top:0;font-size:22px">${esc(n)}</div><div style="color:var(--sub)">${esc(r)}</div></div>`).join('')}</div>${b.former && b.former.length ? `<div style="margin-top:32px;font-size:20px;color:var(--soft)">${esc(b.tFormer)}: ${b.former.map(esc).join(', ')} …</div>` : ''}<p class="lead" style="margin-top:24px">${esc(b.tTeam)}</p></section>
+  `;
+}
+
+function contact() {
+  const k = S['kont_' + lang];
+  return `<div class="intro"><h1 class="big" style="font-size:clamp(52px,7vw,108px)">${esc(k.tH1)}<span class="dot">.</span></h1><div><a class="big-link u" href="mailto:info@birovolk.si">info@birovolk.si</a><a class="big-link" href="tel:+38641842899">+386 41 842 899</a></div></div>
+  <div class="cols"><div><h2 class="lbl">${esc(k.tVisit)}</h2><address>BIRO VOLK d.o.o.<br>Kersnikova ulica 6<br>SI-1000 Ljubljana</address><p style="color:var(--sub);margin:8px 0">${esc(k.tAppt)}</p><a href="https://www.google.com/maps/search/?api=1&amp;query=BIRO%20VOLK%2C%20Kersnikova%20ulica%206%2C%201000%20Ljubljana" target="_blank" rel="noopener">${esc(k.tMap)} ↗</a></div>
+  <div><h2 class="lbl">${esc(k.tFollow)}</h2><a href="https://www.instagram.com/birovolk/" target="_blank" rel="noopener" style="font-size:22px;text-decoration:none">Instagram · @birovolk</a></div>
+  <div><h2 class="lbl">${esc(k.tInvoice)}</h2><dl class="kv">${k.billing.map(b => `<div><dt>${esc(b.l)}</dt><dd>${esc(b.v)}</dd></div>`).join('')}</dl></div></div>
+  <p class="note">${esc(k.tPrivacy)}</p>`;
+}
+
+function render(focus) {
+  document.documentElement.lang = lang;
+  document.documentElement.dataset.theme = theme;
+  const v = view();
+  document.title = UI[lang].titles[v];
+  renderNav();
+  const main = document.getElementById('main');
+  main.innerHTML = v === 'storitve' ? services() : v === 'projekti' ? projects() : v === 'biro' ? biro() : v === 'kontakt' ? contact() : home();
+  main.querySelectorAll('tr.ph').forEach(r => { r.onmouseenter = r.onfocus = () => showGal(+r.dataset.ph); r.onmouseleave = r.onblur = hideGal; });
+  hideGal();
+  main.querySelectorAll('.pmap .pin').forEach(g => { const go = () => { placeSel = placeSel === g.dataset.k ? null : g.dataset.k; render(false); const n = document.querySelector(`.pmap .pin[data-k="${placeSel || g.dataset.k}"]`); if (n) n.focus(); }; g.onclick = go; g.onkeydown = (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } }; });
+  const pc = main.querySelector('.placechip'); if (pc) pc.onclick = () => { placeSel = null; render(false); };
+  main.querySelectorAll('.chips [data-c]').forEach(b => b.onclick = () => { cat = b.dataset.c; render(false); const btn = document.querySelector(`.chips [data-c="${cat}"]`); if (btn) btn.focus(); });
+  if (focus) { window.scrollTo(0, 0); main.focus({ preventScroll: true }); }
+}
+window.addEventListener('hashchange', () => { cat = 'all'; placeSel = null; render(true); });
+render(false);
+</script>
+</body>
+</html>

@@ -1,0 +1,546 @@
+{
+ "serv_sl": {
+  "tH1": "Storitve",
+  "tLead": "Od prve preveritve lokacije do uporabnega dovoljenja. Naročnik lahko naroči celoten cikel ali posamezno storitev.",
+  "groups": [
+   {
+    "t": "Pred projektom",
+    "no": "01",
+    "items": [
+     {
+      "t": "Lokacijske analize in preveritve",
+      "d": "Prostorski akti, pogoji gradnje, umestitev programa"
+     },
+     {
+      "t": "Programske in projektne naloge",
+      "d": ""
+     },
+     {
+      "t": "Prostorske zasnove",
+      "d": "Variante umestitve in volumni"
+     },
+     {
+      "t": "Posnetki obstoječega stanja",
+      "d": "Podlaga za prenovo obstoječih stavb"
+     },
+     {
+      "t": "LiDAR posnetki",
+      "d": "Lasersko skeniranje obstoječih stavb in terena"
+     },
+     {
+      "t": "BIM modeli iz oblaka točk",
+      "d": "Natančen 3D model obstoječega stanja kot podlaga za projektiranje"
+     }
+    ]
+   },
+   {
+    "t": "Investicija",
+    "no": "02",
+    "items": [
+     {
+      "t": "Investicijsko svetovanje",
+      "d": ""
+     },
+     {
+      "t": "Investicijska dokumentacija in ocene",
+      "d": "DIIP, PIZ, IP, ocene in projekcije stroškov"
+     },
+     {
+      "t": "Popisi del in predračuni",
+      "d": ""
+     }
+    ]
+   },
+   {
+    "t": "Projektiranje",
+    "no": "03",
+    "items": [
+     {
+      "t": "Projektna dokumentacija vseh faz",
+      "d": "IDZ, DPP, DGD, PZI, PZR, PID, PZO"
+     },
+     {
+      "t": "Vodenje projektiranja",
+      "d": "Vse stroke, ena pogodba"
+     },
+     {
+      "t": "Prenove in univerzalna dostopnost",
+      "d": "Tudi v delujočih šolah, domovih in bolnišnicah"
+     },
+     {
+      "t": "Legalizacije in spremembe namembnosti",
+      "d": ""
+     },
+     {
+      "t": "Notranja oprema",
+      "d": ""
+     }
+    ]
+   },
+   {
+    "t": "Dovoljenja in gradnja",
+    "no": "04",
+    "items": [
+     {
+      "t": "Pridobivanje dovoljenj",
+      "d": "Projektni pogoji, mnenja, gradbeno in uporabno dovoljenje"
+     },
+     {
+      "t": "Razpisna dokumentacija",
+      "d": "Pomoč pri izbiri izvajalca"
+     },
+     {
+      "t": "Nadzor nad gradnjo",
+      "d": "Projektantski in gradbeni nadzor"
+     },
+     {
+      "t": "Primopredaja in tehnični pregled",
+      "d": ""
+     }
+    ]
+   },
+   {
+    "t": "Strokovne storitve",
+    "no": "05",
+    "items": [
+     {
+      "t": "Revizije projektov",
+      "d": ""
+     },
+     {
+      "t": "Strokovna mnenja",
+      "d": ""
+     }
+    ]
+   }
+  ]
+ },
+ "biro_sl": {
+  "tH1": "Delamo v stavbah, ki ne smejo obstati",
+  "tP1": "BIRO VOLK je arhitekturni biro iz Ljubljane, ustanovljen leta 2007. Projektiramo nova dvigala, univerzalno dostopnost in prenove šol, dijaških domov, domov za starejše in bolnišnic — pogosto v stavbah, ki med gradnjo delujejo naprej.",
+  "tP2": "Vodimo projekt od idejne zasnove do dovoljenja za uporabo: projektiranje, pridobivanje dovoljenj, ocene investicij in nadzor. Ostale stroke vključujemo v stalni mreži inženirjev, s katerimi delamo že vrsto let.",
+  "tPeople": "Ekipa",
+  "tRole1": "univ. dipl. inž. arh., pooblaščeni arhitekt ZAPS",
+  "tRole2": "direktor, vodja projektiranja",
+  "tTeam": "Pri vsakem projektu sestavimo ekipo glede na nalogo: gradbene konstrukcije, strojne in električne instalacije, požarna varnost, geodezija in drugi elaborati. Naročnik ima eno kontaktno osebo in eno pogodbo.",
+  "tPhoto": "Fotografija — dodati",
+  "tAbroad": "V tujini",
+  "tAbroadP": "Tu smo projekte že izvedli. Odprti smo za nove v Evropi, Rusiji, na Bližnjem vzhodu, v Afriki in Aziji, tudi na Kitajskem. V sodelovanju z lokalnimi arhitekti in projektivnimi biroji prevzamemo zasnovo, vodenje projektiranja in strokovno svetovanje. Delamo v slovenščini in angleščini.",
+  "team": [
+   [
+    "Luka Mark Valjavec",
+    "študent arhitekture, sodelavec"
+   ],
+   [
+    "Mark Repovš",
+    "študent arhitekture, sodelavec"
+   ],
+   [
+    "Nik Arne Perpar",
+    "študent arhitekture, sodelavec"
+   ],
+   [
+    "Luka Homšak",
+    "študent arhitekture, sodelavec"
+   ],
+   [
+    "Neža Hauptman",
+    "študentka arhitekture, sodelavka"
+   ],
+   [
+    "Tadej Podakar",
+    "arhitekt, zunanji sodelavec"
+   ]
+  ],
+  "former": [
+   "Maja Volk",
+   "Nina Kadunc",
+   "Boris Volk",
+   "Grega Gregorčič",
+   "Loredana Volk",
+   "Nataša Jakopin",
+   "Blaž Šepul",
+   "Matej Somrak",
+   "Urša Mahnič"
+  ],
+  "tFormer": "Nekdanji sodelavci",
+  "tAbroadDone": "Avstrija, Švica, Češka, Madžarska",
+  "tAbroadShort": "Odprti smo za projekte v Evropi, Rusiji, na Bližnjem vzhodu, v Afriki in Aziji.",
+  "tAbroadMore": "Več o delu v tujini"
+ },
+ "kont_sl": {
+  "tH1": "Pišite nam",
+  "tVisit": "Obisk",
+  "tAppt": "Sestanki po predhodnem dogovoru.",
+  "tMap": "Odpri na zemljevidu",
+  "tFollow": "Spremljajte nas",
+  "tInvoice": "Podatki o podjetju",
+  "billing": [
+   {
+    "l": "Firma",
+    "v": "BIRO VOLK, arhitektura, projektiranje in inženiring d.o.o."
+   },
+   {
+    "l": "Sedež",
+    "v": "Kersnikova ulica 6, 1000 Ljubljana"
+   },
+   {
+    "l": "Matična številka",
+    "v": "2319004000"
+   },
+   {
+    "l": "ID za DDV",
+    "v": "SI14933322"
+   }
+  ],
+  "tPrivacy": "Na strani ni kontaktnega obrazca in sledilnih piškotkov. Ko nam pišete, vaše podatke uporabimo samo za odgovor in morebitno sodelovanje.",
+  "tCookies": "Brez sledilnih piškotkov"
+ },
+ "serv_en": {
+  "tH1": "Services",
+  "tLead": "From the first site check to the occupancy permit. Clients can commission the full cycle or a single service.",
+  "groups": [
+   {
+    "t": "Before the project",
+    "no": "01",
+    "items": [
+     {
+      "t": "Site analyses and studies",
+      "d": "Spatial plans, building conditions, fitting the programme"
+     },
+     {
+      "t": "Functional and design briefs",
+      "d": ""
+     },
+     {
+      "t": "Spatial concepts",
+      "d": "Siting options and massing"
+     },
+     {
+      "t": "Measured surveys",
+      "d": "Basis for renovating existing buildings"
+     },
+     {
+      "t": "LiDAR scanning",
+      "d": "Laser scanning of existing buildings and sites"
+     },
+     {
+      "t": "Point cloud to BIM",
+      "d": "Accurate 3D model of existing conditions as a basis for design"
+     }
+    ]
+   },
+   {
+    "t": "Investment",
+    "no": "02",
+    "items": [
+     {
+      "t": "Investment advisory",
+      "d": ""
+     },
+     {
+      "t": "Investment documents and estimates",
+      "d": "Feasibility documents, cost estimates and projections"
+     },
+     {
+      "t": "Bills of quantities and cost estimates",
+      "d": ""
+     }
+    ]
+   },
+   {
+    "t": "Design",
+    "no": "03",
+    "items": [
+     {
+      "t": "Design documentation for all stages",
+      "d": "Concept, permit, construction, tender, as-built, demolition"
+     },
+     {
+      "t": "Design management",
+      "d": "All disciplines, one contract"
+     },
+     {
+      "t": "Renovation and universal access",
+      "d": "Including in working schools, care homes and hospitals"
+     },
+     {
+      "t": "Legalisation and change of use",
+      "d": ""
+     },
+     {
+      "t": "Interiors",
+      "d": ""
+     }
+    ]
+   },
+   {
+    "t": "Permits and construction",
+    "no": "04",
+    "items": [
+     {
+      "t": "Permitting",
+      "d": "Planning conditions, consents, building and occupancy permits"
+     },
+     {
+      "t": "Tender documentation",
+      "d": "Support in selecting the contractor"
+     },
+     {
+      "t": "Construction supervision",
+      "d": "Designer’s and statutory supervision"
+     },
+     {
+      "t": "Handover and final inspection",
+      "d": ""
+     }
+    ]
+   },
+   {
+    "t": "Expert services",
+    "no": "05",
+    "items": [
+     {
+      "t": "Design review",
+      "d": ""
+     },
+     {
+      "t": "Expert opinions",
+      "d": ""
+     }
+    ]
+   }
+  ]
+ },
+ "biro_en": {
+  "tH1": "We work in buildings that cannot stop",
+  "tP1": "BIRO VOLK is an architecture studio in Ljubljana, founded in 2007. We design new lifts, universal access and renovations of schools, student residences, care homes and hospitals — often in buildings that stay in use while we build.",
+  "tP2": "We lead projects from concept design to occupancy permit: design, permitting, investment appraisals and supervision. Other disciplines are covered by a long-standing network of engineers we work with.",
+  "tPeople": "Team",
+  "tRole1": "architect, licensed member of the Slovenian Chamber of Architecture (ZAPS)",
+  "tRole2": "director, lead designer",
+  "tTeam": "For each project we assemble the team the task requires: structures, mechanical and electrical services, fire safety, surveying and other studies. The client has one contact and one contract.",
+  "tPhoto": "Photo — to be added",
+  "tAbroad": "Abroad",
+  "tAbroadP": "We have completed projects here. We are open to new ones in Europe, Russia, the Middle East, Africa and Asia, including China. Working with local architects and design institutes, we take on concept design, design management and expert advice. We work in Slovenian and English.",
+  "team": [
+   [
+    "Luka Mark Valjavec",
+    "architecture student, collaborator"
+   ],
+   [
+    "Mark Repovš",
+    "architecture student, collaborator"
+   ],
+   [
+    "Nik Arne Perpar",
+    "architecture student, collaborator"
+   ],
+   [
+    "Luka Homšak",
+    "architecture student, collaborator"
+   ],
+   [
+    "Neža Hauptman",
+    "architecture student, collaborator"
+   ],
+   [
+    "Tadej Podakar",
+    "architect, external collaborator"
+   ]
+  ],
+  "former": [
+   "Maja Volk",
+   "Nina Kadunc",
+   "Boris Volk",
+   "Grega Gregorčič",
+   "Loredana Volk",
+   "Nataša Jakopin",
+   "Blaž Šepul",
+   "Matej Somrak",
+   "Urša Mahnič"
+  ],
+  "tFormer": "Former collaborators",
+  "tAbroadDone": "Austria, Switzerland, Czech Republic, Hungary",
+  "tAbroadShort": "We are open to projects in Europe, Russia, the Middle East, Africa and Asia.",
+  "tAbroadMore": "More about working abroad"
+ },
+ "kont_en": {
+  "tH1": "Get in touch",
+  "tVisit": "Visit",
+  "tAppt": "Meetings by appointment.",
+  "tMap": "Open in map",
+  "tFollow": "Follow",
+  "tInvoice": "Company details",
+  "billing": [
+   {
+    "l": "Company",
+    "v": "BIRO VOLK, arhitektura, projektiranje in inženiring d.o.o."
+   },
+   {
+    "l": "Registered office",
+    "v": "Kersnikova ulica 6, 1000 Ljubljana"
+   },
+   {
+    "l": "Registration no.",
+    "v": "2319004000"
+   },
+   {
+    "l": "VAT ID",
+    "v": "SI14933322"
+   }
+  ],
+  "tPrivacy": "This site has no contact form and no tracking cookies. When you write to us, we use your details only to reply and for any resulting cooperation.",
+  "tCookies": "No tracking cookies"
+ },
+ "posts_sl": [
+  {
+   "date": "[date]",
+   "text": "[Caption — e.g. construction site update]"
+  },
+  {
+   "date": "[date]",
+   "text": "[Caption — e.g. building permit obtained]"
+  },
+  {
+   "date": "[date]",
+   "text": "[Caption — e.g. project handover]"
+  },
+  {
+   "date": "[date]",
+   "text": "[Caption — e.g. competition or lecture]"
+  }
+ ],
+ "posts_en": [
+  {
+   "date": "[date]",
+   "text": "[Caption — e.g. construction site update]"
+  },
+  {
+   "date": "[date]",
+   "text": "[Caption — e.g. building permit obtained]"
+  },
+  {
+   "date": "[date]",
+   "text": "[Caption — e.g. project handover]"
+  },
+  {
+   "date": "[date]",
+   "text": "[Caption — e.g. competition or lecture]"
+  }
+ ],
+ "quotes_fallback": [
+  [
+   "We shape our buildings; thereafter they shape us.",
+   "Winston Churchill, 1943"
+  ],
+  [
+   "Firmitas, utilitas, venustas.",
+   "Vitruvius, De architectura"
+  ],
+  [
+   "Recognizing the need is the primary condition for design.",
+   "Charles Eames"
+  ],
+  [
+   "Even a brick wants to be something.",
+   "Louis Kahn"
+  ],
+  [
+   "Less is more.",
+   "Ludwig Mies van der Rohe"
+  ],
+  [
+   "Form ever follows function.",
+   "Louis Sullivan, 1896"
+  ],
+  [
+   "Une maison est une machine à habiter.",
+   "Le Corbusier, Vers une architecture, 1923"
+  ],
+  [
+   "Less is a bore.",
+   "Robert Venturi, 1966"
+  ],
+  [
+   "Yes is more.",
+   "BIG, 2009"
+  ],
+  [
+   "The physician can bury his mistakes, but the architect can only advise his client to plant vines.",
+   "Frank Lloyd Wright"
+  ],
+  [
+   "More human than human.",
+   "Blade Runner, 1982"
+  ],
+  [
+   "I've seen things you people wouldn't believe.",
+   "Blade Runner, 1982"
+  ],
+  [
+   "The light that burns twice as bright burns half as long.",
+   "Blade Runner, 1982"
+  ]
+ ],
+ "ui": {
+  "sl": {
+   "tNews": "Novice",
+   "tWorks": "Projekti",
+   "tAllProj": "Vsi projekti",
+   "tLead": "Vsi projekti biroja od leta 2007. Izberite kraj na zemljevidu ali sklop za filtriranje.",
+   "h": [
+    "Leto",
+    "Investitor",
+    "Projekt",
+    "Kraj",
+    "Sklop"
+   ],
+   "tUpdated": "stanje",
+   "tAllCats": "Vsi sklopi",
+   "tH1": "Projekti"
+  },
+  "en": {
+   "tNews": "News",
+   "tWorks": "Projects",
+   "tAllProj": "All projects",
+   "tLead": "All projects of the studio since 2007. Choose a location on the map or a category to filter.",
+   "h": [
+    "Year",
+    "Client",
+    "Project",
+    "Location",
+    "Category"
+   ],
+   "tUpdated": "as of",
+   "tAllCats": "All",
+   "tH1": "Projects"
+  }
+ },
+ "cats": {
+  "sl": {
+   "health": "Zdravstvo in oskrba",
+   "edu": "Izobraževanje",
+   "res": "Stanovanjski",
+   "hosp": "Gostinstvo in turizem",
+   "infra": "Infrastruktura",
+   "off": "Pisarne",
+   "public": "Javni objekti",
+   "retail": "Trgovina",
+   "ind": "Industrija",
+   "other": "Drugo"
+  },
+  "en": {
+   "health": "Health & care",
+   "edu": "Educational",
+   "res": "Residential",
+   "hosp": "Hospitality",
+   "infra": "Infrastructure",
+   "off": "Offices",
+   "public": "Public",
+   "retail": "Retail",
+   "ind": "Industrial",
+   "other": "Other"
+  }
+ }
+}

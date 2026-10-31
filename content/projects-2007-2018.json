@@ -1,0 +1,608 @@
+[
+ {
+  "sl": "McDonald's Aleja",
+  "en": "McDonald's Aleja",
+  "place": "Ljubljana",
+  "cat": "hosp"
+ },
+ {
+  "sl": "House",
+  "en": "House",
+  "place": "Lavrica",
+  "cat": "res"
+ },
+ {
+  "sl": "House extension",
+  "en": "House extension",
+  "place": "Pirniče",
+  "cat": "res"
+ },
+ {
+  "sl": "Canopy between buildings — Plutal",
+  "en": "Canopy between buildings — Plutal",
+  "place": "Ljubljana",
+  "cat": "ind"
+ },
+ {
+  "sl": "Bus washing platform — LPP",
+  "en": "Bus washing platform — LPP",
+  "place": "Ljubljana",
+  "cat": "infra"
+ },
+ {
+  "sl": "McDonald's Murska Sobota",
+  "en": "McDonald's Murska Sobota",
+  "place": "Murska Sobota",
+  "cat": "hosp"
+ },
+ {
+  "sl": "McDonald's Ptujska — remodel",
+  "en": "McDonald's Ptujska — remodel",
+  "place": "Maribor",
+  "cat": "hosp"
+ },
+ {
+  "sl": "McDonald's Koper — remodel",
+  "en": "McDonald's Koper — remodel",
+  "place": "Koper",
+  "cat": "hosp"
+ },
+ {
+  "sl": "McDonald's Domžale — remodel",
+  "en": "McDonald's Domžale — remodel",
+  "place": "Domžale",
+  "cat": "hosp"
+ },
+ {
+  "sl": "Entrance and parking — Plutal",
+  "en": "Entrance and parking — Plutal",
+  "place": "Ljubljana",
+  "cat": "ind"
+ },
+ {
+  "sl": "McDonald's Rudnik — remodel",
+  "en": "McDonald's Rudnik — remodel",
+  "place": "Ljubljana",
+  "cat": "hosp"
+ },
+ {
+  "sl": "Apartment",
+  "en": "Apartment",
+  "place": "Logatec",
+  "cat": "res"
+ },
+ {
+  "sl": "House",
+  "en": "House",
+  "place": "Moste, Komenda",
+  "cat": "res"
+ },
+ {
+  "sl": "Bike canopy — Gimnazija Ledina",
+  "en": "Bike canopy — Gimnazija Ledina",
+  "place": "Ljubljana",
+  "cat": "edu"
+ },
+ {
+  "sl": "Bus service channels review — LPP",
+  "en": "Bus service channels review — LPP",
+  "place": "Ljubljana",
+  "cat": "infra"
+ },
+ {
+  "sl": "Filling station — Cinkarna Celje",
+  "en": "Filling station — Cinkarna Celje",
+  "place": "Celje",
+  "cat": "ind"
+ },
+ {
+  "sl": "Industrial hall Plutal — concept design",
+  "en": "Industrial hall Plutal — concept design",
+  "place": "Ljubljana",
+  "cat": "ind"
+ },
+ {
+  "sl": "House",
+  "en": "House",
+  "place": "Prebold",
+  "cat": "res"
+ },
+ {
+  "sl": "Building demolition project",
+  "en": "Building demolition project",
+  "place": "Trojane",
+  "cat": "other"
+ },
+ {
+  "sl": "Pharmacy — Bolnica Petra Držaja",
+  "en": "Pharmacy — Bolnica Petra Držaja",
+  "place": "Ljubljana",
+  "cat": "health"
+ },
+ {
+  "sl": "Lift shaft extension — CUDV",
+  "en": "Lift shaft extension — CUDV",
+  "place": "Radovljica",
+  "cat": "health"
+ },
+ {
+  "sl": "Advertising column",
+  "en": "Advertising column",
+  "place": "Koper",
+  "cat": "infra"
+ },
+ {
+  "sl": "Rotonda offices — interior",
+  "en": "Rotonda offices — interior",
+  "place": "Ljubljana",
+  "cat": "off"
+ },
+ {
+  "sl": "Sewage system — police station",
+  "en": "Sewage system — police station",
+  "place": "Novo mesto",
+  "cat": "public"
+ },
+ {
+  "sl": "Srebrnina 925 Šiška — interior",
+  "en": "Srebrnina 925 Šiška — interior",
+  "place": "Ljubljana",
+  "cat": "retail"
+ },
+ {
+  "sl": "McDonald's Celje",
+  "en": "McDonald's Celje",
+  "place": "Celje",
+  "cat": "hosp"
+ },
+ {
+  "sl": "UKC Ljubljana — renovation",
+  "en": "UKC Ljubljana — renovation",
+  "place": "Ljubljana",
+  "cat": "health"
+ },
+ {
+  "sl": "Villa",
+  "en": "Villa",
+  "place": "Bled",
+  "cat": "res"
+ },
+ {
+  "sl": "Passenger centre LPP — Bavarski dvor",
+  "en": "Passenger centre LPP — Bavarski dvor",
+  "place": "Ljubljana",
+  "cat": "infra"
+ },
+ {
+  "sl": "Fruit shop — Biotechnical Faculty",
+  "en": "Fruit shop — Biotechnical Faculty",
+  "place": "Ljubljana",
+  "cat": "edu"
+ },
+ {
+  "sl": "Canopy — Biotechnical Faculty",
+  "en": "Canopy — Biotechnical Faculty",
+  "place": "Ljubljana",
+  "cat": "edu"
+ },
+ {
+  "sl": "House",
+  "en": "House",
+  "place": "Planina pri Sevnici",
+  "cat": "res"
+ },
+ {
+  "sl": "Police station — renovation",
+  "en": "Police station — renovation",
+  "place": "Grosuplje",
+  "cat": "public"
+ },
+ {
+  "sl": "Police station — renovation",
+  "en": "Police station — renovation",
+  "place": "Bled",
+  "cat": "public"
+ },
+ {
+  "sl": "Backwerk Slovenska — renovation",
+  "en": "Backwerk Slovenska — renovation",
+  "place": "Ljubljana",
+  "cat": "hosp"
+ },
+ {
+  "sl": "McDonald's Novo mesto",
+  "en": "McDonald's Novo mesto",
+  "place": "Novo mesto",
+  "cat": "hosp"
+ },
+ {
+  "sl": "Dance hall — movement development institute",
+  "en": "Dance hall — movement development institute",
+  "place": "",
+  "cat": "edu"
+ },
+ {
+  "sl": "McDonald's Rudnik",
+  "en": "McDonald's Rudnik",
+  "place": "Ljubljana",
+  "cat": "hosp"
+ },
+ {
+  "sl": "Dermatology office",
+  "en": "Dermatology office",
+  "place": "Kranj",
+  "cat": "health"
+ },
+ {
+  "sl": "Bus service hall — LPP",
+  "en": "Bus service hall — LPP",
+  "place": "Ljubljana",
+  "cat": "infra"
+ },
+ {
+  "sl": "Train station — renovation",
+  "en": "Train station — renovation",
+  "place": "Rimske Toplice",
+  "cat": "infra"
+ },
+ {
+  "sl": "Greenhouse for the Botanical Garden 02",
+  "en": "Greenhouse for the Botanical Garden 02",
+  "place": "Ljubljana",
+  "cat": "other"
+ },
+ {
+  "sl": "Slovenian Archives — partial renovation",
+  "en": "Slovenian Archives — partial renovation",
+  "place": "Ljubljana",
+  "cat": "public"
+ },
+ {
+  "sl": "Bowling alley",
+  "en": "Bowling alley",
+  "place": "Ljubljana",
+  "cat": "hosp"
+ },
+ {
+  "sl": "Lift — Hotel Florjančkov hram",
+  "en": "Lift — Hotel Florjančkov hram",
+  "place": "Ljubljana",
+  "cat": "hosp"
+ },
+ {
+  "sl": "House",
+  "en": "House",
+  "place": "Sežana",
+  "cat": "res"
+ },
+ {
+  "sl": "Gimnazija Ledina — renovation",
+  "en": "Gimnazija Ledina — renovation",
+  "place": "Ljubljana",
+  "cat": "edu"
+ },
+ {
+  "sl": "House",
+  "en": "House",
+  "place": "Ljubljana",
+  "cat": "res"
+ },
+ {
+  "sl": "Cogeneration — KEL",
+  "en": "Cogeneration — KEL",
+  "place": "Ljubljana",
+  "cat": "infra"
+ },
+ {
+  "sl": "House renovation",
+  "en": "House renovation",
+  "place": "Vevče, Ljubljana",
+  "cat": "res"
+ },
+ {
+  "sl": "Elementary school",
+  "en": "Elementary school",
+  "place": "Vodice",
+  "cat": "edu"
+ },
+ {
+  "sl": "ELES technical building",
+  "en": "ELES technical building",
+  "place": "Ljubljana",
+  "cat": "infra"
+ },
+ {
+  "sl": "Hotel Florjančkov hram",
+  "en": "Hotel Florjančkov hram",
+  "place": "Ljubljana",
+  "cat": "hosp"
+ },
+ {
+  "sl": "McDonald's Supernova — remodel",
+  "en": "McDonald's Supernova — remodel",
+  "place": "Koper",
+  "cat": "hosp"
+ },
+ {
+  "sl": "Apartment renovation",
+  "en": "Apartment renovation",
+  "place": "Ljubljana",
+  "cat": "res"
+ },
+ {
+  "sl": "McDonald's Celovška",
+  "en": "McDonald's Celovška",
+  "place": "Ljubljana",
+  "cat": "hosp"
+ },
+ {
+  "sl": "Srebrnina 925 — interior",
+  "en": "Srebrnina 925 — interior",
+  "place": "Maribor",
+  "cat": "retail"
+ },
+ {
+  "sl": "Bizovik workshop addition — concept design",
+  "en": "Bizovik workshop addition — concept design",
+  "place": "Ljubljana",
+  "cat": "ind"
+ },
+ {
+  "sl": "Veterinary clinic Rudnik",
+  "en": "Veterinary clinic Rudnik",
+  "place": "Ljubljana",
+  "cat": "health"
+ },
+ {
+  "sl": "Vižmarje high school — design review",
+  "en": "Vižmarje high school — design review",
+  "place": "Ljubljana",
+  "cat": "other"
+ },
+ {
+  "sl": "Fire escape — Gimnazija Bežigrad",
+  "en": "Fire escape — Gimnazija Bežigrad",
+  "place": "Ljubljana",
+  "cat": "edu"
+ },
+ {
+  "sl": "Neurological clinic — renovation",
+  "en": "Neurological clinic — renovation",
+  "place": "Ljubljana",
+  "cat": "health"
+ },
+ {
+  "sl": "McDonald's Domžale",
+  "en": "McDonald's Domžale",
+  "place": "Domžale",
+  "cat": "hosp"
+ },
+ {
+  "sl": "Offices",
+  "en": "Offices",
+  "place": "Šenčur",
+  "cat": "off"
+ },
+ {
+  "sl": "Minorite monastery square — renovation",
+  "en": "Minorite monastery square — renovation",
+  "place": "Ptuj",
+  "cat": "other"
+ },
+ {
+  "sl": "Faculty of Sport — renovation",
+  "en": "Faculty of Sport — renovation",
+  "place": "Ljubljana",
+  "cat": "edu"
+ },
+ {
+  "sl": "JUB ground floor — renovation",
+  "en": "JUB ground floor — renovation",
+  "place": "Dol pri Ljubljani",
+  "cat": "ind"
+ },
+ {
+  "sl": "Apartment complex Kokrica",
+  "en": "Apartment complex Kokrica",
+  "place": "Kranj",
+  "cat": "res"
+ },
+ {
+  "sl": "Demolition works — UKC",
+  "en": "Demolition works — UKC",
+  "place": "Ljubljana",
+  "cat": "health"
+ },
+ {
+  "sl": "Canopy — Energomont",
+  "en": "Canopy — Energomont",
+  "place": "Ljubljana",
+  "cat": "off"
+ },
+ {
+  "sl": "Faculty of Arts — renovation",
+  "en": "Faculty of Arts — renovation",
+  "place": "Ljubljana",
+  "cat": "edu"
+ },
+ {
+  "sl": "McDonald's Swaty — remodel",
+  "en": "McDonald's Swaty — remodel",
+  "place": "Maribor",
+  "cat": "hosp"
+ },
+ {
+  "sl": "Institute for the blind — renovation",
+  "en": "Institute for the blind — renovation",
+  "place": "Ljubljana",
+  "cat": "health"
+ },
+ {
+  "sl": "Gimnazija Bežigrad — partial renovation",
+  "en": "Gimnazija Bežigrad — partial renovation",
+  "place": "Ljubljana",
+  "cat": "edu"
+ },
+ {
+  "sl": "SŠTSŠ — concept design",
+  "en": "SŠTSŠ — concept design",
+  "place": "Ljubljana",
+  "cat": "edu"
+ },
+ {
+  "sl": "Slovenian Film Archive — renovation",
+  "en": "Slovenian Film Archive — renovation",
+  "place": "Ljubljana",
+  "cat": "public"
+ },
+ {
+  "sl": "FKKT and FRI — design review",
+  "en": "FKKT and FRI — design review",
+  "place": "Ljubljana",
+  "cat": "other"
+ },
+ {
+  "sl": "Interior stairs — Arih",
+  "en": "Interior stairs — Arih",
+  "place": "Ljubljana",
+  "cat": "off"
+ },
+ {
+  "sl": "Greenhouse for the Botanical Garden 01",
+  "en": "Greenhouse for the Botanical Garden 01",
+  "place": "Ljubljana",
+  "cat": "other"
+ },
+ {
+  "sl": "Laboratories — Technology Park Brdo",
+  "en": "Laboratories — Technology Park Brdo",
+  "place": "Ljubljana",
+  "cat": "off"
+ },
+ {
+  "sl": "Peterlinov paviljon complex — renovation",
+  "en": "Peterlinov paviljon complex — renovation",
+  "place": "Ljubljana",
+  "cat": "edu"
+ },
+ {
+  "sl": "Production hall — renovation",
+  "en": "Production hall — renovation",
+  "place": "Metlika",
+  "cat": "ind"
+ },
+ {
+  "sl": "Helios water-coatings facilities",
+  "en": "Helios water-coatings facilities",
+  "place": "",
+  "cat": "ind"
+ },
+ {
+  "sl": "Gigasport BTC — renovation",
+  "en": "Gigasport BTC — renovation",
+  "place": "Ljubljana",
+  "cat": "retail"
+ },
+ {
+  "sl": "Gimnazija Franceta Prešerna",
+  "en": "Gimnazija Franceta Prešerna",
+  "place": "Kranj",
+  "cat": "edu"
+ },
+ {
+  "sl": "Pliva centre — warehouse conversion",
+  "en": "Pliva centre — warehouse conversion",
+  "place": "Ljubljana",
+  "cat": "health"
+ },
+ {
+  "sl": "Minervo business and workshop building",
+  "en": "Minervo business and workshop building",
+  "place": "Ljubljana",
+  "cat": "ind"
+ },
+ {
+  "sl": "Minorite church — reconstruction",
+  "en": "Minorite church — reconstruction",
+  "place": "Ptuj",
+  "cat": "other"
+ },
+ {
+  "sl": "Energomont business and storage centre",
+  "en": "Energomont business and storage centre",
+  "place": "Ljubljana",
+  "cat": "ind"
+ },
+ {
+  "sl": "Gigasport-Hardi trade centre",
+  "en": "Gigasport-Hardi trade centre",
+  "place": "Maribor",
+  "cat": "retail"
+ },
+ {
+  "sl": "Svet obutve BTC — warehouse conversion",
+  "en": "Svet obutve BTC — warehouse conversion",
+  "place": "Ljubljana",
+  "cat": "retail"
+ },
+ {
+  "sl": "Neckermann trade centre",
+  "en": "Neckermann trade centre",
+  "place": "Maribor",
+  "cat": "retail"
+ },
+ {
+  "sl": "JUB industrial facilities",
+  "en": "JUB industrial facilities",
+  "place": "Dol pri Ljubljani",
+  "cat": "ind"
+ },
+ {
+  "sl": "Kastner & Öhler Liezen — renovation",
+  "en": "Kastner & Öhler Liezen — renovation",
+  "place": "Austria",
+  "cat": "retail"
+ },
+ {
+  "sl": "Gigasport trade centre",
+  "en": "Gigasport trade centre",
+  "place": "Celje",
+  "cat": "retail"
+ },
+ {
+  "sl": "Kastner & Öhler Wolfsberg — renovation",
+  "en": "Kastner & Öhler Wolfsberg — renovation",
+  "place": "Austria",
+  "cat": "retail"
+ },
+ {
+  "sl": "Kastner & Öhler BTC — warehouse conversion",
+  "en": "Kastner & Öhler BTC — warehouse conversion",
+  "place": "Ljubljana",
+  "cat": "retail"
+ },
+ {
+  "sl": "Apartment complex",
+  "en": "Apartment complex",
+  "place": "Ptujske Toplice",
+  "cat": "res"
+ },
+ {
+  "sl": "Color production facility",
+  "en": "Color production facility",
+  "place": "Medvode",
+  "cat": "ind"
+ },
+ {
+  "sl": "Hotel and spa Lipa — renovation",
+  "en": "Hotel and spa Lipa — renovation",
+  "place": "Lendava",
+  "cat": "hosp"
+ },
+ {
+  "sl": "Railway bridge Črnuče",
+  "en": "Railway bridge Črnuče",
+  "place": "Ljubljana",
+  "cat": "infra"
+ }
+]

@@ -1,0 +1,618 @@
+{
+ "2026-024|0c37ee2670": {
+  "sl": "Povečanje priključne moči (219 → 250 kW) in prenova glavnega razdelilnika",
+  "en": "Power upgrade & main switchboard",
+  "inv": "Dom dr. Janka Benedika Radovljica",
+  "place": "Radovljica",
+  "cat": "health"
+ },
+ "2026-023|b1e55e33ea": {
+  "sl": "Lekarna",
+  "en": "Pharmacy",
+  "inv": "Dom dr. Janka Benedika Radovljica",
+  "place": "Radovljica",
+  "cat": "health"
+ },
+ "2026-022|442836d180": {
+  "sl": "Ureditev požarnih vrat",
+  "en": "Fire doors",
+  "inv": "DŠD Koper",
+  "place": "Koper",
+  "cat": "edu"
+ },
+ "2026-021|12e3733371": {
+  "sl": "Prizidava dvigala",
+  "en": "Residential building — lift addition",
+  "inv": "",
+  "place": "Ljubljana",
+  "cat": "res"
+ },
+ "2026-020|735a35781a": {
+  "sl": "Večstanovanjska hiša Domžale",
+  "en": "Multi-apartment house",
+  "inv": "",
+  "place": "Domžale",
+  "cat": "res"
+ },
+ "2026-019|735d0cd926": {
+  "sl": "Ureditev vhodne avle",
+  "en": "Entrance hall",
+  "inv": "Dijaški dom Bežigrad",
+  "place": "Ljubljana",
+  "cat": "edu"
+ },
+ "2026-018|0c1c74f480": {
+  "sl": "Ureditev motoparka",
+  "en": "Motorcycle park",
+  "inv": "",
+  "place": "",
+  "cat": "hosp"
+ },
+ "2026-015|f52ed6a388": {
+  "sl": "Prizidava dvigala",
+  "en": "Lift addition",
+  "inv": "",
+  "place": "",
+  "cat": "res"
+ },
+ "2026-014|e1082778a3": {
+  "sl": "Avtobusna postaja Bled",
+  "en": "Bled Bus Station",
+  "inv": "Občina Bled",
+  "place": "Bled",
+  "cat": "infra"
+ },
+ "2026-012|f52ed6a388": {
+  "sl": "Prizidava dvigala",
+  "en": "Lift addition",
+  "inv": "DŠD Kranj",
+  "place": "Kranj",
+  "cat": "res"
+ },
+ "2026-011|720580e59f": {
+  "sl": "Rekonstrukcija objekta in prizidava dvigal ter uprave",
+  "en": "Reconstruction, lifts & administration",
+  "inv": "Dom Petra Uzarja Tržič",
+  "place": "Tržič",
+  "cat": "health"
+ },
+ "2025-031|e88cfe5378": {
+  "sl": "Sprememba namembnosti v 2 stanovanjsko hišo",
+  "en": "Conversion into a two-dwelling house",
+  "inv": "",
+  "place": "Logatec",
+  "cat": "res"
+ },
+ "2025-030|07b9cad3a3": {
+  "sl": "Preureditev prostorov za novi magnet in CT",
+  "en": "MRI & CT suite",
+  "inv": "SB Murska Sobota",
+  "place": "Murska Sobota",
+  "cat": "health"
+ },
+ "2025-029|27eaa94bdd": {
+  "sl": "Črpališče Teharje",
+  "en": "Teharje pumping station",
+  "inv": "Cinkarna Celje",
+  "place": "Teharje",
+  "cat": "infra"
+ },
+ "2025-028|743f146eb8": {
+  "sl": "Preureditev zobozdravstvene ordinacije v učilnico in kabinet",
+  "en": "Dental surgery into classroom & office",
+  "inv": "SGGOŠ Ljubljana",
+  "place": "Ljubljana",
+  "cat": "edu"
+ },
+ "2025-027|41012b2ae5": {
+  "sl": "Prizidava tovornega dvigala",
+  "en": "Goods lift",
+  "inv": "Dom dr. Janka Benedika Radovljica",
+  "place": "Radovljica",
+  "cat": "health"
+ },
+ "2025-026|d00e789c34": {
+  "sl": "MHE Mačkovec",
+  "en": "Mačkovec small hydropower plant",
+  "inv": "",
+  "place": "",
+  "cat": "infra"
+ },
+ "2025-025|cf0a41de3e": {
+  "sl": "Univerzalna uporaba objekta",
+  "en": "Universal access",
+  "inv": "DŠD Kranj",
+  "place": "Kranj",
+  "cat": "edu"
+ },
+ "2025-024|edfeda8ebd": {
+  "sl": "Ureditev evakuacijskih prehodov, sanitarij, dvigalnega jaška ter vgradnja dvigala",
+  "en": "Evacuation routes, toilets & lift",
+  "inv": "Gimnazija Bežigrad",
+  "place": "Ljubljana",
+  "cat": "edu"
+ },
+ "2025-023|6dd5f14d77": {
+  "sl": "Preureditev interierja hiše",
+  "en": "House interior",
+  "inv": "",
+  "place": "Ljubljana",
+  "cat": "res"
+ },
+ "2025-021|d98ea24483": {
+  "sl": "Prenova vhodne avle",
+  "en": "Entrance hall",
+  "inv": "DŠD Kranj",
+  "place": "Kranj",
+  "cat": "edu"
+ },
+ "2025-020|1c6b26dbd2": {
+  "sl": "Petrol Kisovec",
+  "en": "Petrol Kisovec",
+  "inv": "Petrol",
+  "place": "Kisovec",
+  "cat": "infra"
+ },
+ "2025-019|8db450b200": {
+  "sl": "Petrol Zlato polje",
+  "en": "Petrol Zlato polje",
+  "inv": "Petrol",
+  "place": "",
+  "cat": "infra"
+ },
+ "2025-018|d7e9242af9": {
+  "sl": "Dijaški dom Koper – sprememba namembnosti",
+  "en": "Change of use",
+  "inv": "DŠD Koper",
+  "place": "Koper",
+  "cat": "edu"
+ },
+ "2025-017|36ec629cfb": {
+  "sl": "Apartmaji Rečiška",
+  "en": "Apartments Rečiška",
+  "inv": "",
+  "place": "Bled",
+  "cat": "res"
+ },
+ "2025-016|c94c0a7c98": {
+  "sl": "Dvigalo UK Residence",
+  "en": "UK Residence — lift",
+  "inv": "",
+  "place": "Ljubljana",
+  "cat": "res"
+ },
+ "2025-015|94be13b8e9": {
+  "sl": "Interier pisarn Led it",
+  "en": "Office interior",
+  "inv": "",
+  "place": "Ljubljana",
+  "cat": "off"
+ },
+ "2025-014|1d59377d56": {
+  "sl": "Učilnice v holu",
+  "en": "Classrooms in the hall",
+  "inv": "SGGOŠ Ljubljana",
+  "place": "Ljubljana",
+  "cat": "edu"
+ },
+ "2025-013|2f279df8bc": {
+  "sl": "Terasa pisarne",
+  "en": "Office terrace",
+  "inv": "",
+  "place": "Ljubljana",
+  "cat": "off"
+ },
+ "2025-012|a4af91b094": {
+  "sl": "Umestitev dvigalnega jaška in rekonstrukcija mansarde in strehe hotela Slamič",
+  "en": "Lift shaft, attic & roof",
+  "inv": "",
+  "place": "Ljubljana",
+  "cat": "hosp"
+ },
+ "2025-011|f663acc7da": {
+  "sl": "Preureditev podstrešja Slamič",
+  "en": "Hotel Slamič — attic conversion",
+  "inv": "",
+  "place": "Ljubljana",
+  "cat": "hosp"
+ },
+ "2025-010|f5094f7dfd": {
+  "sl": "Prenova pisarn uprave",
+  "en": "Administration offices",
+  "inv": "DŠD Kranj",
+  "place": "Kranj",
+  "cat": "off"
+ },
+ "2024-025|6a9f1da3f5": {
+  "sl": "Mladinski dom Logatec",
+  "en": "Mladinski dom Logatec",
+  "inv": "Mladinski svet Logatec",
+  "place": "Logatec",
+  "cat": "public"
+ },
+ "2024-024|be51ecb1c3": {
+  "sl": "Naselje Jegriše",
+  "en": "Jegriše housing",
+  "inv": "",
+  "place": "Ljubljana",
+  "cat": "res"
+ },
+ "2024-023|4ae9e39afd": {
+  "sl": "Ureditev univerzalne dostopnosti in prizidava zunanjega dvigala",
+  "en": "Universal access & external lift",
+  "inv": "DŠD Kranj",
+  "place": "Kranj",
+  "cat": "edu"
+ },
+ "2024-022|23cd72075b": {
+  "sl": "Prizidava servisnega dvigala",
+  "en": "Service lift",
+  "inv": "Dom dr. Janka Benedika Radovljica",
+  "place": "Radovljica",
+  "cat": "health"
+ },
+ "2024-021|4463af9052": {
+  "sl": "Dijaški dom Koper – celovita prenova",
+  "en": "Whole building",
+  "inv": "DŠD Koper",
+  "place": "Koper",
+  "cat": "edu"
+ },
+ "2024-020|79f15ed061": {
+  "sl": "Stanovanje",
+  "en": "Apartment",
+  "inv": "",
+  "place": "Ljubljana",
+  "cat": "res"
+ },
+ "2024-019|2230bfc02c": {
+  "sl": "Dislocirana enota doma starejših občanov Kamna Gorica",
+  "en": "Care home unit Kamna Gorica",
+  "inv": "Občina Radovljica",
+  "place": "Kamna Gorica",
+  "cat": "health"
+ },
+ "2024-018|dfe7a9584f": {
+  "sl": "Dvigalo Dijaškega in študentskega doma Koper",
+  "en": "Lift & universal access",
+  "inv": "DŠD Koper",
+  "place": "Koper",
+  "cat": "edu"
+ },
+ "2024-017|bdcb354a33": {
+  "sl": "Slaščičarna Zelena Jama",
+  "en": "Zelena jama patisserie",
+  "inv": "",
+  "place": "Ljubljana",
+  "cat": "hosp"
+ },
+ "2024-016|c3a95db13b": {
+  "sl": "Sanacija strehe delavnic",
+  "en": "Workshop roof refurbishment",
+  "inv": "SGGOŠ Ljubljana",
+  "place": "Ljubljana",
+  "cat": "edu"
+ },
+ "2024-015|77a150624e": {
+  "sl": "Dijaški dom Koper – pisarne",
+  "en": "Offices",
+  "inv": "DŠD Koper",
+  "place": "Koper",
+  "cat": "edu"
+ },
+ "2024-014|f0520c9c52": {
+  "sl": "Pekarna Bežigrad",
+  "en": "Bakery Bežigrad",
+  "inv": "",
+  "place": "Ljubljana",
+  "cat": "retail"
+ },
+ "2024-013|be4a4e2a8f": {
+  "sl": "Avtomehanična delavnica",
+  "en": "Car repair workshop",
+  "inv": "",
+  "place": "Ljubljana",
+  "cat": "ind"
+ },
+ "2024-012|a6a885387c": {
+  "sl": "Dvigali v stanovanjskem objektu",
+  "en": "Residential buildings — two lifts",
+  "inv": "",
+  "place": "Ljubljana",
+  "cat": "res"
+ },
+ "2024-011|e7f9077f9f": {
+  "sl": "Dvigalo na Gimnaziji Ledina",
+  "en": "Gimnazija Ledina — lift",
+  "inv": "MIZŠ",
+  "place": "Ljubljana",
+  "cat": "edu"
+ },
+ "2024-010|6d956ebc8f": {
+  "sl": "Hiša",
+  "en": "House",
+  "inv": "",
+  "place": "Mala Nedelja",
+  "cat": "res"
+ },
+ "2023-024|da813b0943": {
+  "sl": "Toplotna izolacija zahodne fasade",
+  "en": "West façade insulation",
+  "inv": "",
+  "place": "Ljubljana",
+  "cat": "res"
+ },
+ "2023-024|6f2467eb9f": {
+  "sl": "Meteorna kanalizacija na hali Cinkarne Celje",
+  "en": "Cinkarna Celje — storm drainage",
+  "inv": "",
+  "place": "Celje",
+  "cat": "ind"
+ },
+ "2023-023|000f42f482": {
+  "sl": "Hiša",
+  "en": "House",
+  "inv": "",
+  "place": "",
+  "cat": "res"
+ },
+ "2023-022|4ba3b84e1c": {
+  "sl": "McDonald's Odiseja",
+  "en": "McDonald's Odiseja",
+  "inv": "",
+  "place": "Ljubljana",
+  "cat": "hosp"
+ },
+ "2023-021|442149068a": {
+  "sl": "Dvigalo na SGGOŠ",
+  "en": "SGGOŠ — lift",
+  "inv": "MIZŠ",
+  "place": "Ljubljana",
+  "cat": "edu"
+ },
+ "2023-020|eccb916516": {
+  "sl": "Pisarne EKO Srebrna hiša",
+  "en": "EKO Srebrna hiša — offices",
+  "inv": "",
+  "place": "Ljubljana",
+  "cat": "off"
+ },
+ "2023-019|d465fef348": {
+  "sl": "Hala Extreme Vital",
+  "en": "Extreme Vital hall",
+  "inv": "",
+  "place": "Celje",
+  "cat": "ind"
+ },
+ "2023-018|8f76a9e463": {
+  "sl": "Hiša",
+  "en": "House",
+  "inv": "",
+  "place": "Vikrče",
+  "cat": "res"
+ },
+ "2023-017|5eae3e02d1": {
+  "sl": "Cinkarna Celje – garderobe",
+  "en": "Changing rooms",
+  "inv": "Cinkarna Celje",
+  "place": "Celje",
+  "cat": "ind"
+ },
+ "2023-016|5a966cea97": {
+  "sl": "McDonald's Žito",
+  "en": "McDonald's Žito",
+  "inv": "",
+  "place": "Ljubljana",
+  "cat": "hosp"
+ },
+ "2023-015|654db45b31": {
+  "sl": "Fotovoltaika na strehi objekta",
+  "en": "Rooftop photovoltaics",
+  "inv": "",
+  "place": "Ljubljana",
+  "cat": "ind"
+ },
+ "2023-014|1efe44e9dd": {
+  "sl": "PLUTAL – jekleni podesti",
+  "en": "Plutal — steel platforms",
+  "inv": "",
+  "place": "Ljubljana",
+  "cat": "ind"
+ },
+ "2023-013|a846f59330": {
+  "sl": "Fiziatrična ordinacija",
+  "en": "Physiatry practice",
+  "inv": "",
+  "place": "",
+  "cat": "health"
+ },
+ "2023-012|547a20816b": {
+  "sl": "Enodružinska stanovanjska hiša – polovica dvojčka",
+  "en": "Semi-detached house",
+  "inv": "",
+  "place": "",
+  "cat": "res"
+ },
+ "2023-011|f01d9070ea": {
+  "sl": "Vhodna ploščad in povezava Poliklinike z UKC",
+  "en": "Polyclinic entrance & link to UKC",
+  "inv": "UKC Ljubljana",
+  "place": "Ljubljana",
+  "cat": "health"
+ },
+ "2023-010|f66bdb5e14": {
+  "sl": "Zasnova prostora za študente na Biotehnični fakulteti",
+  "en": "Student space",
+  "inv": "Biotehniška fakulteta UL",
+  "place": "Ljubljana",
+  "cat": "edu"
+ },
+ "2022-020|006a920a3a": {
+  "sl": "Prizidava večnamenske dvorane in dodatnih prostorov na Gimnaziji Ledina",
+  "en": "Gimnazija Ledina — multipurpose hall extension",
+  "inv": "",
+  "place": "Ljubljana",
+  "cat": "edu"
+ },
+ "2022-019|5fe91a9473": {
+  "sl": "UKC Poliklinika vhodna ploščad",
+  "en": "Polyclinic entrance plaza",
+  "inv": "UKC Ljubljana",
+  "place": "Ljubljana",
+  "cat": "health"
+ },
+ "2022-018|213a6b4c87": {
+  "sl": "Prenova interierja Slovenska cesta",
+  "en": "Interior refurbishment, Slovenska cesta",
+  "inv": "",
+  "place": "Ljubljana",
+  "cat": "off"
+ },
+ "2022-017|65388ee2a3": {
+  "sl": "Dom dr. Janka Benedika Radovljica",
+  "en": "Dom dr. Janka Benedika",
+  "inv": "Dom dr. Janka Benedika Radovljica",
+  "place": "Radovljica",
+  "cat": "health"
+ },
+ "2022-016|5ebcf6cc91": {
+  "sl": "Steklarna Hrastnik",
+  "en": "Steklarna Hrastnik",
+  "inv": "Steklarna Hrastnik",
+  "place": "Hrastnik",
+  "cat": "ind"
+ },
+ "2022-015|f1a568ebe0": {
+  "sl": "Sprememba GD za transformatorsko postajo",
+  "en": "Transformer station — permit amendment",
+  "inv": "",
+  "place": "",
+  "cat": "infra"
+ },
+ "2022-014|6abae68948": {
+  "sl": "Postavitev mlinov v Cinkarni Celje",
+  "en": "Cinkarna Celje — mills installation",
+  "inv": "",
+  "place": "Celje",
+  "cat": "ind"
+ },
+ "2022-013|dacd99182e": {
+  "sl": "McDonald's Cankarjeva II",
+  "en": "McDonald's Cankarjeva II",
+  "inv": "",
+  "place": "Ljubljana",
+  "cat": "hosp"
+ },
+ "2022-012|ca4064fa8b": {
+  "sl": "Vila",
+  "en": "Villa",
+  "inv": "",
+  "place": "Bled",
+  "cat": "res"
+ },
+ "2022-011|5164c69307": {
+  "sl": "McDonald's Slovenska Bistrica",
+  "en": "McDonald's Slovenska Bistrica",
+  "inv": "",
+  "place": "Slovenska Bistrica",
+  "cat": "hosp"
+ },
+ "2022-010|6615bc102f": {
+  "sl": "Dvigalo v stanovanjskem objektu",
+  "en": "Residential building — lift",
+  "inv": "",
+  "place": "Ljubljana",
+  "cat": "res"
+ },
+ "2021-016|8948c5b045": {
+  "sl": "McDonald's Supernova",
+  "en": "McDonald's Supernova",
+  "inv": "",
+  "place": "",
+  "cat": "hosp"
+ },
+ "2021-015|a34c13156b": {
+  "sl": "McDonald's Cankarjeva",
+  "en": "McDonald's Cankarjeva",
+  "inv": "",
+  "place": "Ljubljana",
+  "cat": "hosp"
+ },
+ "2021-014|f7cc0a8676": {
+  "sl": "Dozidava servisne hale MAN",
+  "en": "Service hall extension",
+  "inv": "MAN Truck & Bus Slovenija",
+  "place": "Ljubljana",
+  "cat": "ind"
+ },
+ "2021-013|be69c9fc2d": {
+  "sl": "Hiša",
+  "en": "House",
+  "inv": "",
+  "place": "",
+  "cat": "res"
+ },
+ "2021-012|c8a41ddb3a": {
+  "sl": "Mediteranski rastlinjak",
+  "en": "Mediterranean Greenhouse",
+  "inv": "",
+  "place": "Ljubljana",
+  "cat": "other"
+ },
+ "2021-011|5d2c8e028d": {
+  "sl": "Hiša",
+  "en": "House",
+  "inv": "",
+  "place": "",
+  "cat": "res"
+ },
+ "2020-016|fb03eed962": {
+  "sl": "McDonald's Celovška",
+  "en": "McDonald's Celovška",
+  "inv": "",
+  "place": "Ljubljana",
+  "cat": "hosp"
+ },
+ "2020-015|80f08cc55b": {
+  "sl": "UKC – Zeleni vrt",
+  "en": "UKC — Green garden",
+  "inv": "",
+  "place": "Ljubljana",
+  "cat": "health"
+ },
+ "2020-014|8b05cb90c0": {
+  "sl": "Mednarodna šola na gimnaziji Bežigrad",
+  "en": "Gimnazija Bežigrad — international school",
+  "inv": "",
+  "place": "Ljubljana",
+  "cat": "edu"
+ },
+ "2020-012|b104ed5e39": {
+  "sl": "Skladiščna hala Plutal",
+  "en": "Plutal warehouse",
+  "inv": "",
+  "place": "Ljubljana",
+  "cat": "ind"
+ },
+ "2020-011|be86040e3e": {
+  "sl": "Novi Trg – dvigalo",
+  "en": "Novi trg — lift",
+  "inv": "",
+  "place": "Ljubljana",
+  "cat": "res"
+ },
+ "2020-009|675864b6cb": {
+  "sl": "McDonald's Kolosej",
+  "en": "McDonald's Kolosej",
+  "inv": "",
+  "place": "Ljubljana",
+  "cat": "hosp"
+ },
+ "2019-025|8a1c16f709": {
+  "sl": "Apartmajski kompleks Kranjska Gora",
+  "en": "Apartment complex",
+  "inv": "",
+  "place": "Kranjska Gora",
+  "cat": "res"
+ }
+}

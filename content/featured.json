@@ -1,0 +1,92 @@
+[
+ {
+  "num": "2024-011",
+  "sl": "Gimnazija Ledina",
+  "en": "Gimnazija Ledina",
+  "type_sl": "Izobraževanje",
+  "type_en": "Education",
+  "place_sl": "Ljubljana · Dvigalo",
+  "place_en": "Ljubljana · Lift"
+ },
+ {
+  "num": "2024-018",
+  "sl": "DŠD Koper",
+  "en": "DŠD Koper",
+  "type_sl": "Izobraževanje",
+  "type_en": "Education",
+  "place_sl": "Koper · Dvigalo in univerzalna dostopnost · v teku",
+  "place_en": "Koper · Lift & universal access · in progress"
+ },
+ {
+  "num": "2023-021",
+  "sl": "SGGOŠ",
+  "en": "SGGOŠ",
+  "type_sl": "Izobraževanje",
+  "type_en": "Education",
+  "place_sl": "Ljubljana · Dvigalo",
+  "place_en": "Ljubljana · Lift"
+ },
+ {
+  "num": "2024-023",
+  "sl": "DŠD Kranj",
+  "en": "DŠD Kranj",
+  "type_sl": "Izobraževanje",
+  "type_en": "Education",
+  "place_sl": "Kranj · Univerzalna dostopnost in zunanje dvigalo · v teku",
+  "place_en": "Kranj · Universal access & external lift · in progress"
+ },
+ {
+  "num": "2025-027",
+  "sl": "Dom dr. Janka Benedika",
+  "en": "Dom dr. Janka Benedika",
+  "type_sl": "Oskrba in zdravstvo",
+  "type_en": "Care & health",
+  "place_sl": "Radovljica · Servisno in tovorno dvigalo · v teku",
+  "place_en": "Radovljica · Service & goods lifts · in progress"
+ },
+ {
+  "num": "2023-011",
+  "sl": "UKC Ljubljana",
+  "en": "UKC Ljubljana",
+  "type_sl": "Oskrba in zdravstvo",
+  "type_en": "Care & health",
+  "place_sl": "Ljubljana · Vhodna ploščad Poliklinike",
+  "place_en": "Ljubljana · Polyclinic entrance plaza"
+ },
+ {
+  "num": "2025-030",
+  "sl": "General Hospital Murska Sobota",
+  "en": "General Hospital Murska Sobota",
+  "type_sl": "Oskrba in zdravstvo",
+  "type_en": "Care & health",
+  "place_sl": "Murska Sobota · Prostori za MR in CT · v teku",
+  "place_en": "Murska Sobota · MRI & CT suite · in progress"
+ },
+ {
+  "num": "2021-012",
+  "sl": "Mediterranean Greenhouse",
+  "en": "Mediterranean Greenhouse",
+  "type_sl": "Javni prostor",
+  "type_en": "Public space",
+  "place_sl": "Ljubljana · Botanični vrt · v teku",
+  "place_en": "Ljubljana · Botanical Garden · in progress"
+ },
+ {
+  "num": "2026-014",
+  "sl": "Bled Bus Station",
+  "en": "Bled Bus Station",
+  "type_sl": "Javni prostor",
+  "type_en": "Public space",
+  "place_sl": "Bled · v teku",
+  "place_en": "Bled · in progress"
+ },
+ {
+  "num": "2021-014",
+  "sl": "MAN Truck & Bus",
+  "en": "MAN Truck & Bus",
+  "type_sl": "Poslovni in industrijski objekti",
+  "type_en": "Commercial & industry",
+  "place_sl": "Ljubljana · Prizidek servisne hale",
+  "place_en": "Ljubljana · Service hall extension"
+ }
+]
