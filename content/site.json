@@ -1,7 +1,7 @@
 {
  "serv_sl": {
   "tH1": "Storitve",
-  "tLead": "Od prve preveritve lokacije do uporabnega dovoljenja. Naročnik lahko naroči celoten cikel ali posamezno storitev.",
+  "tLead": "Od prve preveritve lokacije do uporabnega dovoljenja. Naročnik lahko izbere celoten cikel ali posamezno storitev.",
   "groups": [
    {
     "t": "Pred projektom",
@@ -118,7 +118,7 @@
  "biro_sl": {
   "tH1": "Delamo v stavbah, ki se ne smejo ustaviti",
   "tP1": "BIRO VOLK je arhitekturni biro iz Ljubljane, ustanovljen leta 2007. Projektiramo nova dvigala, univerzalno dostopnost in prenove šol, dijaških domov, domov za starejše in bolnišnic — pogosto v stavbah, ki med gradnjo delujejo naprej.",
-  "tP2": "Vodimo projekt od idejne zasnove do dovoljenja za uporabo: projektiranje, pridobivanje dovoljenj, ocene investicij in nadzor. Ostale stroke vključujemo v stalni mreži inženirjev, s katerimi delamo že vrsto let.",
+  "tP2": "Vodimo projekt od idejne zasnove do dovoljenja za uporabo: projektiranje, pridobivanje dovoljenj, ocene investicij in nadzor. Druge stroke vključujemo iz stalne mreže inženirjev, s katerimi delamo že vrsto let.",
   "tPeople": "Ekipa",
   "tRole1": "univ. dipl. inž. arh., pooblaščeni arhitekt ZAPS",
   "tRole2": "direktor, vodja projektiranja",
