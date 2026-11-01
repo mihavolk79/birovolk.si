@@ -143,6 +143,70 @@ async function drivePhotos() {
   return result;
 }
 
+// Instagram @birovolk: zadnje objave za razdelek »Novice« na prvi strani.
+// Vir 1 (privzeto): Behold (behold.so) – secret BEHOLD_FEED_URL; žetone in API ureja Behold.
+// Vir 2 (rezerva): Instagram API with Instagram Login – secret INSTAGRAM_TOKEN (ali datoteka INSTAGRAM_TOKEN_FILE).
+// Slike se prenesejo ob gradnji in shranijo lokalno brez metapodatkov (obiskovalci ne nalagajo ničesar od tretjih).
+// Napaka ne ustavi gradnje: razdelek »Novice« se takrat preprosto ne prikaže.
+const IG_API = process.env.IG_API || 'https://graph.instagram.com';
+const IG_COUNT = 4;
+async function igItems() {
+  const behold = (process.env.BEHOLD_FEED_URL || '').trim();
+  if (behold) {
+    if (!/^https:\/\/feeds\.behold\.so\/[A-Za-z0-9_-]+\/?$/.test(behold) && !process.env.IG_API) throw new Error('BEHOLD_FEED_URL ni oblike https://feeds.behold.so/…');
+    const r = await fetch(behold); // URL ni izpisan (javni dnevniki)
+    const j = await r.json().catch(() => null);
+    const posts = Array.isArray(j) ? j : j?.posts;
+    if (!r.ok || !Array.isArray(posts)) throw new Error(`Behold ${r.status}: neveljaven odgovor`);
+    return { src: 'Behold', items: posts.map(m => ({
+      id: m.id, caption: m.prunedCaption ?? m.caption, permalink: m.permalink, timestamp: m.timestamp,
+      img: m.sizes?.large?.mediaUrl || m.sizes?.full?.mediaUrl || m.sizes?.medium?.mediaUrl || (m.mediaType === 'VIDEO' ? m.thumbnailUrl : m.mediaUrl)
+    })) };
+  }
+  let token = process.env.INSTAGRAM_TOKEN || '';
+  if (process.env.INSTAGRAM_TOKEN_FILE) token = (await fs.readFile(process.env.INSTAGRAM_TOKEN_FILE, 'utf8').catch(() => '')).trim() || token;
+  if (!token) return null;
+  const fields = 'id,caption,media_type,media_url,thumbnail_url,permalink,timestamp';
+  // URL vsebuje žeton -> nikoli ga ne izpisuj
+  const r = await fetch(`${IG_API}/me/media?fields=${fields}&limit=12&access_token=${encodeURIComponent(token)}`);
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok || !Array.isArray(j.data)) throw new Error(`API ${r.status}: ${j.error?.message || 'neveljaven odgovor'}`);
+  return { src: 'Instagram API', items: j.data.map(m => ({ id: m.id, caption: m.caption, permalink: m.permalink, timestamp: m.timestamp, img: m.media_type === 'VIDEO' ? m.thumbnail_url : m.media_url })) };
+}
+async function instagramPosts() {
+  try {
+    const got = await igItems();
+    if (!got) { console.log('Instagram: ni vira (BEHOLD_FEED_URL / INSTAGRAM_TOKEN), novice preskočene.'); return null; }
+    const sharp = (await import('sharp')).default;
+    const items = got.items.filter(m => m.img).slice(0, IG_COUNT);
+    const mon = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const sl = [], en = [];
+    await fs.mkdir(path.join(DIST, 'img', 'ig'), { recursive: true });
+    for (const m of items) {
+      try {
+        const ir = await fetch(m.img);
+        if (!ir.ok) throw new Error(`slika ${ir.status}`);
+        const id = String(m.id).replace(/[^0-9A-Za-z_-]/g, '') || h10(m.img);
+        const out = `img/ig/${id}.webp`;
+        // sharp privzeto ne prenese metapodatkov (EXIF, GPS)
+        await sharp(Buffer.from(await ir.arrayBuffer())).rotate().resize({ width: 800, height: 1000, fit: 'inside', withoutEnlargement: true }).webp({ quality: 80 }).toFile(path.join(DIST, out));
+        // besedilo: prva neprazna vrstica opisa, brez #oznak, največ 140 znakov
+        let t = (String(m.caption || '').split('\n').map(x => x.trim()).find(Boolean) || '').replace(/(^|\s)#[\p{L}\p{N}_]+/gu, '').replace(/\s+/g, ' ').trim();
+        if (t.length > 140) t = t.slice(0, 139).replace(/\s+\S*$/, '') + '…';
+        const d = new Date(m.timestamp);
+        const ok = !isNaN(d), url = /^https:\/\/(www\.)?instagram\.com\//.test(m.permalink || '') ? m.permalink : '';
+        sl.push({ date: ok ? `${d.getUTCDate()}. ${d.getUTCMonth() + 1}. ${d.getUTCFullYear()}` : '', text: t, img: out, url });
+        en.push({ date: ok ? `${d.getUTCDate()} ${mon[d.getUTCMonth()]} ${d.getUTCFullYear()}` : '', text: t, img: out, url });
+      } catch (e) { console.log(`Instagram: objava preskočena (${e.message})`); }
+    }
+    console.log(`Instagram (${got.src}): ${sl.length} objav.`);
+    return sl.length ? { sl, en } : null;
+  } catch (e) {
+    console.log(`::warning::Instagram: novice niso prenesene – ${e.message}`);
+    return null;
+  }
+}
+
 async function main() {
   const site = await readJson('content/site.json');
   const overrides = await readJson('content/projects-overrides.json');
@@ -192,6 +256,9 @@ async function main() {
   const allPublished = projects;
   const photos = await drivePhotos();
   for (const p of projects) if (photos[p.num]) Object.assign(p, photos[p.num]);
+  // Novice: zadnje objave z Instagrama (sicer ostanejo vnosi iz site.json; brez fotografije se ne prikažejo)
+  const ig = await instagramPosts();
+  if (ig) { site.posts_sl = ig.sl; site.posts_en = ig.en; }
   // Izbrani projekti na prvi strani = objavljeni + obkljukano »Izbrano na naslovnici« v Notionu; brez omejitve števila.
   // Vrstni red: »Mesto na naslovnici« (1, 2, 3 …), neoštevilčeni za njimi (novejši prej).
   // Besedilo iz content/featured.json, če ima projekt tam vnos, sicer samodejno iz podatkov projekta.
