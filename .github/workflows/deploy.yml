@@ -18,21 +18,21 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
-          node-version: 20
+          node-version: 22
       - run: npm install --no-audit --no-fund
       # Google Drive brez ključa: GitHub OIDC -> Workload Identity Federation (projekt birovolk-splet)
       # -> service account splet-foto (samo Viewer na mapi »Splet – fotografije«).
-      - uses: google-github-actions/auth@v2
+      - uses: google-github-actions/auth@v3
         with:
           workload_identity_provider: projects/18377101261/locations/global/workloadIdentityPools/github/providers/birovolk-si
           service_account: splet-foto@birovolk-splet.iam.gserviceaccount.com
       - run: npm run build
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: dist
   deploy:
@@ -43,4 +43,4 @@ jobs:
       url: ${{ steps.d.outputs.page_url }}
     steps:
       - id: d
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
