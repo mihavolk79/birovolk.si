@@ -29,9 +29,20 @@ jobs:
         with:
           workload_identity_provider: projects/18377101261/locations/global/workloadIdentityPools/github/providers/birovolk-si
           service_account: splet-foto@birovolk-splet.iam.gserviceaccount.com
+      # Instagram: žeton velja 60 dni -> vsako noč ga podaljšaj (nov žeton gre v secret INSTAGRAM_TOKEN)
+      - name: Instagram žeton
+        if: github.event_name == 'schedule'
+        run: node tools/ig-refresh.mjs
+        env:
+          INSTAGRAM_TOKEN: ${{ secrets.INSTAGRAM_TOKEN }}
+          INSTAGRAM_TOKEN_FILE: ${{ runner.temp }}/ig_token
+          GH_TOKEN: ${{ secrets.SECRETS_PAT }}
       - run: npm run build
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          BEHOLD_FEED_URL: ${{ secrets.BEHOLD_FEED_URL }}
+          INSTAGRAM_TOKEN: ${{ secrets.INSTAGRAM_TOKEN }}
+          INSTAGRAM_TOKEN_FILE: ${{ runner.temp }}/ig_token
           # Začasno, dokler www.birovolk.si kaže na staro stran. Po preklopu DNS to vrstico (in komentar) izbriši.
           SITE_URL: https://mihavolk79.github.io/birovolk.si
       - uses: actions/upload-pages-artifact@v5
