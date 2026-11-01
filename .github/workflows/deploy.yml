@@ -32,6 +32,8 @@ jobs:
       - run: npm run build
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          # Začasno, dokler www.birovolk.si kaže na staro stran. Po preklopu DNS to vrstico (in komentar) izbriši.
+          SITE_URL: https://mihavolk79.github.io/birovolk.si
       - uses: actions/upload-pages-artifact@v5
         with:
           path: dist
