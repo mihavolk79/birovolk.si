@@ -32,8 +32,8 @@ const jsonInScript = (o) => JSON.stringify(o).replace(/</g, '\\u003c').replace(/
 function describe(site, v, lang, n) {
   const sl = lang === 'sl';
   if (v === '') return sl
-    ? 'BIRO VOLK, arhitekturni biro iz Ljubljane: projektiranje, dovoljenja, investicijska dokumentacija in nadzor za javne in zasebne naročnike.'
-    : 'BIRO VOLK, architecture studio in Ljubljana, Slovenia: design, building permits, investment documentation and site supervision for public and private clients.';
+    ? 'BIRO VOLK, arhitekturni biro iz Ljubljane (od 2007): projektiranje, dovoljenja, investicijska dokumentacija in nadzor. Dvigala, dostopnost in prenove javnih stavb.'
+    : 'BIRO VOLK, architecture studio in Ljubljana since 2007: design, permits, investment documents and supervision. Lifts, accessibility and renovation of public buildings.';
   if (v === 'storitve') return cut(site['serv_' + lang].tLead);
   if (v === 'projekti') return sl ? `Projekti arhitekturnega biroja BIRO VOLK iz Ljubljane: ${n} objavljenih projektov z letom, investitorjem, krajem in sklopom.`
     : `Projects by BIRO VOLK, architecture studio in Ljubljana: ${n} published projects with year, client, location and category.`;
@@ -54,7 +54,11 @@ function orgLd(url, site, lang, ogImage) {
     address: { '@type': 'PostalAddress', streetAddress: 'Kersnikova ulica 6', postalCode: '1000', addressLocality: 'Ljubljana', addressCountry: 'SI' },
     founder: { '@type': 'Person', name: 'Miha Volk', jobTitle: site['biro_' + lang].tRole1 },
     sameAs: ['https://www.instagram.com/birovolk/'],
-    knowsLanguage: ['sl', 'en']
+    knowsLanguage: ['sl', 'en'],
+    ...(site.seo ? {
+      knowsAbout: site.seo.knowsAbout[lang],
+      areaServed: Object.entries(site.seo.areaServed).map(([code, nm]) => ({ '@type': 'Country', name: nm[lang === 'en' ? 1 : 0], identifier: code }))
+    } : {})
   };
 }
 
@@ -258,6 +262,7 @@ async function main() {
       (pg.v === 'projekti' ? imgs.map(i => `<image:image><image:loc>${attr(abs(i.src))}</image:loc></image:image>`).join('') : '') + '</url>')),
     '</urlset>'].join('\n');
   await fs.writeFile(path.join(DIST, 'sitemap.xml'), sm);
+  await fs.writeFile(path.join(DIST, 'llms.txt'), llmsTxt(site, projects, abs));
   await fs.writeFile(path.join(DIST, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${abs('sitemap.xml')}\n`);
   await fs.mkdir(path.join(DIST, 'fonts'), { recursive: true });
   for (const [pkg, file] of [['barlow-condensed', 'latin-300'], ['barlow-condensed', 'latin-ext-300'], ['barlow-condensed', 'latin-400'], ['barlow-condensed', 'latin-ext-400'], ['barlow-condensed', 'latin-600'], ['barlow-condensed', 'latin-ext-600'], ['barlow-semi-condensed', 'latin-400'], ['barlow-semi-condensed', 'latin-ext-400'], ['barlow-semi-condensed', 'latin-500'], ['barlow-semi-condensed', 'latin-ext-500']]) {
@@ -267,4 +272,45 @@ async function main() {
   try { await fs.copyFile('CNAME', path.join(DIST, 'CNAME')); } catch {}
   console.log(`Zgrajeno (${PAGES.length * 2} strani, ${URL0}): ${projects.length} objavljenih projektov, ${data.featured.length} izbranih, ${Object.keys(photos).length} z fotografijami, ${quotes.length} citatov.`);
 }
+// llms.txt: povzetek biroja za AI orodja (samo besedila, ki so že objavljena na strani)
+function llmsTxt(site, projects, abs) {
+  const E = site.biro_en, B = site.biro_sl, C = site.cats.en;
+  const svc = site.serv_en.groups.map(g => `### ${g.t}\n` + g.items.map(i => `- ${i.t}${i.d ? ': ' + i.d : ''}`).join('\n')).join('\n\n');
+  const pl = (p) => p.place && p.place !== '—' ? p.place : '';
+  const proj = projects.length ? projects.map(p => `- ${p.y} – ${p.en}${p.inv ? ' (client: ' + p.inv + ')' : ''}${pl(p) ? ', ' + pl(p) : ''}${C[p.cat] ? ' – ' + C[p.cat] : ''}`).join('\n') : '- see the projects page';
+  const links = (lang) => PAGES.map(pg => `- [${lang === 'sl' ? ({ '': 'Prva stran', storitve: 'Storitve', projekti: 'Projekti', biro: 'Biro', kontakt: 'Kontakt' })[pg.v] : ({ '': 'Home', storitve: 'Services', projekti: 'Projects', biro: 'Studio', kontakt: 'Contact' })[pg.v]}](${abs(pg[lang])})`).join('\n');
+  return `# BIRO VOLK
+
+> ${E.tP1}
+
+${E.tP2}
+
+- Address: Kersnikova ulica 6, SI-1000 Ljubljana, Slovenia
+- E-mail: info@birovolk.si · Phone: +386 41 842 899
+- Founded: 2007
+- Areas of expertise: ${site.seo.knowsAbout.en.join(', ')}
+- Countries: ${Object.values(site.seo.areaServed).map(n => n[1]).join(', ')}
+- Languages: Slovenian, English
+- Instagram: https://www.instagram.com/birovolk/
+
+## Services
+
+${svc}
+
+## Published projects
+
+${proj}
+
+## Pages
+
+${links('en')}
+
+## Slovensko
+
+> ${B.tP1}
+
+${links('sl')}
+`;
+}
+
 main().catch(e => { console.error(e); process.exit(1); });
