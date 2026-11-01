@@ -33,7 +33,7 @@ header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:cen
 .logo i{width:7px;height:7px;border-radius:50%;background:var(--dot);display:block}
 /* sivi pripis pod znakom: tesno ob znaku, da pripada njemu in ne vsebini pod njim */
 .brand{display:flex;flex-direction:column;align-items:flex-start}
-.tag{margin:-9px 0 0;font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--sub);line-height:1.3}
+.tag{margin:-9px 0 0;font-size:12px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--sub);line-height:1.3}
 header{align-items:flex-start}
 nav{display:flex;flex-wrap:wrap;align-items:center;gap:8px 28px;font-size:16px}
 nav a{text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
@@ -186,8 +186,8 @@ const DATA = __DATA__;
 const PAGE = __PAGE__; // { v: pogled, lang: jezik } – določi ga naslov strani (URL)
 const S = DATA.site;
 const UI = {
-  sl: { nav: [['storitve','Storitve'],['projekti','Projekti'],['biro','Biro'],['kontakt','Kontakt']], dark: 'Temni način', home: 'prva stran', tag: 'Arhitekturni biro Ljubljana', menu: 'Glavni meni', lang: 'Jezik', photo: 'Fotografija — dodati', newsPh: 'Instagram objava', foot: ['BIRO VOLK d.o.o. · Kersnikova ulica 6, SI-1000 Ljubljana', 'info@birovolk.si · +386 41 842 899', 'Brez sledilnih piškotkov'], titles: { '': 'BIRO VOLK – arhitekturni biro, projektiranje in inženiring, Ljubljana', storitve: 'Storitve: projektiranje, dovoljenja, nadzor – BIRO VOLK', projekti: 'Projekti – BIRO VOLK, arhitekturni biro Ljubljana', biro: 'O biroju – BIRO VOLK, arhitekti Ljubljana', kontakt: 'Kontakt – BIRO VOLK, Kersnikova ulica 6, Ljubljana' }, upd: DATA.updated.split('-').reverse().map(Number).join('. ') },
-  en: { nav: [['storitve','Services'],['projekti','Projects'],['biro','Studio'],['kontakt','Contact']], dark: 'Dark mode', home: 'home', tag: 'Architecture studio Ljubljana', menu: 'Main menu', lang: 'Language', photo: 'Photo — to be added', newsPh: 'Instagram post', foot: ['BIRO VOLK d.o.o. · Kersnikova ulica 6, SI-1000 Ljubljana', 'info@birovolk.si · +386 41 842 899', 'No tracking cookies'], titles: { '': 'BIRO VOLK – architecture studio in Ljubljana, Slovenia', storitve: 'Services: design, permits, supervision – BIRO VOLK', projekti: 'Projects – BIRO VOLK architects, Ljubljana', biro: 'Studio – BIRO VOLK architects, Ljubljana', kontakt: 'Contact – BIRO VOLK, Ljubljana, Slovenia' }, upd: DATA.updated }
+  sl: { nav: [['storitve','Storitve'],['projekti','Projekti'],['biro','Biro'],['kontakt','Kontakt']], dark: 'Temni način', home: 'prva stran', tag: 'Arhitekturni biro Ljubljana', menu: 'Glavni meni', lang: 'Jezik', photo: 'Fotografija — dodati', newsPh: 'Instagram objava', foot: ['BIRO VOLK d.o.o. · Kersnikova ulica 6, SI-1000 Ljubljana', 'info@birovolk.si · +386 41 842 899', 'Brez sledilnih piškotkov'], titles: { '': 'BIRO VOLK – arhitekturni biro, projektiranje in inženiring, Ljubljana', storitve: 'Storitve: arhitekturno projektiranje, dovoljenja, nadzor – BIRO VOLK', projekti: 'Projekti – BIRO VOLK, arhitekturni biro Ljubljana', biro: 'O biroju – BIRO VOLK, arhitekti Ljubljana', kontakt: 'Kontakt – BIRO VOLK, Kersnikova ulica 6, Ljubljana' }, upd: DATA.updated.split('-').reverse().map(Number).join('. ') },
+  en: { nav: [['storitve','Services'],['projekti','Projects'],['biro','Studio'],['kontakt','Contact']], dark: 'Dark mode', home: 'home', tag: 'Architecture studio Ljubljana', menu: 'Main menu', lang: 'Language', photo: 'Photo — to be added', newsPh: 'Instagram post', foot: ['BIRO VOLK d.o.o. · Kersnikova ulica 6, SI-1000 Ljubljana', 'info@birovolk.si · +386 41 842 899', 'No tracking cookies'], titles: { '': 'BIRO VOLK – architecture studio in Ljubljana, Slovenia', storitve: 'Services: architectural design, permits, supervision – BIRO VOLK', projekti: 'Projects – BIRO VOLK architects, Ljubljana', biro: 'Studio – BIRO VOLK architects, Ljubljana', kontakt: 'Contact – BIRO VOLK, Ljubljana, Slovenia' }, upd: DATA.updated }
 };
 const store = { get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} } };
 // Vsak pogled ima svoj naslov (URL), relativno na <base> (koren strani).
@@ -205,7 +205,9 @@ const view = () => cur;
 function renderNav() {
   const u = UI[lang], v = view();
   const logo = document.querySelector('.logo'); logo.setAttribute('aria-label', 'BIRO VOLK, ' + u.home); logo.setAttribute('href', href(''));
-  document.getElementById('tag').textContent = u.tag;
+  let tg = document.getElementById('tag'); const want = v === '' ? 'H1' : 'P';
+  if (tg.tagName && tg.tagName !== want && tg.replaceWith) { const n = document.createElement(want); n.className = 'tag'; n.id = 'tag'; tg.replaceWith(n); tg = n; }
+  tg.textContent = u.tag;
   const nav = document.getElementById('nav');
   nav.setAttribute('aria-label', u.menu);
   nav.innerHTML = u.nav.map(([k, t]) => `<a href="${href(k)}" data-v="${k}"${v === k ? ' aria-current="page"' : ''}>${t}</a>`).join('') +
@@ -221,7 +223,7 @@ function home() {
   const now = new Date(); const day = Math.floor(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) / 86400000);
   const [qt, qb] = q[day % q.length];
   const len = qt.length, size = len <= 20 ? 'clamp(52px,8vw,120px)' : len <= 45 ? 'clamp(44px,6vw,92px)' : len <= 70 ? 'clamp(38px,4.6vw,70px)' : 'clamp(32px,3.6vw,54px)';
-  return `<figure class="quote" style="margin:0"><h1 class="big" style="font-size:${size};max-width:1200px">${esc(qt.replace(/\.$/, ''))}<span class="dot">.</span></h1><figcaption>— ${esc(qb)}</figcaption></figure>
+  return `<figure class="quote" style="margin:0"><blockquote class="big" style="font-size:${size};max-width:1200px">${esc(qt.replace(/\.$/, ''))}<span class="dot">.</span></blockquote><figcaption>— ${esc(qb)}</figcaption></figure>
   ${posts.length ? `<section class="sec" aria-labelledby="h-news"><div class="news-head"><h2 class="lbl" id="h-news">${esc(f.tNews)}</h2><a href="https://www.instagram.com/birovolk/" target="_blank" rel="noopener">@birovolk ↗</a></div>
   <div class="posts">${posts.map(p => `<a class="post" href="${esc(p.url || 'https://www.instagram.com/birovolk/')}" target="_blank" rel="noopener"><img class="img" src="${esc(p.img)}" alt="${esc(p.text)}" loading="lazy" style="object-fit:cover;width:100%"><span class="d">${esc(p.date)}</span><span>${esc(p.text)}</span></a>`).join('')}</div></section>` : ''}
   ${DATA.featured.length ? '' : '<!-- ni izbranih projektov -->'}<section class="sec" aria-labelledby="h-sel"${DATA.featured.length ? '' : ' hidden'}><h2 class="lbl" id="h-sel">${esc(f.tWorks)}</h2>
