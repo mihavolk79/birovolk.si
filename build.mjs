@@ -178,11 +178,16 @@ async function instagramPosts() {
     const got = await igItems();
     if (!got) { console.log('Instagram: ni vira (BEHOLD_FEED_URL / INSTAGRAM_TOKEN), novice preskočene.'); return null; }
     const sharp = (await import('sharp')).default;
-    const items = got.items.filter(m => m.img).slice(0, IG_COUNT);
+    const items = got.items.filter(m => m.img);
     const mon = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     const sl = [], en = [];
     await fs.mkdir(path.join(DIST, 'img', 'ig'), { recursive: true });
     for (const m of items) {
+      if (sl.length >= IG_COUNT) break;
+      // besedilo: prva neprazna vrstica opisa, brez #oznak, največ 140 znakov; objave brez besedila se ne prikažejo
+      let t = (String(m.caption || '').split('\n').map(x => x.trim()).find(Boolean) || '').replace(/(^|\s)#[\p{L}\p{N}_]+/gu, '').replace(/\s+/g, ' ').trim();
+      if (!t) continue;
+      if (t.length > 140) t = t.slice(0, 139).replace(/\s+\S*$/, '') + '…';
       try {
         const ir = await fetch(m.img);
         if (!ir.ok) throw new Error(`slika ${ir.status}`);
@@ -190,9 +195,6 @@ async function instagramPosts() {
         const out = `img/ig/${id}.webp`;
         // sharp privzeto ne prenese metapodatkov (EXIF, GPS)
         await sharp(Buffer.from(await ir.arrayBuffer())).rotate().resize({ width: 800, height: 1000, fit: 'inside', withoutEnlargement: true }).webp({ quality: 80 }).toFile(path.join(DIST, out));
-        // besedilo: prva neprazna vrstica opisa, brez #oznak, največ 140 znakov
-        let t = (String(m.caption || '').split('\n').map(x => x.trim()).find(Boolean) || '').replace(/(^|\s)#[\p{L}\p{N}_]+/gu, '').replace(/\s+/g, ' ').trim();
-        if (t.length > 140) t = t.slice(0, 139).replace(/\s+\S*$/, '') + '…';
         const d = new Date(m.timestamp);
         const ok = !isNaN(d), url = /^https:\/\/(www\.)?instagram\.com\//.test(m.permalink || '') ? m.permalink : '';
         sl.push({ date: ok ? `${d.getUTCDate()}. ${d.getUTCMonth() + 1}. ${d.getUTCFullYear()}` : '', text: t, img: out, url });
