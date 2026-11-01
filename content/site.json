@@ -542,5 +542,57 @@
    "ind": "Industrial",
    "other": "Other"
   }
+ },
+ "seo": {
+  "knowsAbout": {
+   "sl": [
+    "univerzalna dostopnost",
+    "dvigala v obstoječih stavbah",
+    "prenove šol",
+    "prenove dijaških domov",
+    "prenove domov za starejše",
+    "prenove bolnišnic",
+    "investicijska dokumentacija (DIIP, PIZ, IP)",
+    "LiDAR",
+    "BIM iz oblaka točk",
+    "vodenje projektiranja",
+    "gradbeni nadzor"
+   ],
+   "en": [
+    "universal access",
+    "lifts in existing buildings",
+    "school renovation",
+    "student residence renovation",
+    "care home renovation",
+    "hospital renovation",
+    "investment documents and feasibility studies",
+    "LiDAR scanning",
+    "point cloud to BIM",
+    "design management",
+    "construction supervision"
+   ]
+  },
+  "areaServed": {
+   "SI": [
+    "Slovenija",
+    "Slovenia"
+   ],
+   "AT": [
+    "Avstrija",
+    "Austria"
+   ],
+   "CH": [
+    "Švica",
+    "Switzerland"
+   ],
+   "CZ": [
+    "Češka",
+    "Czech Republic"
+   ],
+   "HU": [
+    "Madžarska",
+    "Hungary"
+   ]
+  }
  }
 }
