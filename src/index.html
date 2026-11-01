@@ -44,7 +44,7 @@ nav a[aria-current="page"],.lang button[aria-pressed="true"]{text-decoration:und
 .sw[aria-checked="true"] .track{background:var(--fg)}
 .sw[aria-checked="true"] .knob{background:var(--bg);transform:translateX(20px)}
 main{padding-bottom:96px}
-h1.big{margin:0;font-family:'Barlow Condensed',Arial,sans-serif;font-weight:300;line-height:.95}
+h1.big,blockquote.big{margin:0;font-family:'Barlow Condensed',Arial,sans-serif;font-weight:300;line-height:.95}
 .lbl{margin:0;font-size:15px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--sub)}
 .sec{display:flex;flex-direction:column;gap:16px;margin-top:72px}
 [hidden]{display:none!important}
@@ -211,7 +211,7 @@ function home() {
   const now = new Date(); const day = Math.floor(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) / 86400000);
   const [qt, qb] = q[day % q.length];
   const len = qt.length, size = len <= 20 ? 'clamp(52px,8vw,120px)' : len <= 45 ? 'clamp(44px,6vw,92px)' : len <= 70 ? 'clamp(38px,4.6vw,70px)' : 'clamp(32px,3.6vw,54px)';
-  return `<figure class="quote" style="margin:0"><h1 class="big" style="font-size:${size};max-width:1200px">${esc(qt.replace(/\.$/, ''))}<span class="dot">.</span></h1><figcaption>— ${esc(qb)}</figcaption></figure>
+  return `<figure class="quote" style="margin:0"><h1 class="lbl">${lang === 'sl' ? 'BIRO VOLK – arhitekturni biro, Ljubljana' : 'BIRO VOLK – architecture studio, Ljubljana'}</h1><blockquote class="big" style="font-size:${size};max-width:1200px">${esc(qt.replace(/\.$/, ''))}<span class="dot">.</span></blockquote><figcaption>— ${esc(qb)}</figcaption></figure>
   ${posts.length ? `<section class="sec" aria-labelledby="h-news"><div class="news-head"><h2 class="lbl" id="h-news">${esc(f.tNews)}</h2><a href="https://www.instagram.com/birovolk/" target="_blank" rel="noopener">@birovolk ↗</a></div>
   <div class="posts">${posts.map(p => `<a class="post" href="${esc(p.url || 'https://www.instagram.com/birovolk/')}" target="_blank" rel="noopener"><img class="img" src="${esc(p.img)}" alt="${esc(p.text)}" loading="lazy" style="object-fit:cover;width:100%"><span class="d">${esc(p.date)}</span><span>${esc(p.text)}</span></a>`).join('')}</div></section>` : ''}
   ${DATA.featured.length ? '' : '<!-- ni izbranih projektov -->'}<section class="sec" aria-labelledby="h-sel"${DATA.featured.length ? '' : ' hidden'}><h2 class="lbl" id="h-sel">${esc(f.tWorks)}</h2>
