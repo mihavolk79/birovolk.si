@@ -488,7 +488,7 @@
    "tNews": "Novice",
    "tWorks": "Izpostavljeni projekti",
    "tAllProj": "Vsi projekti",
-   "tLead": "Vsi projekti biroja od leta 2007. Izberite kraj na zemljevidu ali sklop za filtriranje.",
+   "tLead": "Projekti biroja od leta 2007, od najnovejšega naprej. Za prikaz na zemljevidu ali po sklopih uporabite gumba nad seznamom.",
    "h": [
     "Leto",
     "Investitor",
@@ -504,7 +504,7 @@
    "tNews": "News",
    "tWorks": "Featured projects",
    "tAllProj": "All projects",
-   "tLead": "All projects of the studio since 2007. Choose a location on the map or a category to filter.",
+   "tLead": "Projects of the studio since 2007, newest first. Use the buttons above the list to show them on a map or by category.",
    "h": [
     "Year",
     "Client",
