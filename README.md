@@ -13,6 +13,10 @@ Statična stran, ki se zgradi iz Notiona (projekti, citati) in Google Drive (fot
   Ob gradnji se zmanjšajo, pretvorijo v WebP in odstranijo se metapodatki (tudi GPS).
 - **Besedila** (storitve, biro, kontakt, novice): `content/site.json`.
 - **Objava:** ob vsaki spremembi v repozitoriju, vsako noč in ob signalu iz `tools/osvezi.gs`.
+- **Strani in iskalniki:** vsak pogled ima svoj naslov – `/`, `/storitve/`, `/projekti/`, `/biro/`, `/kontakt/` in angleško `/en/`, `/en/services/`, `/en/projects/`, `/en/studio/`, `/en/contact/`.
+  Gradnja izriše vsebino vsake strani že v HTML (ista koda kot v brskalniku), zato jo iskalnik prebere brez JavaScripta.
+  Ustvari še `sitemap.xml`, `robots.txt`, `og.jpg` (predogled ob deljenju), `favicon.svg`; v glavi so canonical, hreflang (sl/en), Open Graph in podatki schema.org o biroju.
+  Glavni naslov za canonical in sitemap se vzame iz datoteke `CNAME` (ali spremenljivke `SITE_URL`). Stare povezave `#projekti` ipd. se preusmerijo.
 
 ## Postavitev – enkratno
 
