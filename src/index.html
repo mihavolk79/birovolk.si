@@ -64,6 +64,11 @@ h1.big,blockquote.big{margin:0;font-family:'Barlow Condensed',Arial,sans-serif;f
 .sel .no{font-size:15px;color:var(--sub)}
 .sel .nm{font-family:'Barlow Condensed',Arial,sans-serif;font-size:28px;font-weight:300;line-height:1.1}
 .sel .pl{color:var(--soft);white-space:nowrap}
+.sel .nm a{color:inherit;text-decoration:none}
+.sel .nm a:hover,.sel .nm a:focus-visible{text-decoration:underline;text-underline-offset:4px}
+.ptab tr.hit{animation:hit 2.4s ease-out}
+@keyframes hit{0%,35%{background:var(--rule)}100%{background:transparent}}
+@media (prefers-reduced-motion:reduce){.ptab tr.hit{animation:none}}
 .sel .ty{color:var(--sub);font-size:15px;text-align:right;white-space:nowrap}
 @media (max-width:1100px){.sel li{grid-template-columns:40px minmax(0,1fr) minmax(0,1fr) max(var(--wp,118px),var(--wc,124px));grid-template-rows:auto 1fr;gap:4px 24px}.sel .no,.sel .iv,.sel .nm{grid-row:span 2}.sel .ty{grid-column:4;text-align:left;align-self:start}}
 .more{align-self:flex-start;font-size:18px;text-underline-offset:6px;min-height:44px;display:inline-flex;align-items:center}
@@ -211,11 +216,11 @@ function home() {
   const now = new Date(); const day = Math.floor(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) / 86400000);
   const [qt, qb] = q[day % q.length];
   const len = qt.length, size = len <= 20 ? 'clamp(52px,8vw,120px)' : len <= 45 ? 'clamp(44px,6vw,92px)' : len <= 70 ? 'clamp(38px,4.6vw,70px)' : 'clamp(32px,3.6vw,54px)';
-  return `<figure class="quote" style="margin:0"><h1 class="lbl">${lang === 'sl' ? 'BIRO VOLK – arhitekturni biro, Ljubljana' : 'BIRO VOLK – architecture studio, Ljubljana'}</h1><blockquote class="big" style="font-size:${size};max-width:1200px">${esc(qt.replace(/\.$/, ''))}<span class="dot">.</span></blockquote><figcaption>— ${esc(qb)}</figcaption></figure>
+  return `<figure class="quote" style="margin:0"><h1 class="big" style="font-size:${size};max-width:1200px">${esc(qt.replace(/\.$/, ''))}<span class="dot">.</span></h1><figcaption>— ${esc(qb)}</figcaption></figure>
   ${posts.length ? `<section class="sec" aria-labelledby="h-news"><div class="news-head"><h2 class="lbl" id="h-news">${esc(f.tNews)}</h2><a href="https://www.instagram.com/birovolk/" target="_blank" rel="noopener">@birovolk ↗</a></div>
   <div class="posts">${posts.map(p => `<a class="post" href="${esc(p.url || 'https://www.instagram.com/birovolk/')}" target="_blank" rel="noopener"><img class="img" src="${esc(p.img)}" alt="${esc(p.text)}" loading="lazy" style="object-fit:cover;width:100%"><span class="d">${esc(p.date)}</span><span>${esc(p.text)}</span></a>`).join('')}</div></section>` : ''}
   ${DATA.featured.length ? '' : '<!-- ni izbranih projektov -->'}<section class="sec" aria-labelledby="h-sel"${DATA.featured.length ? '' : ' hidden'}><h2 class="lbl" id="h-sel">${esc(f.tWorks)}</h2>
-  <ol class="sel">${DATA.featured.map((p, i) => `<li><span class="no">${String(i + 1).padStart(2, '0')}</span><span class="nm">${esc(p[lang])}</span><span class="iv">${esc(p.inv || '')}</span><span class="pl">${esc(p['place_' + lang] || p.place || '')}</span><span class="ty">${esc(p['type_' + lang])}</span></li>`).join('')}</ol>
+  <ol class="sel">${DATA.featured.map((p, i) => `<li><span class="no">${String(i + 1).padStart(2, '0')}</span><span class="nm"><a href="${href('projekti')}#p-${esc(p.num)}" data-v="projekti" data-p="${esc(p.num)}">${esc(p[lang])}</a></span><span class="iv">${esc(p.inv || '')}</span><span class="pl">${esc(p['place_' + lang] || p.place || '')}</span><span class="ty">${esc(p['type_' + lang])}</span></li>`).join('')}</ol>
   <a class="more" href="${href('projekti')}" data-v="projekti">${esc(f.tAllProj)} →</a></section>`;
 }
 
@@ -262,7 +267,7 @@ function projects() {
   const list = catL.filter(a => !placeSel || pkey(a.place, a.en) === placeSel);
   const tools = `<div class="ptools"><button type="button" data-t="map" aria-expanded="${showMap}">${sl ? 'Zemljevid' : 'Map'}</button><button type="button" data-t="fil" aria-expanded="${showFilters}">${sl ? 'Filtri' : 'Filters'}${cat !== 'all' ? ' · ' + esc(C[cat] || cat) : ''}</button></div>`;
   const head = `<colgroup><col class="cy"><col><col><col class="cp"><col class="cc"></colgroup><thead><tr>${[0, 2, 1, 3].map(i => `<th scope="col">${esc(ui.h[i])}</th>`).join('')}<th scope="col" class="r">${esc(ui.h[4])}</th></tr></thead>`;
-  const row = (a) => `<tr${a.photos ? ` class="ph" tabindex="0" role="button" aria-label="${esc(a[lang])} – ${sl ? 'fotografije' : 'photos'}" data-i="${all.indexOf(a)}"` : ''}><td class="y">${esc(a.y)}</td><td class="n" title="${esc(a[lang])}">${esc(a[lang])}</td><td class="i">${esc(a.inv)}</td><td class="p">${maplink(a.inv, a[lang], a.place, false, a.addr)}</td><td class="ct r">${esc(C[a.cat] || '')}</td></tr>`;
+  const row = (a) => `<tr${a.num ? ` id="p-${esc(a.num)}"` : ''}${a.photos ? ` class="ph" tabindex="0" role="button" aria-label="${esc(a[lang])} – ${sl ? 'fotografije' : 'photos'}" data-i="${all.indexOf(a)}"` : ''}><td class="y">${esc(a.y)}</td><td class="n" title="${esc(a[lang])}">${esc(a[lang])}</td><td class="i">${esc(a.inv)}</td><td class="p">${maplink(a.inv, a[lang], a.place, false, a.addr)}</td><td class="ct r">${esc(C[a.cat] || '')}</td></tr>`;
   return `<div class="intro"><h1 class="big" style="font-size:clamp(52px,7vw,108px)">${esc(ui.tH1)}<span class="dot">.</span></h1><p class="lead">${esc(ui.tLead)}</p></div>
   <div class="sec">${tools}${showMap ? mapSvg(catL.map(a => [a.place, a.en])) : ''}${placeSel ? `<button type="button" class="placechip">${esc(placeSel)} ×</button>` : ''}${showFilters ? `<div class="chips" role="group" aria-label="${esc(ui.tAllCats)}">${chips}</div>` : ''}
   ${list.length ? `<table class="ptab"><caption class="lbl">${list.length} <small>· ${esc(ui.tUpdated)} ${u.upd}${list.some(a => a.photos) ? ` · <span class="dot">●</span> ${sl ? 's fotografijami – klik odpre galerijo' : 'with photos – click to open'}` : ''}</small></caption>${head}<tbody>${list.map(row).join('')}</tbody></table>` : `<p class="lead">${sl ? 'Ni projektov za izbrani filter.' : 'No projects match this filter.'}</p>`}</div>`;
@@ -382,23 +387,32 @@ function fitCols(root) {
 }
 if (document.fonts) document.fonts.ready.then(() => fitCols(document.getElementById('main')));
 // Notranje povezave (meni, logotip, jezik) brez ponovnega nalaganja strani; naslov v brskalniku se zamenja.
-function go(v, l) {
-  if (v === cur && l === lang) { window.scrollTo(0, 0); return; }
-  const focus = v !== cur;
+function go(v, l, pn) {
+  if (v === cur && l === lang && !pn) { window.scrollTo(0, 0); return; }
+  const focus = v !== cur && !pn;
   cur = v; lang = l; cat = 'all'; placeSel = null;
-  history.pushState({ v, l }, '', href(v, l));
+  history.pushState({ v, l }, '', href(v, l) + (pn ? '#p-' + pn : ''));
   closeViewer(); render(focus);
+  if (pn) showProject(pn);
+}
+// izpostavljeni projekt: pomik do njegove vrstice na strani Projekti in kratka osvetlitev
+function showProject(pn, instant) {
+  const r = document.getElementById('p-' + pn); if (!r) return;
+  r.scrollIntoView({ block: 'center', behavior: instant || matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  r.classList.remove('hit'); void r.offsetWidth; r.classList.add('hit');
+  if (r.tabIndex >= 0) r.focus({ preventScroll: true });
 }
 document.addEventListener('click', (e) => {
   const a = e.target.closest && e.target.closest('a[data-v]');
   if (!a || e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-  e.preventDefault(); go(a.dataset.v, a.dataset.l || lang);
+  e.preventDefault(); go(a.dataset.v, a.dataset.l || lang, a.dataset.p);
 });
 window.addEventListener('popstate', (e) => { const st = e.state || { v: PAGE.v || '', l: PAGE.lang };
   if (cfP || cfHist) { const same = st.v === cur && st.l === lang; cfHist = false; closeViewer(); if (same) return; }
   cur = st.v; lang = st.l; cat = 'all'; placeSel = null; closeViewer(); render(true); });
 history.replaceState({ v: cur, l: lang }, '');
 render(false);
+{ const h = (location.hash || '').replace('#', ''); if (h.startsWith('p-')) { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; addEventListener('load', () => setTimeout(() => showProject(h.slice(2), true), 0)); } }
 </script>
 </body>
 </html>
