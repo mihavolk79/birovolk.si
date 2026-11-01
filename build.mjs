@@ -33,7 +33,7 @@ function describe(site, v, lang, n) {
   const sl = lang === 'sl';
   if (v === '') return sl
     ? 'BIRO VOLK, arhitekturni biro iz Ljubljane: projektiranje, dovoljenja, investicijska dokumentacija in nadzor za javne in zasebne naročnike.'
-    : 'BIRO VOLK, architecture studio in Ljubljana, Slovenia: architectural design, building permits, investment documentation and site supervision for public and private clients.';
+    : 'BIRO VOLK, architecture studio in Ljubljana, Slovenia: design, building permits, investment documentation and site supervision for public and private clients.';
   if (v === 'storitve') return cut(site['serv_' + lang].tLead);
   if (v === 'projekti') return sl ? `Projekti arhitekturnega biroja BIRO VOLK iz Ljubljane: ${n} objavljenih projektov z letom, investitorjem, krajem in sklopom.`
     : `Projects by BIRO VOLK, architecture studio in Ljubljana: ${n} published projects with year, client, location and category.`;
