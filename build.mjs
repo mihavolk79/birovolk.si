@@ -123,7 +123,17 @@ async function drivePhotos() {
       const out = `img/${num}/${String(photos.length + 1).padStart(2, '0')}.webp`;
       await fs.mkdir(path.join(DIST, 'img', num), { recursive: true });
       // sharp privzeto ne prenese metapodatkov (EXIF, GPS) v izhodno datoteko
-      const info = await sharp(Buffer.from(r.data)).rotate().resize({ width: 1600, height: 1600, fit: 'inside', withoutEnlargement: true }).webp({ quality: 80 }).toFile(path.join(DIST, out));
+      const toWebp = (b) => sharp(b).rotate().resize({ width: 1600, height: 1600, fit: 'inside', withoutEnlargement: true }).webp({ quality: 80 }).toFile(path.join(DIST, out));
+      let info;
+      try { info = await toWebp(Buffer.from(r.data)); }
+      catch (e) {
+        try {
+          // HEIC/HEIF (iPhone): sharp jih ne zna prebrati, zato jih najprej pretvorimo v JPEG
+          if (!/hei[cf]/i.test(f.mimeType + f.name)) throw e;
+          const heic = (await import('heic-convert')).default;
+          info = await toWebp(Buffer.from(await heic({ buffer: Buffer.from(r.data), format: 'JPEG', quality: 0.92 })));
+        } catch (e2) { console.log(`Fotografija preskočena (${num}/${f.name}): ${e2.message.split('\n')[0]}`); continue; } // ena slaba datoteka ne ustavi strani
+      }
       photos.push(out); dims.push([info.width, info.height]); // mere za galerijo (postavitev brez skakanja)
     }
     if (photos.length) result[num] = { photos, author, dims };
