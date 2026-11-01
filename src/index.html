@@ -31,6 +31,10 @@ header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:cen
 .logo{display:flex;align-items:center;gap:8px;text-decoration:none;min-height:44px}
 .logo span:first-child{font-family:'Barlow Condensed',Arial,sans-serif;font-size:22px;font-weight:600;letter-spacing:.3em}
 .logo i{width:7px;height:7px;border-radius:50%;background:var(--dot);display:block}
+/* sivi pripis pod znakom: tesno ob znaku, da pripada njemu in ne vsebini pod njim */
+.brand{display:flex;flex-direction:column;align-items:flex-start}
+.tag{margin:-9px 0 0;font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--sub);line-height:1.3}
+header{align-items:flex-start}
 nav{display:flex;flex-wrap:wrap;align-items:center;gap:8px 28px;font-size:16px}
 nav a{text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
 nav a[aria-current="page"],.lang button[aria-pressed="true"]{text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:2px}
@@ -171,7 +175,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 40px;p
 </head>
 <body>
 <header class="wrap">
-<a class="logo" href="__HOME__" data-v="" aria-label="__LOGOLABEL__"><span>BIRO VOLK</span><i aria-hidden="true"></i></a>
+<div class="brand"><a class="logo" href="__HOME__" data-v="" aria-label="__LOGOLABEL__"><span>BIRO VOLK</span><i aria-hidden="true"></i></a><p class="tag" id="tag">__TAGLINE__</p></div>
 <nav aria-label="__MENULABEL__" id="nav">__NAV__</nav>
 </header>
 <main id="main" class="wrap" tabindex="-1">__MAIN__</main>
@@ -182,8 +186,8 @@ const DATA = __DATA__;
 const PAGE = __PAGE__; // { v: pogled, lang: jezik } – določi ga naslov strani (URL)
 const S = DATA.site;
 const UI = {
-  sl: { nav: [['storitve','Storitve'],['projekti','Projekti'],['biro','Biro'],['kontakt','Kontakt']], dark: 'Temni način', home: 'prva stran', menu: 'Glavni meni', lang: 'Jezik', photo: 'Fotografija — dodati', newsPh: 'Instagram objava', foot: ['BIRO VOLK d.o.o. · Kersnikova ulica 6, SI-1000 Ljubljana', 'info@birovolk.si · +386 41 842 899', 'Brez sledilnih piškotkov'], titles: { '': 'BIRO VOLK – arhitekturni biro, projektiranje in inženiring, Ljubljana', storitve: 'Storitve: projektiranje, dovoljenja, nadzor – BIRO VOLK', projekti: 'Projekti – BIRO VOLK, arhitekturni biro Ljubljana', biro: 'O biroju – BIRO VOLK, arhitekti Ljubljana', kontakt: 'Kontakt – BIRO VOLK, Kersnikova ulica 6, Ljubljana' }, upd: DATA.updated.split('-').reverse().map(Number).join('. ') },
-  en: { nav: [['storitve','Services'],['projekti','Projects'],['biro','Studio'],['kontakt','Contact']], dark: 'Dark mode', home: 'home', menu: 'Main menu', lang: 'Language', photo: 'Photo — to be added', newsPh: 'Instagram post', foot: ['BIRO VOLK d.o.o. · Kersnikova ulica 6, SI-1000 Ljubljana', 'info@birovolk.si · +386 41 842 899', 'No tracking cookies'], titles: { '': 'BIRO VOLK – architecture studio in Ljubljana, Slovenia', storitve: 'Services: design, permits, supervision – BIRO VOLK', projekti: 'Projects – BIRO VOLK architects, Ljubljana', biro: 'Studio – BIRO VOLK architects, Ljubljana', kontakt: 'Contact – BIRO VOLK, Ljubljana, Slovenia' }, upd: DATA.updated }
+  sl: { nav: [['storitve','Storitve'],['projekti','Projekti'],['biro','Biro'],['kontakt','Kontakt']], dark: 'Temni način', home: 'prva stran', tag: 'Arhitekturni biro Ljubljana', menu: 'Glavni meni', lang: 'Jezik', photo: 'Fotografija — dodati', newsPh: 'Instagram objava', foot: ['BIRO VOLK d.o.o. · Kersnikova ulica 6, SI-1000 Ljubljana', 'info@birovolk.si · +386 41 842 899', 'Brez sledilnih piškotkov'], titles: { '': 'BIRO VOLK – arhitekturni biro, projektiranje in inženiring, Ljubljana', storitve: 'Storitve: projektiranje, dovoljenja, nadzor – BIRO VOLK', projekti: 'Projekti – BIRO VOLK, arhitekturni biro Ljubljana', biro: 'O biroju – BIRO VOLK, arhitekti Ljubljana', kontakt: 'Kontakt – BIRO VOLK, Kersnikova ulica 6, Ljubljana' }, upd: DATA.updated.split('-').reverse().map(Number).join('. ') },
+  en: { nav: [['storitve','Services'],['projekti','Projects'],['biro','Studio'],['kontakt','Contact']], dark: 'Dark mode', home: 'home', tag: 'Architecture studio Ljubljana', menu: 'Main menu', lang: 'Language', photo: 'Photo — to be added', newsPh: 'Instagram post', foot: ['BIRO VOLK d.o.o. · Kersnikova ulica 6, SI-1000 Ljubljana', 'info@birovolk.si · +386 41 842 899', 'No tracking cookies'], titles: { '': 'BIRO VOLK – architecture studio in Ljubljana, Slovenia', storitve: 'Services: design, permits, supervision – BIRO VOLK', projekti: 'Projects – BIRO VOLK architects, Ljubljana', biro: 'Studio – BIRO VOLK architects, Ljubljana', kontakt: 'Contact – BIRO VOLK, Ljubljana, Slovenia' }, upd: DATA.updated }
 };
 const store = { get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} } };
 // Vsak pogled ima svoj naslov (URL), relativno na <base> (koren strani).
@@ -201,6 +205,7 @@ const view = () => cur;
 function renderNav() {
   const u = UI[lang], v = view();
   const logo = document.querySelector('.logo'); logo.setAttribute('aria-label', 'BIRO VOLK, ' + u.home); logo.setAttribute('href', href(''));
+  document.getElementById('tag').textContent = u.tag;
   const nav = document.getElementById('nav');
   nav.setAttribute('aria-label', u.menu);
   nav.innerHTML = u.nav.map(([k, t]) => `<a href="${href(k)}" data-v="${k}"${v === k ? ' aria-current="page"' : ''}>${t}</a>`).join('') +
