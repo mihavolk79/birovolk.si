@@ -34,10 +34,12 @@ function describe(site, v, lang, n) {
   if (v === '') return sl
     ? 'BIRO VOLK, arhitekturni biro Ljubljana: arhitektura in arhitekturno projektiranje, dovoljenja, investicijska dokumentacija in nadzor. Prenove javnih stavb od 2007.'
     : 'BIRO VOLK, architecture studio in Ljubljana: architecture and architectural design, permits, investment documents and supervision. Public buildings since 2007.';
-  if (v === 'storitve') return cut(site['serv_' + lang].tLead);
+  if (v === 'storitve') return sl ? 'Storitve arhitekturnega biroja BIRO VOLK: arhitekturno projektiranje vseh faz, preveritve lokacije, LiDAR in BIM, investicije, dovoljenja in nadzor.'
+    : 'Services of BIRO VOLK architecture studio: architectural design for all stages, site studies, LiDAR and BIM, investment documents, permits and supervision.';
   if (v === 'projekti') return sl ? `Projekti arhitekturnega biroja BIRO VOLK iz Ljubljane: ${n} objavljenih projektov z letom, investitorjem, krajem in sklopom.`
     : `Projects by BIRO VOLK, architecture studio in Ljubljana: ${n} published projects with year, client, location and category.`;
-  if (v === 'biro') return cut(site['biro_' + lang].tP1);
+  if (v === 'biro') return sl ? 'BIRO VOLK, arhitekturni biro iz Ljubljane, od 2007: arhitektura, prenove šol, domov in bolnišnic, ki med gradnjo delujejo naprej, univerzalna dostopnost.'
+    : 'BIRO VOLK, architecture studio in Ljubljana since 2007: architecture, renovation of schools, care homes and hospitals that stay in use, universal access.';
   return sl ? 'Arhitekturni biro BIRO VOLK d.o.o., Kersnikova ulica 6, 1000 Ljubljana. info@birovolk.si, +386 41 842 899. Sestanki po dogovoru.'
     : 'Architecture studio BIRO VOLK d.o.o., Kersnikova ulica 6, 1000 Ljubljana, Slovenia. info@birovolk.si, +386 41 842 899. Meetings by appointment.';
 }
@@ -257,12 +259,16 @@ async function main() {
       .replace('__HEAD__', () => head)
       .replace('__HOME__', lang === 'sl' ? './' : 'en/')
       .replace('__LOGOLABEL__', lang === 'sl' ? 'BIRO VOLK, prva stran' : 'BIRO VOLK, home')
-      .replace('__TAGLINE__', lang === 'sl' ? 'Arhitekturni biro Ljubljana' : 'Architecture studio Ljubljana')
+      .replace('<p class="tag" id="tag">__TAGLINE__</p>', () => { const t = pg.v === '' ? 'h1' : 'p'; return `<${t} class="tag" id="tag">${lang === 'sl' ? 'Arhitekturni biro Ljubljana' : 'Architecture studio Ljubljana'}</${t}>`; })
       .replace('__MENULABEL__', lang === 'sl' ? 'Glavni meni' : 'Main menu')
       .replace('__NAV__', () => r.nav).replace('__MAIN__', () => r.main).replace('__FOOT__', () => r.foot)
       .replace('__DATA__', () => jsonInScript(data)).replace('__PAGE__', () => jsonInScript({ v: pg.v, lang }));
     await fs.mkdir(path.join(DIST, rel), { recursive: true });
     await fs.writeFile(path.join(DIST, rel, 'index.html'), html);
+    if (pg.v === '' && lang === 'sl') await fs.writeFile(path.join(DIST, '404.html'), html
+      .replace(/<base href="[^"]*">/, `<base href="${new URL(URL0 + '/').pathname}">`)
+      .replace(/<link rel="canonical"[^>]*>\n/, '')
+      .replace('<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex">'));
   }
 
   // Zemljevid strani za iskalnike (z obema jezikoma in fotografijami projektov)
