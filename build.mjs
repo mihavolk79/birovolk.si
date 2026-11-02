@@ -144,39 +144,27 @@ async function drivePhotos() {
 }
 
 // Instagram @birovolk: zadnje objave za razdelek »Novice« na prvi strani.
-// Vir 1 (privzeto): Behold (behold.so) – secret BEHOLD_FEED_URL; žetone in API ureja Behold.
-// Vir 2 (rezerva): Instagram API with Instagram Login – secret INSTAGRAM_TOKEN (ali datoteka INSTAGRAM_TOKEN_FILE).
+// Vir: Behold (behold.so) – secret BEHOLD_FEED_URL; žetone in Instagram API ureja Behold.
 // Slike se prenesejo ob gradnji in shranijo lokalno brez metapodatkov (obiskovalci ne nalagajo ničesar od tretjih).
 // Napaka ne ustavi gradnje: razdelek »Novice« se takrat preprosto ne prikaže.
-const IG_API = process.env.IG_API || 'https://graph.instagram.com';
 const IG_COUNT = 4;
 async function igItems() {
   const behold = (process.env.BEHOLD_FEED_URL || '').trim();
-  if (behold) {
-    if (!/^https:\/\/feeds\.behold\.so\/[A-Za-z0-9_-]+\/?$/.test(behold) && !process.env.IG_API) throw new Error('BEHOLD_FEED_URL ni oblike https://feeds.behold.so/…');
-    const r = await fetch(behold); // URL ni izpisan (javni dnevniki)
-    const j = await r.json().catch(() => null);
-    const posts = Array.isArray(j) ? j : j?.posts;
-    if (!r.ok || !Array.isArray(posts)) throw new Error(`Behold ${r.status}: neveljaven odgovor`);
-    return { src: 'Behold', items: posts.map(m => ({
-      id: m.id, caption: m.prunedCaption ?? m.caption, permalink: m.permalink, timestamp: m.timestamp,
-      img: m.sizes?.large?.mediaUrl || m.sizes?.full?.mediaUrl || m.sizes?.medium?.mediaUrl || (m.mediaType === 'VIDEO' ? m.thumbnailUrl : m.mediaUrl)
-    })) };
-  }
-  let token = process.env.INSTAGRAM_TOKEN || '';
-  if (process.env.INSTAGRAM_TOKEN_FILE) token = (await fs.readFile(process.env.INSTAGRAM_TOKEN_FILE, 'utf8').catch(() => '')).trim() || token;
-  if (!token) return null;
-  const fields = 'id,caption,media_type,media_url,thumbnail_url,permalink,timestamp';
-  // URL vsebuje žeton -> nikoli ga ne izpisuj
-  const r = await fetch(`${IG_API}/me/media?fields=${fields}&limit=12&access_token=${encodeURIComponent(token)}`);
-  const j = await r.json().catch(() => ({}));
-  if (!r.ok || !Array.isArray(j.data)) throw new Error(`API ${r.status}: ${j.error?.message || 'neveljaven odgovor'}`);
-  return { src: 'Instagram API', items: j.data.map(m => ({ id: m.id, caption: m.caption, permalink: m.permalink, timestamp: m.timestamp, img: m.media_type === 'VIDEO' ? m.thumbnail_url : m.media_url })) };
+  if (!behold) return null;
+  if (!/^https:\/\/feeds\.behold\.so\/[A-Za-z0-9_-]+\/?$/.test(behold) && !process.env.IG_TEST) throw new Error('BEHOLD_FEED_URL ni oblike https://feeds.behold.so/…');
+  const r = await fetch(behold); // URL ni izpisan (javni dnevniki)
+  const j = await r.json().catch(() => null);
+  const posts = Array.isArray(j) ? j : j?.posts;
+  if (!r.ok || !Array.isArray(posts)) throw new Error(`Behold ${r.status}: neveljaven odgovor`);
+  return { src: 'Behold', items: posts.map(m => ({
+    id: m.id, caption: m.prunedCaption ?? m.caption, permalink: m.permalink, timestamp: m.timestamp,
+    img: m.sizes?.large?.mediaUrl || m.sizes?.full?.mediaUrl || m.sizes?.medium?.mediaUrl || (m.mediaType === 'VIDEO' ? m.thumbnailUrl : m.mediaUrl)
+  })) };
 }
 async function instagramPosts() {
   try {
     const got = await igItems();
-    if (!got) { console.log('Instagram: ni vira (BEHOLD_FEED_URL / INSTAGRAM_TOKEN), novice preskočene.'); return null; }
+    if (!got) { console.log('Instagram: ni BEHOLD_FEED_URL, novice preskočene.'); return null; }
     const sharp = (await import('sharp')).default;
     const items = got.items.filter(m => m.img);
     const mon = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
