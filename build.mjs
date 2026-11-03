@@ -278,7 +278,7 @@ async function main() {
     } catch (e) { console.log('og.jpg ni bila ustvarjena:', e.message); }
   }
   // Ikona strani: rdeča pika iz logotipa
-  await fs.writeFile(path.join(DIST, 'favicon.svg'), '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><circle cx="16" cy="16" r="8" fill="#d40000"/></svg>');
+  await fs.writeFile(path.join(DIST, 'favicon.svg'), '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" fill="#0a0a0a"/><circle cx="16" cy="16" r="8" fill="#d40000"/></svg>');
   try {
     const sharp = (await import('sharp')).default;
     await sharp(Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180"><rect width="180" height="180" fill="#0a0a0a"/><circle cx="90" cy="90" r="30" fill="#d40000"/></svg>')).png().toFile(path.join(DIST, 'apple-touch-icon.png'));
