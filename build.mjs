@@ -282,7 +282,16 @@ async function main() {
   try {
     const sharp = (await import('sharp')).default;
     await sharp(Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180"><rect width="180" height="180" fill="#0a0a0a"/><circle cx="90" cy="90" r="30" fill="#d40000"/></svg>')).png().toFile(path.join(DIST, 'apple-touch-icon.png'));
-  } catch (e) { console.log('apple-touch-icon ni bila ustvarjena:', e.message); }
+    // favicon.ico (16/32/48) in PNG 48/192 za Google in brskalnike, ki ne berejo SVG
+    const ico = (n) => sharp(Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="${n}" height="${n}"><rect width="32" height="32" fill="#0a0a0a"/><circle cx="16" cy="16" r="8" fill="#d40000"/></svg>`)).resize(n, n).png().toBuffer();
+    const sizes = [16, 32, 48], pngs = await Promise.all(sizes.map(ico));
+    const hdr = Buffer.alloc(6 + 16 * sizes.length); hdr.writeUInt16LE(0, 0); hdr.writeUInt16LE(1, 2); hdr.writeUInt16LE(sizes.length, 4);
+    let off = hdr.length;
+    sizes.forEach((n, i) => { const e = 6 + 16 * i; hdr.writeUInt8(n, e); hdr.writeUInt8(n, e + 1); hdr.writeUInt16LE(1, e + 4); hdr.writeUInt16LE(32, e + 6); hdr.writeUInt32LE(pngs[i].length, e + 8); hdr.writeUInt32LE(off, e + 12); off += pngs[i].length; });
+    await fs.writeFile(path.join(DIST, 'favicon.ico'), Buffer.concat([hdr, ...pngs]));
+    await fs.writeFile(path.join(DIST, 'favicon-48.png'), pngs[2]);
+    await fs.writeFile(path.join(DIST, 'icon-192.png'), await ico(192));
+  } catch (e) { console.log('ikone niso bile ustvarjene:', e.message); }
 
   const n = projects.length;
   for (const pg of PAGES) for (const lang of ['sl', 'en']) {
@@ -299,7 +308,10 @@ async function main() {
       `<link rel="alternate" hreflang="sl" href="${abs(pg.sl)}">`,
       `<link rel="alternate" hreflang="en" href="${abs(pg.en)}">`,
       `<link rel="alternate" hreflang="x-default" href="${abs(pg.sl)}">`,
+      `<link rel="icon" href="favicon.ico" sizes="48x48">`,
       `<link rel="icon" href="favicon.svg" type="image/svg+xml">`,
+      `<link rel="icon" href="icon-192.png" type="image/png" sizes="192x192">`,
+      `<meta name="google-site-verification" content="WbtHRjdjsOooViIiCHUByQ5zOJ1IxPY-elnFEeaW_ig">`,
       `<link rel="apple-touch-icon" href="apple-touch-icon.png">`,
       `<meta property="og:type" content="website">`,
       `<meta property="og:site_name" content="BIRO VOLK">`,
