@@ -33,8 +33,6 @@ jobs:
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           BEHOLD_FEED_URL: ${{ secrets.BEHOLD_FEED_URL }}
-          # Začasno, dokler www.birovolk.si kaže na staro stran. Po preklopu DNS to vrstico (in komentar) izbriši.
-          SITE_URL: https://mihavolk79.github.io/birovolk.si
       - uses: actions/upload-pages-artifact@v5
         with:
           path: dist
