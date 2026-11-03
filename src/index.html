@@ -29,6 +29,8 @@ html{scroll-padding-top:env(safe-area-inset-top,0px);background:var(--bg)}
 body{margin:0;background:var(--bg);color:var(--fg);font-family:'Barlow Semi Condensed',Arial,sans-serif;font-size:17px;line-height:1.45;-webkit-font-smoothing:antialiased}
 a{color:inherit}
 :focus-visible{outline:2px solid var(--fg);outline-offset:3px}
+/* <main> dobi fokus programsko ob menjavi strani (za bralnike zaslona) – brez vidnega okvirja (Safari ga sicer pokaže) */
+main:focus,main:focus-visible{outline:none}
 .wrap{padding-left:clamp(16px,3vw,40px);padding-right:clamp(16px,3vw,40px)}
 .cond{font-family:'Barlow Condensed',Arial,sans-serif}
 .dot{color:var(--dot)}
