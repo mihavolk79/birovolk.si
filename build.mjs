@@ -40,8 +40,8 @@ function describe(site, v, lang, n) {
     : `Projects by BIRO VOLK, architecture studio in Ljubljana: ${n} published projects with year, client, location and category.`;
   if (v === 'biro') return sl ? 'BIRO VOLK, arhitekturni biro iz Ljubljane, od 2007: arhitektura, prenove šol, domov in bolnišnic, ki med gradnjo delujejo naprej, univerzalna dostopnost.'
     : 'BIRO VOLK, architecture studio in Ljubljana since 2007: architecture, renovation of schools, care homes and hospitals that stay in use, universal access.';
-  return sl ? 'Arhitekturni biro BIRO VOLK d.o.o., Kersnikova ulica 6, 1000 Ljubljana. info@birovolk.si, +386 41 842 899. Sestanki po dogovoru.'
-    : 'Architecture studio BIRO VOLK d.o.o., Kersnikova ulica 6, 1000 Ljubljana, Slovenia. info@birovolk.si, +386 41 842 899. Meetings by appointment.';
+  return sl ? 'Arhitekturni biro BIRO VOLK d.o.o., Kersnikova ulica 6, 1000 Ljubljana. info@birovolk.si, Instagram @birovolk. Sestanki po dogovoru.'
+    : 'Architecture studio BIRO VOLK d.o.o., Kersnikova ulica 6, 1000 Ljubljana, Slovenia. info@birovolk.si, Instagram @birovolk. Meetings by appointment.';
 }
 
 // Strukturirani podatki (schema.org) o biroju – samo podatki, ki so že objavljeni na strani
@@ -52,10 +52,10 @@ function orgLd(url, site, lang, ogImage) {
     name: 'BIRO VOLK', ...(legal ? { legalName: legal } : {}),
     description: describe(site, '', lang), url: url + '/',
     ...(ogImage ? { image: url + '/' + ogImage } : {}),
-    email: 'info@birovolk.si', telephone: '+386 41 842 899', foundingDate: '2007',
+    email: 'info@birovolk.si', foundingDate: '2007',
     address: { '@type': 'PostalAddress', streetAddress: 'Kersnikova ulica 6', postalCode: '1000', addressLocality: 'Ljubljana', addressCountry: 'SI' },
     founder: { '@type': 'Person', name: 'Miha Volk', jobTitle: site['biro_' + lang].tRole1 },
-    sameAs: ['https://www.instagram.com/birovolk/'],
+    sameAs: [site.social.instagram, site.social.linkedin].filter(Boolean),
     knowsLanguage: ['sl', 'en'],
     slogan: lang === 'sl' ? 'Arhitekturni biro Ljubljana' : 'Architecture studio Ljubljana',
     alternateName: lang === 'sl' ? 'BIRO VOLK – arhitekturni biro' : 'BIRO VOLK – architecture studio',
@@ -362,12 +362,12 @@ function llmsTxt(site, projects, abs) {
 ${E.tP2}
 
 - Address: Kersnikova ulica 6, SI-1000 Ljubljana, Slovenia
-- E-mail: info@birovolk.si · Phone: +386 41 842 899
+- E-mail: info@birovolk.si · Instagram messages: ${site.social.instagramDm}
 - Founded: 2007
 - Areas of expertise: ${site.seo.knowsAbout.en.join(', ')}
 - Countries: ${Object.values(site.seo.areaServed).map(n => n[1]).join(', ')}
 - Languages: Slovenian, English
-- Instagram: https://www.instagram.com/birovolk/
+- Instagram: ${site.social.instagram}${site.social.linkedin ? '\n- LinkedIn: ' + site.social.linkedin : ''}
 
 ## Services
 
