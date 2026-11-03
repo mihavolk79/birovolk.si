@@ -83,9 +83,14 @@ h1.big,blockquote.big{margin:0;font-family:'Barlow Condensed',Arial,sans-serif;f
 @media (max-width:1100px){.sel li{grid-template-columns:40px minmax(0,1fr) minmax(0,1fr) max(var(--wp,118px),var(--wc,124px));grid-template-rows:auto 1fr;gap:4px 24px}.sel .no,.sel .iv,.sel .nm{grid-row:span 2}.sel .ty{grid-column:4;text-align:left;align-self:start}}
 .more{align-self:flex-start;font-size:18px;text-underline-offset:6px;min-height:44px;display:inline-flex;align-items:center}
 /* services */
-.grp{display:grid;grid-template-columns:minmax(200px,1fr) 3fr;gap:16px 48px;padding-top:20px;border-top:1px solid var(--rule)}
+/* Storitve in Kontakt: skupna mreza 4 enakih kolon, da se vse osi na strani ujemajo */
+.g4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:48px}
+.split{align-items:end;row-gap:24px;padding-top:32px}
+.split>:first-child{grid-column:1/3}.split>:last-child{grid-column:3/5}
+.grps{margin-top:72px}
+.grp{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px 48px;padding:24px 0 36px;border-top:1px solid var(--rule)}
 .grp h2{margin:0;font-family:'Barlow Condensed',Arial,sans-serif;font-size:36px;font-weight:300;line-height:1.05}
-.grp ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:4px 40px}
+.grp ul{grid-column:2/-1;list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px 48px}
 .grp li{display:flex;flex-direction:column;gap:2px;padding:10px 0}
 .grp li b{font-weight:400;font-size:20px;line-height:1.3}
 .grp li span{font-size:15px;color:var(--sub)}
@@ -119,6 +124,10 @@ h1.big,blockquote.big{margin:0;font-family:'Barlow Condensed',Arial,sans-serif;f
   .sel .no,.sel .iv,.sel .nm{grid-row:auto}
   .sel .iv,.sel .nm,.sel .pl,.sel .ty{grid-column:2;text-align:left;white-space:normal}
   .grp{grid-template-columns:1fr}
+  .grp ul{grid-template-columns:1fr;grid-column:auto}
+  .g4,.split{grid-template-columns:1fr}
+  .split>*,.kcols>*{grid-column:auto!important}
+  nav{gap:4px 16px}.lang{gap:10px}
 }
 /* biro & contact */
 .ppl{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:40px}
@@ -127,12 +136,17 @@ h1.big,blockquote.big{margin:0;font-family:'Barlow Condensed',Arial,sans-serif;f
 .big-link{font-family:'Barlow Condensed',Arial,sans-serif;font-size:clamp(34px,4vw,60px);font-weight:300;line-height:1.1;text-decoration:none;display:block}
 .big-link.u{text-decoration:underline;text-underline-offset:8px;text-decoration-thickness:2px}
 .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:40px;margin-top:72px}
-.cols h2{margin:0 0 12px}
+.cols h2,.kcols h2{margin:0 0 12px}
+.kcols{margin-top:72px;row-gap:48px}.kcols>:nth-child(3){grid-column:3/5}
+.kmail{display:flex;flex-direction:column;gap:10px}
+.big-link.dm{font-size:clamp(24px,2.4vw,36px)}
+.soc{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;font-size:22px}
+.soc a{text-decoration:none}.soc a:hover,.soc a:focus-visible{text-decoration:underline;text-underline-offset:4px}
 address{font-style:normal;font-size:22px;line-height:1.45}
-dl.kv{margin:0;display:flex;flex-direction:column;gap:6px}
-dl.kv div{display:flex;flex-wrap:wrap;gap:4px 12px}
-dl.kv dt{color:var(--sub);min-width:150px}dl.kv dd{margin:0}
-.note{margin:72px 0 0;max-width:62ch;font-size:14px;color:var(--sub);border-left:2px solid var(--rule);padding-left:14px}
+dl.kv{margin:0;display:grid;grid-template-columns:max-content minmax(0,1fr);gap:6px 24px}
+dl.kv div{display:contents}
+dl.kv dt{color:var(--sub)}dl.kv dd{margin:0}
+.note{margin:56px 0 0;max-width:62ch;font-size:14px;color:var(--sub);border-left:2px solid var(--rule);padding-left:14px}
 .ptools{display:flex;flex-wrap:wrap;gap:8px}
 .ptools button{min-height:40px;padding:6px 14px;border-radius:999px;cursor:pointer;font:inherit;font-size:15px;background:transparent;color:var(--fg);border:1px solid var(--sub)}
 .ptools button[aria-expanded="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
@@ -176,6 +190,10 @@ dl.kv dt{color:var(--sub);min-width:150px}dl.kv dd{margin:0}
 .pmap text{fill:var(--soft);font-size:17px;font-family:'Barlow Semi Condensed',Arial,sans-serif;pointer-events:none}
 .placechip{align-self:flex-start;min-height:40px;padding:6px 14px;border-radius:999px;cursor:pointer;font:inherit;font-size:15px;background:var(--fg);color:var(--bg);border:1px solid var(--fg)}
 footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 40px;padding-top:32px;padding-bottom:40px;font-size:15px;color:var(--sub);border-top:1px solid var(--rule)}
+@media (max-width:1100px) and (min-width:761px){
+  .grp{grid-template-columns:1fr}.grp ul{grid-column:auto}
+  .kcols{grid-template-columns:repeat(2,minmax(0,1fr))}.kcols>:nth-child(3){grid-column:1/-1}
+}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
@@ -192,8 +210,8 @@ const DATA = __DATA__;
 const PAGE = __PAGE__; // { v: pogled, lang: jezik } – določi ga naslov strani (URL)
 const S = DATA.site;
 const UI = {
-  sl: { nav: [['storitve','Storitve'],['projekti','Projekti'],['biro','Biro'],['kontakt','Kontakt']], dark: 'Temni način', home: 'prva stran', tag: 'Arhitekturni biro Ljubljana', menu: 'Glavni meni', lang: 'Jezik', photo: 'Fotografija — dodati', newsPh: 'Instagram objava', foot: ['BIRO VOLK d.o.o. · Kersnikova ulica 6, SI-1000 Ljubljana', 'info@birovolk.si · +386 41 842 899', 'Brez sledilnih piškotkov'], titles: { '': 'BIRO VOLK – arhitekturni biro, projektiranje in inženiring, Ljubljana', storitve: 'Storitve: arhitekturno projektiranje, dovoljenja, nadzor – BIRO VOLK', projekti: 'Projekti – BIRO VOLK, arhitekturni biro Ljubljana', biro: 'O biroju – BIRO VOLK, arhitekti Ljubljana', kontakt: 'Kontakt – BIRO VOLK, Kersnikova ulica 6, Ljubljana' }, upd: DATA.updated.split('-').reverse().map(Number).join('. ') },
-  en: { nav: [['storitve','Services'],['projekti','Projects'],['biro','Studio'],['kontakt','Contact']], dark: 'Dark mode', home: 'home', tag: 'Architecture studio Ljubljana', menu: 'Main menu', lang: 'Language', photo: 'Photo — to be added', newsPh: 'Instagram post', foot: ['BIRO VOLK d.o.o. · Kersnikova ulica 6, SI-1000 Ljubljana', 'info@birovolk.si · +386 41 842 899', 'No tracking cookies'], titles: { '': 'BIRO VOLK – architecture studio in Ljubljana, Slovenia', storitve: 'Services: architectural design, permits, supervision – BIRO VOLK', projekti: 'Projects – BIRO VOLK architects, Ljubljana', biro: 'Studio – BIRO VOLK architects, Ljubljana', kontakt: 'Contact – BIRO VOLK, Ljubljana, Slovenia' }, upd: DATA.updated }
+  sl: { nav: [['storitve','Storitve'],['projekti','Projekti'],['biro','Biro'],['kontakt','Kontakt']], dark: 'Temni način', home: 'prva stran', tag: 'Arhitekturni biro Ljubljana', menu: 'Glavni meni', lang: 'Jezik', photo: 'Fotografija — dodati', newsPh: 'Instagram objava', foot: ['BIRO VOLK d.o.o. · Kersnikova ulica 6, SI-1000 Ljubljana', 'info@birovolk.si', 'Brez sledilnih piškotkov'], titles: { '': 'BIRO VOLK – arhitekturni biro, projektiranje in inženiring, Ljubljana', storitve: 'Storitve: arhitekturno projektiranje, dovoljenja, nadzor – BIRO VOLK', projekti: 'Projekti – BIRO VOLK, arhitekturni biro Ljubljana', biro: 'O biroju – BIRO VOLK, arhitekti Ljubljana', kontakt: 'Kontakt – BIRO VOLK, Kersnikova ulica 6, Ljubljana' }, upd: DATA.updated.split('-').reverse().map(Number).join('. ') },
+  en: { nav: [['storitve','Services'],['projekti','Projects'],['biro','Studio'],['kontakt','Contact']], dark: 'Dark mode', home: 'home', tag: 'Architecture studio Ljubljana', menu: 'Main menu', lang: 'Language', photo: 'Photo — to be added', newsPh: 'Instagram post', foot: ['BIRO VOLK d.o.o. · Kersnikova ulica 6, SI-1000 Ljubljana', 'info@birovolk.si', 'No tracking cookies'], titles: { '': 'BIRO VOLK – architecture studio in Ljubljana, Slovenia', storitve: 'Services: architectural design, permits, supervision – BIRO VOLK', projekti: 'Projects – BIRO VOLK architects, Ljubljana', biro: 'Studio – BIRO VOLK architects, Ljubljana', kontakt: 'Contact – BIRO VOLK, Ljubljana, Slovenia' }, upd: DATA.updated }
 };
 const store = { get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} } };
 // Vsak pogled ima svoj naslov (URL), relativno na <base> (koren strani).
@@ -239,8 +257,8 @@ function home() {
 
 function services() {
   const s = S['serv_' + lang];
-  return `<div class="intro"><h1 class="big" style="font-size:clamp(52px,7vw,108px)">${esc(s.tH1)}<span class="dot">.</span></h1><p class="lead">${esc(s.tLead)}</p></div>
-  ${s.groups.map(g => `<section class="sec"><div class="grp"><h2>${esc(g.t)}</h2><ul>${g.items.map(i => `<li><b>${esc(i.t)}</b>${i.d ? `<span>${esc(i.d)}</span>` : ''}</li>`).join('')}</ul></div></section>`).join('')}`;
+  return `<div class="g4 split"><h1 class="big" style="font-size:clamp(52px,7vw,108px)">${esc(s.tH1)}<span class="dot">.</span></h1><p class="lead">${esc(s.tLead)}</p></div>
+  <div class="grps">${s.groups.map(g => `<section class="grp"><h2>${esc(g.t)}</h2><ul>${g.items.map(i => `<li><b>${esc(i.t)}</b>${i.d ? `<span>${esc(i.d)}</span>` : ''}</li>`).join('')}</ul></section>`).join('')}</div>`;
 }
 
 // kraj + oznaka države (ISO): »Murska Sobota, SI«; »Austria« -> »AT«
@@ -365,9 +383,9 @@ function biro() {
 
 function contact() {
   const k = S['kont_' + lang];
-  return `<div class="intro"><h1 class="big" style="font-size:clamp(52px,7vw,108px)">${esc(k.tH1)}<span class="dot">.</span></h1><div><a class="big-link u" href="mailto:info@birovolk.si">info@birovolk.si</a><a class="big-link" href="tel:+38641842899">+386 41 842 899</a></div></div>
-  <div class="cols"><div><h2 class="lbl">${esc(k.tVisit)}</h2><address>BIRO VOLK d.o.o.<br>Kersnikova ulica 6<br>SI-1000 Ljubljana</address><p style="color:var(--sub);margin:8px 0">${esc(k.tAppt)}</p><a href="https://www.google.com/maps/search/?api=1&amp;query=BIRO%20VOLK%2C%20Kersnikova%20ulica%206%2C%201000%20Ljubljana" target="_blank" rel="noopener">${esc(k.tMap)} ↗</a></div>
-  <div><h2 class="lbl">${esc(k.tFollow)}</h2><a href="https://www.instagram.com/birovolk/" target="_blank" rel="noopener" style="font-size:22px;text-decoration:none">Instagram · @birovolk</a></div>
+  return `<div class="g4 split"><h1 class="big" style="font-size:clamp(52px,7vw,108px)">${esc(k.tH1)}<span class="dot">.</span></h1><div class="kmail"><a class="big-link u" href="mailto:info@birovolk.si">info@birovolk.si</a><a class="big-link dm" href="${esc(S.social.instagramDm)}" target="_blank" rel="noopener">${esc(k.tDM)}&nbsp;↗</a></div></div>
+  <div class="g4 kcols"><div><h2 class="lbl">${esc(k.tVisit)}</h2><address>BIRO VOLK d.o.o.<br>Kersnikova ulica 6<br>SI-1000 Ljubljana</address><p style="color:var(--sub);margin:8px 0">${esc(k.tAppt)}</p><a href="https://www.google.com/maps/search/?api=1&amp;query=BIRO%20VOLK%2C%20Kersnikova%20ulica%206%2C%201000%20Ljubljana" target="_blank" rel="noopener">${esc(k.tMap)} ↗</a></div>
+  <div><h2 class="lbl">${esc(k.tFollow)}</h2><ul class="soc"><li><a href="${esc(S.social.instagram)}" target="_blank" rel="noopener">Instagram · @birovolk</a></li>${S.social.linkedin ? `<li><a href="${esc(S.social.linkedin)}" target="_blank" rel="noopener">LinkedIn · BIRO VOLK</a></li>` : ''}</ul></div>
   <div><h2 class="lbl">${esc(k.tInvoice)}</h2><dl class="kv">${k.billing.map(b => `<div><dt>${esc(b.l)}</dt><dd>${esc(b.v)}</dd></div>`).join('')}</dl></div></div>
   <p class="note">${esc(k.tPrivacy)}</p>`;
 }
