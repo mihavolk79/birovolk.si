@@ -3,7 +3,7 @@ on:
   push:
     branches: [main]
   schedule:
-    - cron: '17 2 * * *'   # vsako noč ob ~3:17 po slovenskem času (UTC+1)
+    - cron: '17 */6 * * *' # vsakih 6 ur (0:17, 6:17, 12:17, 18:17 UTC); GitHub lahko zamakne za nekaj ur
   workflow_dispatch: {}
   repository_dispatch:
     types: [osvezi]        # za samodejno osvežitev iz Google Apps Script
